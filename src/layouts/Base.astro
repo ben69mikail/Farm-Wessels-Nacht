@@ -15,7 +15,7 @@ import { CONTACT } from '../content/contact';
 interface Props { locale: Locale; pageKey: string; title: string; description: string; intro?: boolean }
 const { locale, pageKey, title, description, intro = false } = Astro.props;
 const copy = t(locale);
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://wild-wessels-nacht.netlify.app');
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://wesselsfarm.netlify.app');
 const other: Locale = locale === 'de' ? 'en' : 'de';
 
 const ld = {

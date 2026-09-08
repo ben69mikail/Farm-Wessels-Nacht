@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Nach dem Verbinden der neuen Netlify-Site hier die endgültige URL eintragen.
-export const SITE = 'https://wild-wessels-nacht.netlify.app';
+export const SITE = 'https://wesselsfarm.netlify.app';
 
 export default defineConfig({
   site: SITE,
