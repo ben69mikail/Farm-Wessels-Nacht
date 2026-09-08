@@ -1,0 +1,27 @@
+---
+/* Unterseiten-Auftakt: Bogenfenster mit Parallax, Titel links, Text darunter. */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { image: ImageMetadata; alt: string; kicker: string; a: string; b: string; lead?: string; focus?: string }
+const { image, alt, kicker, a, b, lead, focus = '50% 50%' } = Astro.props;
+---
+<section class="phero">
+  <div class="wrap phero__grid">
+    <div class="phero__text">
+      <p class="brandline" data-reveal="fade">{kicker}</p>
+      <h1 class="display t-4 lines"><span class="line"><span>{a}</span></span><span class="line"><span><em>{b}</em></span></span></h1>
+      {lead && <p class="lead" data-reveal style="--d:250ms">{lead}</p>}
+    </div>
+    <div class="frame frame--arch phero__img" data-parallax="10" data-reveal="scale" style={`--focus:${focus}`}>
+      <Image src={image} alt={alt} widths={[600, 900, 1400]} sizes="(min-width: 900px) 46vw, 92vw" loading="eager" fetchpriority="high" decoding="async" />
+    </div>
+  </div>
+</section>
+<style>
+  .phero { padding-top: clamp(7rem, 16vh, 11rem); padding-bottom: clamp(2rem, 5vw, 4rem); }
+  .phero__grid { display: grid; gap: 2.5rem; align-items: center; }
+  .phero__text { display: grid; gap: clamp(1rem, 2.5vw, 1.75rem); }
+  .phero__img { aspect-ratio: 4 / 5; max-height: 76svh; }
+  .phero__img :global(img) { object-position: var(--focus); }
+  @media (min-width: 900px) { .phero__grid { grid-template-columns: 1.1fr 0.9fr; gap: 5rem; } .phero__text { padding-bottom: 3rem; } }
+</style>

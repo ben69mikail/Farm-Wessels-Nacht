@@ -1,0 +1,55 @@
+---
+/* Aufklappliste für „Gut zu wissen"/Ausrüstung: nativ (<details>), sanft animiert. */
+interface Props { title: string; sub?: string; items: readonly { title: string; text: string }[] }
+const { title, sub, items } = Astro.props;
+---
+<section class="section section--tight">
+  <div class="wrap acc">
+    <div class="stack acc__head" style="--flow:0.9rem">
+      <h2 class="display t-3 lines"><span class="line"><span>{title}</span></span></h2>
+      {sub && <p class="muted measure" data-reveal>{sub}</p>}
+    </div>
+    <div class="acc__list">
+      {items.map((it, i) => (
+        <details class="acc__item" data-reveal style={`--d:${i * 60}ms`} open={i === 0 ? true : undefined}>
+          <summary><span class="t-1">{it.title}</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body"><p class="muted">{it.text}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.acc__item').forEach((d) => {
+    const body = d.querySelector<HTMLElement>('.acc__body')!;
+    const summary = d.querySelector('summary')!;
+    summary.addEventListener('click', (e) => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      e.preventDefault();
+      if (d.open) {
+        const a = body.animate([{ height: body.offsetHeight + 'px', opacity: 1 }, { height: '0px', opacity: 0 }], { duration: 380, easing: 'cubic-bezier(0.16,1,0.3,1)' });
+        a.onfinish = () => { d.open = false; body.style.height = ''; };
+      } else {
+        d.open = true;
+        const h = body.offsetHeight;
+        body.animate([{ height: '0px', opacity: 0 }, { height: h + 'px', opacity: 1 }], { duration: 480, easing: 'cubic-bezier(0.16,1,0.3,1)' });
+      }
+    });
+  });
+</script>
+<style>
+  .acc { display: grid; gap: 2rem; }
+  .acc__list { display: grid; }
+  .acc__item { border-top: 1px solid var(--line); }
+  .acc__item:last-child { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.35rem 0.25rem; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  summary i { position: relative; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--line-strong); transition: background var(--t-fast), transform 0.5s var(--ease-out); }
+  summary i::before, summary i::after { content: ''; position: absolute; left: 50%; top: 50%; width: 0.9rem; height: 1px; background: var(--gold); translate: -50% -50%; transition: transform 0.5s var(--ease-out); }
+  summary i::after { transform: rotate(90deg); }
+  .acc__item[open] summary i::after { transform: rotate(0deg); }
+  summary:hover i { background: oklch(1 0 0 / 0.07); }
+  .acc__body { overflow: hidden; }
+  .acc__body p { padding: 0 0.25rem 1.5rem; max-width: var(--measure); }
+  @media (min-width: 900px) { .acc { grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; } .acc__head { position: sticky; top: 7rem; } }
+</style>

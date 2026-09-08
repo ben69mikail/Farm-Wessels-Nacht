@@ -1,0 +1,212 @@
+/* ============================================================
+   WILD WESSELS SAFARIS — v2 „Nacht im Bushveld"
+   Designsystem: dunkle Bühne, Feuerschein-Akzent, weiche Radien.
+   Alle Farben in OKLCH. Nur hier pflegen.
+   ============================================================ */
+
+:root {
+  /* Fläche — bewusst getönt: die Nacht selbst ist Teil der Marke */
+  --night:        oklch(0.135 0.012 60);   /* Seitengrund */
+  --night-deep:   oklch(0.095 0.010 60);   /* Footer, Menü, Video-Hintergrund */
+  --surface:      oklch(0.185 0.014 58);   /* Panels */
+  --surface-2:    oklch(0.235 0.016 56);   /* Hover-Panels, Eingabefelder */
+
+  /* Schrift */
+  --ink:          oklch(0.955 0.012 80);   /* Bein-Weiß, ≥ 13:1 auf Night */
+  --ink-soft:     oklch(0.84 0.016 78);
+  --muted:        oklch(0.72 0.020 70);    /* ≥ 6:1 auf Night */
+
+  /* Marke */
+  --ember:        oklch(0.66 0.165 44);    /* Glut — Primärfarbe, Text darauf weiß */
+  --ember-deep:   oklch(0.54 0.16 40);
+  --ember-glow:   oklch(0.66 0.165 44 / 0.35);
+  --gold:         oklch(0.88 0.10 88);     /* Savannengold — Akzent für Marken, Linien, Hervorhebung */
+  --gold-soft:    oklch(0.88 0.10 88 / 0.55);
+
+  --line:         oklch(1 0 0 / 0.11);
+  --line-strong:  oklch(1 0 0 / 0.22);
+  --scrim:        oklch(0.09 0.01 60 / 0.72);
+
+  /* Typografie */
+  --font-display: 'Bodoni Moda Variable', 'Bodoni Moda', 'Didot', 'Bodoni 72', Georgia, serif;
+  --font-body:    'Hanken Grotesk Variable', 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-0: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);         /* 17–19 px Grundschrift */
+  --fs-1: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-2: clamp(1.6rem, 1.3rem + 1.4vw, 2.4rem);
+  --fs-3: clamp(2.2rem, 1.6rem + 2.8vw, 4rem);
+  --fs-4: clamp(2.8rem, 1.8rem + 5vw, 6rem);                   /* Deckel 96 px */
+  --lh-body: 1.6;
+
+  /* Radien — nichts Kantiges */
+  --r-sm: 14px;
+  --r-md: 24px;
+  --r-lg: clamp(28px, 3vw, 44px);
+  --r-pill: 999px;
+  --r-arch: 999px 999px var(--r-lg) var(--r-lg) / 60% 60% var(--r-lg) var(--r-lg);
+
+  /* Rhythmus */
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section: clamp(5rem, 12vw, 11rem);
+  --measure: 62ch;
+  --max: 88rem;
+
+  /* Bewegung */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --t-fast: 180ms;
+  --t-med: 380ms;
+  --t-slow: 900ms;
+
+  /* Ebenen */
+  --z-cursor: 90;
+  --z-loader: 80;
+  --z-menu: 60;
+  --z-header: 50;
+  --z-bar: 45;
+  --z-lightbox: 70;
+
+  color-scheme: dark;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-0);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  min-height: 100dvh;
+}
+img, video, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; line-height: 1.02; letter-spacing: -0.015em; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+figure { margin: 0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 6px; }
+::selection { background: var(--ember); color: #fff; }
+
+/* Körnung über der ganzen Seite — sehr leicht, gibt der Fläche Film-Charakter */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.045; mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Typografie ---------- */
+.display { font-family: var(--font-display); font-weight: 500; font-variation-settings: 'opsz' 96; }
+.display--light { font-weight: 400; }
+.display em, .display i { font-style: italic; font-weight: 400; color: var(--gold); }
+.t-1 { font-size: var(--fs-1); }
+.t-2 { font-size: var(--fs-2); }
+.t-3 { font-size: var(--fs-3); }
+.t-4 { font-size: var(--fs-4); letter-spacing: -0.03em; }
+.lead { font-size: var(--fs-1); line-height: 1.5; color: var(--ink-soft); max-width: var(--measure); }
+.muted { color: var(--muted); }
+.measure { max-width: var(--measure); }
+.small { font-size: 0.9rem; }
+
+/* Wortmarke-Kicker: EINE benannte Konvention, nicht über jeder Sektion */
+.brandline {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.8125rem; letter-spacing: 0.02em; color: var(--gold);
+}
+.brandline::before { content: ''; width: 2.25rem; height: 1px; background: var(--gold-soft); }
+
+/* ---------- Layout ---------- */
+.wrap { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
+.section { padding-block: var(--section); position: relative; }
+.section--tight { padding-block: calc(var(--section) * 0.6); }
+.stack > * + * { margin-top: var(--flow, 1.25rem); }
+
+/* ---------- Bilder: Bogenfenster & weiche Platten ---------- */
+.frame {
+  position: relative; overflow: hidden; border-radius: var(--r-lg);
+  background: var(--surface); isolation: isolate;
+}
+.frame img, .frame video { width: 100%; height: 100%; object-fit: cover; }
+.frame--arch { border-radius: var(--r-arch); }
+.frame--pill { border-radius: var(--r-pill); }
+.frame::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.08), inset 0 -60px 80px -40px oklch(0.09 0.01 60 / 0.6);
+}
+.frame[data-parallax] img { will-change: transform; scale: 1.15; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  --btn-bg: var(--ember); --btn-fg: #fff;
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  min-height: 3.25rem; padding: 0.85rem 1.75rem; border-radius: var(--r-pill);
+  background: var(--btn-bg); color: var(--btn-fg); font-weight: 500; letter-spacing: 0.005em;
+  transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out), background var(--t-fast);
+  box-shadow: 0 0 0 0 var(--ember-glow); overflow: hidden; white-space: nowrap;
+}
+.btn::before {
+  content: ''; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120px 80px at var(--mx, 50%) var(--my, 50%), oklch(1 0 0 / 0.22), transparent 70%);
+  opacity: 0; transition: opacity var(--t-med);
+}
+.btn:hover { box-shadow: 0 12px 40px -8px var(--ember-glow), 0 0 0 6px oklch(0.66 0.165 44 / 0.12); }
+.btn:hover::before { opacity: 1; }
+.btn:active { transform: scale(0.97); }
+.btn--ghost { --btn-bg: transparent; --btn-fg: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.btn--ghost:hover { background: oklch(1 0 0 / 0.06); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.4); }
+.btn--gold { --btn-bg: var(--gold); --btn-fg: var(--night-deep); }
+.btn svg { width: 1.1em; height: 1.1em; flex: none; }
+.btn .arrow { transition: transform var(--t-med) var(--ease-out); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.link {
+  display: inline-flex; align-items: center; gap: 0.5rem; color: var(--ink); font-weight: 500;
+  position: relative; padding-bottom: 2px;
+}
+.link svg { width: 1em; height: 1em; flex: none; transition: transform var(--t-med) var(--ease-out); }
+.link:hover svg { transform: translateX(4px); }
+.link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: var(--gold); transform: scaleX(0.35); transform-origin: left; transition: transform var(--t-med) var(--ease-out); }
+.link:hover::after { transform: scaleX(1); }
+
+/* ---------- Reveal (progressive enhancement: sichtbar ohne JS) ---------- */
+[data-reveal] { opacity: 1; transform: none; }
+html.js [data-reveal] { opacity: 0; transform: translateY(28px); }
+html.js [data-reveal].is-in { opacity: 1; transform: none; transition: opacity 0.9s var(--ease-out), transform 1s var(--ease-out); transition-delay: var(--d, 0ms); }
+html.js [data-reveal="fade"] { transform: none; }
+html.js [data-reveal="scale"] { transform: scale(0.94); }
+
+/* Zeilenweise Maskenreveal für Headlines */
+.lines .line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.lines .line > span { display: block; }
+html.js .lines .line > span { transform: translateY(110%); }
+html.js .lines.is-in .line > span { transform: none; transition: transform 1.1s var(--ease-out); }
+html.js .lines.is-in .line:nth-child(2) > span { transition-delay: 90ms; }
+html.js .lines.is-in .line:nth-child(3) > span { transition-delay: 180ms; }
+
+/* ---------- Utilities ---------- */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -9999px; top: 0.5rem; z-index: 100; padding: 0.8rem 1.25rem; background: var(--gold); color: var(--night-deep); border-radius: var(--r-pill); }
+.skip:focus { left: 0.5rem; }
+.hairline { height: 1px; background: var(--line); border: 0; margin: 0; }
+.pad-bar { padding-bottom: 5.5rem; }
+@media (min-width: 900px) { .pad-bar { padding-bottom: 0; } }
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal], html.js .lines .line > span { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .frame[data-parallax] img { scale: 1; }
+  .btn, .link::after, .frame img { transition: none !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}

@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Rows from '../components/Rows.astro';
+import Split from '../components/Split.astro';
+import Gallery from '../components/Gallery.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { t } from '../content';
+import { v2 } from '../content/v2';
+import { href, type Locale } from '../content/nav';
+import hero from '../assets/lodge/lodge-abenddaemmerung.jpg';
+import imgWedding from '../assets/wedding/kapelle.jpg';
+import l1 from '../assets/lodge/luftbild-pool.jpg';
+import l2 from '../assets/lodge/haupthaus-jacaranda.jpg';
+import l3 from '../assets/rooms/executive-suite.jpg';
+import l4 from '../assets/lodge/pool.jpg';
+import l5 from '../assets/lodge/lapa-braai.jpg';
+import l6 from '../assets/rooms/luxury-room.jpg';
+import l7 from '../assets/lodge/lounge-billard.jpg';
+import l8 from '../assets/lodge/essbereich.jpg';
+import l9 from '../assets/lodge/gaestehaus.jpg';
+import l10 from '../assets/rooms/bad-wanne.jpg';
+import l11 from '../assets/lodge/damm.jpg';
+import l12 from '../assets/wedding/festsaal.jpg';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale); const p = c.lodge; const x = v2[locale]; const de = locale === 'de';
+const gallery = [
+  { src: l1, alt: de ? 'Luftbild: Pool und Haupthaus im Garten' : 'Aerial view: pool and main house in the garden' },
+  { src: l2, alt: de ? 'Haupthaus unter blühenden Jacarandas' : 'Main house beneath blooming jacarandas' },
+  { src: l3, alt: de ? 'Executive Suite mit Himmelbett' : 'Executive suite with four-poster bed' },
+  { src: l4, alt: de ? 'Pool mit Sonnenterrasse' : 'Pool with sun terrace' },
+  { src: l5, alt: de ? 'Lapa mit Braai und Blick auf den Pool' : 'Lapa with braai and pool view' },
+  { src: l6, alt: de ? 'Luxury Room' : 'Luxury room' },
+  { src: l7, alt: de ? 'Bar und Lounge mit Billard' : 'Bar and lounge with billiards' },
+  { src: l8, alt: de ? 'Essbereich im Haupthaus' : 'Dining area in the main house' },
+  { src: l9, alt: de ? 'Freistehendes Gästehaus' : 'Free-standing cottage' },
+  { src: l10, alt: de ? 'Bad mit Wanne und Dusche' : 'Bathroom with tub and shower' },
+  { src: l11, alt: de ? 'Damm mit Vogelbeobachtung' : 'Dam with birdwatching' },
+  { src: l12, alt: de ? 'Festsaal mit langer Tafel' : 'Reception hall with long table' },
+];
+---
+<Base locale={locale} pageKey="lodge" title={p.title} description={p.description}>
+  <PageHero image={hero} alt={de ? 'Beleuchtete Veranda der Lodge in der Abenddämmerung' : 'Lit veranda of the lodge at dusk'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="55% 55%" />
+  <section class="section section--tight"><div class="wrap">
+    <ul class="nums">
+      {p.facts.map((f, i) => <li data-reveal style={`--d:${i * 90}ms`}><span class="display nums__v" data-count={f.value}>{f.value}</span><span class="muted">{f.label}</span></li>)}
+    </ul>
+  </div></section>
+  <Rows title={p.rooms.h2} items={p.rooms.items} />
+  <section class="section section--tight"><div class="wrap amen">
+    <h2 class="display t-3 lines"><span class="line"><span>{p.amenities.h2}</span></span></h2>
+    <ul class="amen__list">{p.amenities.items.map((a, i) => <li data-reveal style={`--d:${(i % 5) * 60}ms`}><Icon name="arrow" />{a}</li>)}</ul>
+  </div></section>
+  <Gallery title={p.gallery.h2} items={gallery} open={x.gallery.open} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} />
+  <Split image={imgWedding} alt={de ? 'Kapelle mit Holzbänken und rotem Läufer' : 'Chapel with wooden pews and red carpet'} a={p.wedding.h2a} b={p.wedding.h2b} arch flip>
+    <p class="lead" data-reveal>{p.wedding.text}</p>
+    <p data-reveal><a class="btn btn--ghost" href={href('contact', locale)}>{p.wedding.cta}<Icon name="arrow" class="arrow" /></a></p>
+  </Split>
+  <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
+</Base>
+<style>
+  .nums { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+  .nums li { display: grid; gap: 0.35rem; padding-left: 1.25rem; border-left: 1px solid var(--line); }
+  .nums__v { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1; color: var(--gold); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  @media (min-width: 900px) { .nums { grid-template-columns: repeat(4, 1fr); } }
+  .amen { display: grid; gap: 2rem; }
+  .amen__list { display: grid; gap: 0.9rem 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .amen__list li { display: flex; gap: 0.75rem; align-items: baseline; padding-bottom: 0.9rem; border-bottom: 1px solid var(--line); }
+  .amen__list li :global(svg) { width: 1em; height: 1em; flex: none; translate: 0 0.15em; color: var(--gold); }
+  @media (min-width: 900px) { .amen { grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; } }
+</style>

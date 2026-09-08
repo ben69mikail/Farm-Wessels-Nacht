@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro';
+import { CONTACT, mailHref } from '../content/contact';
+interface Props { a: string; b: string; text: string; button: string; href: string; mailLabel: string }
+const { a, b, text, button, href, mailLabel } = Astro.props;
+---
+<section class="section cta" data-cta>
+  <div class="cta__glow" aria-hidden="true"></div>
+  <div class="wrap cta__inner">
+    <h2 class="display t-4 lines"><span class="line"><span>{a}</span></span><span class="line"><span><em>{b}</em></span></span></h2>
+    <p class="lead" data-reveal>{text}</p>
+    <div class="cta__actions" data-reveal>
+      <a class="btn" href={href} data-magnetic>{button}<Icon name="arrow" class="arrow" /></a>
+      <span class="muted">{mailLabel} <a class="link" href={mailHref}>{CONTACT.email}</a></span>
+    </div>
+  </div>
+</section>
+<script>
+  import gsap from 'gsap';
+  document.querySelectorAll<HTMLElement>('[data-cta]').forEach((cta) => {
+    const glow = cta.querySelector<HTMLElement>('.cta__glow');
+    if (!glow || !window.matchMedia('(pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const xTo = gsap.quickTo(glow, 'x', { duration: 1.2, ease: 'power3.out' });
+    const yTo = gsap.quickTo(glow, 'y', { duration: 1.2, ease: 'power3.out' });
+    cta.addEventListener('mousemove', (e) => { const r = cta.getBoundingClientRect(); xTo(e.clientX - r.left - r.width / 2); yTo(e.clientY - r.top - r.height / 2); });
+  });
+</script>
+<style>
+  .cta { overflow: hidden; background: var(--night-deep); border-radius: var(--r-lg); margin-inline: clamp(0.5rem, 1.5vw, 1.5rem); padding-block: clamp(6rem, 14vw, 12rem); }
+  .cta__glow { position: absolute; left: 50%; top: 50%; width: 70vmin; height: 70vmin; margin: -35vmin 0 0 -35vmin; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle, oklch(0.62 0.17 44 / 0.55) 0%, oklch(0.62 0.17 44 / 0.12) 40%, transparent 70%); filter: blur(20px); animation: breathe 6s ease-in-out infinite; }
+  @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+  .cta__inner { position: relative; display: grid; gap: 1.75rem; justify-items: start; }
+  .cta__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+</style>

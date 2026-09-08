@@ -1,0 +1,185 @@
+---
+import { Image } from 'astro:assets';
+import { navItems, legalItems, alternate, href, type Locale } from '../content/nav';
+import { t } from '../content';
+import { CONTACT, telHref, waHref, mailHref } from '../content/contact';
+import Icon from './Icon.astro';
+import Flag from './Flag.astro';
+import logoLight from '../assets/brand/logo-full-light.png';
+import markLight from '../assets/brand/logo-mark-light.png';
+import imgHome from '../assets/hero/pirsch-ausblick.jpg';
+import imgHunt from '../assets/hero/glasen.jpg';
+import imgSpecies from '../assets/hero/giraffe.jpg';
+import imgLodge from '../assets/lodge/lodge-abenddaemmerung.jpg';
+import imgTravel from '../assets/hero/bushveld-see.jpg';
+import imgAbout from '../assets/hunting/jaeger-fernglas.jpg';
+import imgContact from '../assets/hero/zebras.jpg';
+
+interface Props { locale: Locale; pageKey: string }
+const { locale, pageKey } = Astro.props;
+const copy = t(locale);
+const items = navItems(locale);
+const legal = legalItems(locale);
+const other: Locale = locale === 'de' ? 'en' : 'de';
+const menuImages: Record<string, ImageMetadata> = { home: imgHome, hunting: imgHunt, species: imgSpecies, lodge: imgLodge, travel: imgTravel, about: imgAbout, contact: imgContact };
+---
+<header class="hdr" data-header>
+  <div class="hdr__bar">
+    <a class="hdr__brand" href={href('home', locale)} aria-label="Wild Wessels Safaris">
+      <Image src={markLight} alt="" width="44" height="44" class="hdr__mark" loading="eager" />
+      <span class="hdr__word">Wild Wessels<small>Safaris</small></span>
+    </a>
+    <nav class="hdr__nav" aria-label={locale === 'de' ? 'Hauptnavigation' : 'Main navigation'}>
+      {items.filter((i) => i.key !== 'home' && i.key !== 'contact').map((i) => (
+        <a href={i.href} aria-current={i.key === pageKey ? 'page' : undefined}>{i.label}</a>
+      ))}
+    </nav>
+    <div class="hdr__right">
+      <a class="hdr__lang" href={alternate(pageKey, locale)} hreflang={other} lang={other} title={other === 'de' ? 'Deutsch' : 'English'}>
+        <Flag code={other} /><span>{other.toUpperCase()}</span>
+      </a>
+      <a class="btn btn--gold hdr__cta" href={href('contact', locale)} data-magnetic>{copy.ui.enquireShort}</a>
+      <button class="hdr__burger" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+        <span class="hdr__burger-lines" aria-hidden="true"><i></i><i></i></span>
+        <span>{copy.ui.menu}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" data-menu aria-hidden="true" role="dialog" aria-modal="true" aria-label={copy.ui.menu}>
+  <div class="menu__bg" aria-hidden="true">
+    {items.map((i) => (
+      <div class="menu__img" data-menu-img={i.key}>
+        <Image src={menuImages[i.key]} alt="" width="1400" height="933" loading="lazy" decoding="async" />
+      </div>
+    ))}
+  </div>
+  <div class="menu__inner">
+    <div class="menu__top">
+      <Image src={logoLight} alt="Wild Wessels Safaris" width="180" height="180" class="menu__logo" loading="lazy" />
+      <button class="menu__close" type="button" data-menu-close aria-label={copy.ui.close}><Icon name="close" /><span>{copy.ui.close}</span></button>
+    </div>
+    <nav class="menu__nav" aria-label={copy.ui.menu}>
+      {items.map((i, n) => (
+        <a href={i.href} class="display" data-menu-link={i.key} style={`--i:${n}`} aria-current={i.key === pageKey ? 'page' : undefined}>
+          <span>{i.label}</span><Icon name="arrow" class="menu__arrow" />
+        </a>
+      ))}
+    </nav>
+    <div class="menu__foot">
+      <div class="menu__contact">
+        <a href={mailHref}>{CONTACT.email}</a>
+        {telHref && <a href={telHref}>{CONTACT.phone}</a>}
+        {waHref && <a href={waHref} target="_blank" rel="noopener">WhatsApp</a>}
+        <span class="muted">{CONTACT.place} · {CONTACT.country[locale]}</span>
+      </div>
+      <div class="menu__meta">
+        <a class="menu__lang" href={alternate(pageKey, locale)} hreflang={other} lang={other}><Flag code={other} />{other === 'de' ? 'Deutsch' : 'English'}</a>
+        {legal.map((l) => <a href={l.href} class="muted small">{l.label}</a>)}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+  const closeBtn = menu?.querySelector<HTMLButtonElement>('[data-menu-close]');
+  if (menu && openBtn && closeBtn) {
+    let lastFocus: HTMLElement | null = null;
+    const imgs = menu.querySelectorAll<HTMLElement>('[data-menu-img]');
+    const show = (key: string) => imgs.forEach((i) => i.classList.toggle('is-on', i.dataset.menuImg === key));
+    const open = () => {
+      lastFocus = document.activeElement as HTMLElement;
+      menu.classList.add('is-open'); menu.setAttribute('aria-hidden', 'false');
+      openBtn.setAttribute('aria-expanded', 'true'); document.body.classList.add('menu-open');
+      window.dispatchEvent(new Event('ww:lock'));
+      show(document.body.dataset.page ?? 'home');
+      setTimeout(() => closeBtn.focus(), 300);
+    };
+    const close = () => {
+      menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true');
+      openBtn.setAttribute('aria-expanded', 'false'); document.body.classList.remove('menu-open');
+      window.dispatchEvent(new Event('ww:unlock'));
+      lastFocus?.focus();
+    };
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.classList.contains('is-open')) close(); });
+    menu.querySelectorAll<HTMLAnchorElement>('[data-menu-link]').forEach((a) => {
+      a.addEventListener('mouseenter', () => show(a.dataset.menuLink!));
+      a.addEventListener('focus', () => show(a.dataset.menuLink!));
+    });
+  }
+</script>
+
+<style>
+  .hdr {
+    position: fixed; inset: 0 0 auto 0; z-index: var(--z-header);
+    padding: clamp(0.75rem, 2vw, 1.25rem) var(--gutter);
+    transition: transform 0.6s var(--ease-out);
+  }
+  .hdr.is-hidden { transform: translateY(-120%); }
+  .hdr__bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.9rem; border-radius: var(--r-pill);
+    transition: background 0.5s, box-shadow 0.5s, backdrop-filter 0.5s;
+  }
+  .hdr.is-scrolled .hdr__bar {
+    background: oklch(0.12 0.012 60 / 0.72); backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.08), 0 20px 50px -30px oklch(0 0 0 / 0.8);
+  }
+  .hdr__brand { display: flex; align-items: center; gap: 0.7rem; }
+  .hdr__mark { width: 44px; height: 44px; object-fit: contain; }
+  .hdr__word { font-family: var(--font-display); font-size: 1.25rem; line-height: 1; display: flex; flex-direction: column; letter-spacing: 0.01em; }
+  .hdr__word small { font-family: var(--font-body); font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-top: 0.3rem; }
+  .hdr__nav { display: none; gap: 0.25rem; }
+  .hdr__nav a { padding: 0.55rem 0.9rem; border-radius: var(--r-pill); font-weight: 500; color: var(--ink-soft); transition: background var(--t-fast), color var(--t-fast); }
+  .hdr__nav a:hover { background: oklch(1 0 0 / 0.08); color: var(--ink); }
+  .hdr__nav a[aria-current="page"] { color: var(--gold); }
+  .hdr__right { display: flex; align-items: center; gap: 0.5rem; }
+  .hdr__lang { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.55rem 0.8rem; border-radius: var(--r-pill); font-size: 0.85rem; font-weight: 500; box-shadow: inset 0 0 0 1px var(--line-strong); min-height: 44px; }
+  .hdr__lang:hover { background: oklch(1 0 0 / 0.08); }
+  .hdr__cta { display: none; min-height: 44px; padding-block: 0.55rem; }
+  .hdr__burger { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 44px; padding: 0.5rem 1rem 0.5rem 0.8rem; border-radius: var(--r-pill); background: var(--ink); color: var(--night-deep); font-weight: 500; }
+  .hdr__burger-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
+  .hdr__burger-lines i { display: block; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.4s var(--ease-out); }
+  .hdr__burger:hover .hdr__burger-lines i:first-child { transform: translateY(-1px) scaleX(0.7); transform-origin: left; }
+  @media (min-width: 900px) { .hdr__cta { display: inline-flex; } }
+  @media (min-width: 1100px) { .hdr__nav { display: flex; } .hdr__burger span:last-child { display: none; } .hdr__burger { padding: 0.5rem 0.85rem; } }
+
+  /* ---------- Vollbildmenü ---------- */
+  .menu {
+    position: fixed; inset: 0; z-index: var(--z-menu); background: var(--night-deep);
+    clip-path: circle(0% at calc(100% - 3.5rem) 2.5rem); visibility: hidden;
+    transition: clip-path 0.9s var(--ease-out), visibility 0s 0.9s;
+  }
+  .menu.is-open { clip-path: circle(150% at calc(100% - 3.5rem) 2.5rem); visibility: visible; transition: clip-path 0.9s var(--ease-out), visibility 0s; }
+  .menu__bg { position: absolute; inset: 0; overflow: hidden; }
+  .menu__img { position: absolute; inset: 0; opacity: 0; transition: opacity 1s var(--ease-out), transform 1.6s var(--ease-out); transform: scale(1.06); }
+  .menu__img.is-on { opacity: 1; transform: scale(1); }
+  .menu__img img { width: 100%; height: 100%; object-fit: cover; }
+  .menu__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, oklch(0.095 0.01 60 / 0.96) 0%, oklch(0.095 0.01 60 / 0.82) 45%, oklch(0.095 0.01 60 / 0.35) 100%); }
+  @media (max-width: 899px) { .menu__img::after { background: linear-gradient(180deg, oklch(0.095 0.01 60 / 0.94), oklch(0.095 0.01 60 / 0.7)); } }
+  .menu__inner { position: relative; height: 100%; display: flex; flex-direction: column; padding: clamp(1rem, 3vw, 2rem) var(--gutter); padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); overflow-y: auto; }
+  .menu__top { display: flex; align-items: center; justify-content: space-between; }
+  .menu__logo { width: clamp(90px, 10vw, 130px); height: auto; }
+  .menu__close { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.5rem 1rem 0.5rem 0.8rem; border-radius: var(--r-pill); box-shadow: inset 0 0 0 1px var(--line-strong); }
+  .menu__close :global(svg) { width: 1.2rem; height: 1.2rem; }
+  .menu__nav { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: clamp(0.1rem, 0.8vh, 0.5rem); padding-block: 2rem; max-width: 40rem; }
+  .menu__nav a {
+    display: flex; align-items: baseline; gap: 1rem; font-size: clamp(2rem, 6vh, 4.2rem); line-height: 1.1;
+    opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease-out), transform 0.8s var(--ease-out), color 0.3s;
+    transition-delay: calc(0.15s + var(--i) * 60ms);
+  }
+  .menu.is-open .menu__nav a { opacity: 1; transform: none; }
+  .menu__nav a:hover, .menu__nav a[aria-current="page"] { color: var(--gold); }
+  :global(.menu__arrow) { width: 0.55em; height: 0.55em; opacity: 0; transform: translateX(-10px); transition: opacity 0.3s, transform 0.5s var(--ease-out); }
+  .menu__nav a:hover :global(.menu__arrow) { opacity: 1; transform: none; }
+  .menu__foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .menu__contact, .menu__meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center; }
+  .menu__lang { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: var(--r-pill); box-shadow: inset 0 0 0 1px var(--line-strong); min-height: 44px; }
+  @media (prefers-reduced-motion: reduce) { .menu, .menu.is-open, .menu__nav a, .menu__img { transition: none; } }
+</style>

@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Rows from '../components/Rows.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { t } from '../content';
+import { v2 } from '../content/v2';
+import { href, type Locale } from '../content/nav';
+import hero from '../assets/hero/giraffe.jpg';
+import imgGiraffe from '../assets/hero/giraffe.jpg';
+import imgZebra from '../assets/hero/zebras.jpg';
+import imgBuffalo from '../assets/hero/bushveld-see.jpg';
+import imgNyala from '../assets/lodge/felsen.jpg';
+import imgHartebeest from '../assets/hero/ebene.jpg';
+import imgWarthog from '../assets/lodge/damm.jpg';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale); const p = c.species; const x = v2[locale]; const de = locale === 'de';
+const rows = p.confirmed.rows as readonly { de?: string; en?: string; latin: string; group: string }[];
+const imgs = [imgBuffalo, imgNyala, imgGiraffe, imgHartebeest, imgWarthog, imgZebra];
+const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe, x.speciesNote.hartebeest, x.speciesNote.warthog, x.speciesNote.zebra];
+---
+<Base locale={locale} pageKey="species" title={p.title} description={p.description}>
+  <PageHero image={hero} alt={de ? 'Giraffe zwischen Akazien' : 'Giraffe between acacias'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="55% 40%" />
+
+  <section class="section species">
+    <div class="wrap">
+      <h2 class="display t-3 lines species__title"><span class="line"><span>{p.confirmed.h2}</span></span></h2>
+      <ul class="species__list">
+        {rows.map((r, i) => (
+          <li class="sp" data-reveal style={`--d:${(i % 2) * 100}ms`}>
+            <div class="frame frame--arch sp__img"><Image src={imgs[i]} alt="" width="800" height="1000" loading="lazy" decoding="async" /></div>
+            <div class="sp__body">
+              <h3 class="display t-2">{de ? r.de : r.en}</h3>
+              <p class="sp__latin"><i>{r.latin}</i></p>
+              <p class="muted">{notes[i]}</p>
+              <dl class="sp__meta">
+                <div><dt>{p.confirmed.table.group}</dt><dd>{r.group}</dd></div>
+                <div><dt>{p.confirmed.table.price}</dt><dd>{c.ui.onRequest}</dd></div>
+              </dl>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p class="species__note muted" data-reveal>{p.confirmed.note}</p>
+    </div>
+  </section>
+
+  <section class="section section--tight"><div class="wrap stack" style="--flow:1.25rem">
+    <h2 class="display t-3 lines"><span class="line"><span>{p.pricing.h2a}</span></span><span class="line"><span><em>{p.pricing.h2b}</em></span></span></h2>
+    <p class="lead" data-reveal>{p.pricing.lead}</p>
+  </div></section>
+  <Rows items={p.pricing.blocks} />
+  <section class="section section--tight"><div class="wrap incl">
+    <div class="incl__col" data-reveal><h3 class="t-1 incl__h">{p.pricing.included.title}</h3><ul>{p.pricing.included.items.map((i) => <li><Icon name="arrow" />{i}</li>)}</ul></div>
+    <div class="incl__col incl__col--ex" data-reveal style="--d:120ms"><h3 class="t-1 incl__h">{p.pricing.excluded.title}</h3><ul>{p.pricing.excluded.items.map((i) => <li><Icon name="close" />{i}</li>)}</ul></div>
+  </div></section>
+  <CtaBand a={p.cta.h2a} b={p.cta.h2b} text={p.cta.text} button={p.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
+</Base>
+<style>
+  .species__title { margin-bottom: clamp(2rem, 5vw, 4rem); }
+  .species__list { display: grid; gap: clamp(2rem, 4vw, 3rem); }
+  .sp { display: grid; gap: 1.25rem; align-items: center; }
+  .sp__img { aspect-ratio: 4 / 5; }
+  .sp__body { display: grid; gap: 0.5rem; align-content: center; }
+  .sp__latin { color: var(--gold); }
+  .sp__body p { max-width: 42ch; }
+  .sp__meta { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; margin: 0.75rem 0 0; }
+  .sp__meta div { display: grid; gap: 0.15rem; }
+  .sp__meta dt { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .sp__meta dd { margin: 0; font-weight: 500; }
+  .species__note { margin-top: clamp(2rem, 5vw, 3.5rem); max-width: var(--measure); padding: 1.25rem 1.5rem; border-radius: var(--r-md); background: var(--surface); }
+  @media (min-width: 700px) { .species__list { grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 3rem); } .sp { grid-template-columns: 0.8fr 1.2fr; gap: 1.5rem; } .sp:nth-child(even) { transform: translateY(3rem); } }
+  .incl { display: grid; gap: 1.5rem; }
+  .incl__col { padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: var(--r-lg); background: var(--surface); }
+  .incl__h { margin-bottom: 1rem; color: var(--gold); font-weight: 500; }
+  .incl ul { display: grid; gap: 0.6rem; }
+  .incl li { display: flex; gap: 0.75rem; align-items: baseline; }
+  .incl li :global(svg) { width: 1em; height: 1em; flex: none; translate: 0 0.15em; color: var(--gold); }
+  .incl__col--ex li :global(svg) { color: var(--muted); }
+  .incl__col--ex { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+  @media (min-width: 800px) { .incl { grid-template-columns: 1fr 1fr; } }
+</style>

@@ -1,0 +1,28 @@
+---
+/* Ruhige Liste: Titel links, Text rechts, Glut-Linie beim Hover. */
+interface Props { title?: string; items: readonly { title: string; text: string }[] }
+const { title, items } = Astro.props;
+---
+<section class="section section--tight">
+  <div class:list={["wrap rows", { "rows--solo": !title }]}>
+    {title && <h2 class="display t-3 rows__title lines"><span class="line"><span>{title}</span></span></h2>}
+    <ul class="rows__list">
+      {items.map((f, i) => (
+        <li data-reveal style={`--d:${i * 90}ms`}>
+          <h3 class="display t-2">{f.title}</h3>
+          <p class="muted">{f.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+<style>
+  .rows { display: grid; gap: 2rem; }
+  .rows__list { display: grid; }
+  .rows__list li { display: grid; gap: 0.6rem; padding: clamp(1.5rem, 3vw, 2.25rem) 0; border-top: 1px solid var(--line); position: relative; }
+  .rows__list li:last-child { border-bottom: 1px solid var(--line); }
+  .rows__list li::before { content: ''; position: absolute; top: -1px; left: 0; height: 1px; width: 0; background: var(--ember); transition: width 1.2s var(--ease-out); }
+  .rows__list li:hover::before { width: 100%; }
+  .rows__list li p { max-width: var(--measure); }
+  @media (min-width: 900px) { .rows--solo { grid-template-columns: 1fr; } .rows { grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; } .rows__list li { grid-template-columns: 1fr 1.3fr; gap: 2rem; } }
+</style>

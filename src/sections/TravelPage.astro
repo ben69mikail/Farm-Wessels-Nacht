@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Steps from '../components/Steps.astro';
+import Accordion from '../components/Accordion.astro';
+import Split from '../components/Split.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { t } from '../content';
+import { v2 } from '../content/v2';
+import { href, type Locale } from '../content/nav';
+import { CONTACT } from '../content/contact';
+import hero from '../assets/hero/bushveld-see.jpg';
+import imgMap from '../assets/lodge/luftbild-bush.jpg';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale); const p = c.travel; const x = v2[locale]; const de = locale === 'de';
+---
+<Base locale={locale} pageKey="travel" title={p.title} description={p.description}>
+  <PageHero image={hero} alt={de ? 'Stausee im Bushveld' : 'Dam in the bushveld'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="45% 50%" />
+  <Steps title={p.journey.h2} steps={p.journey.steps} sky />
+  <Accordion title={p.good.h2} items={p.good.items} />
+  <Split image={imgMap} alt={de ? 'Luftbild des Reviers' : 'Aerial view of the land'} a={p.location.h2} ratio="4 / 3">
+    <p class="lead" data-reveal>{p.location.text}</p>
+    <p class="muted" data-reveal>{CONTACT.address} · {CONTACT.country[locale]}</p>
+    <p data-reveal><a class="btn btn--ghost" href={CONTACT.maps} target="_blank" rel="noopener"><Icon name="pin" />{p.location.mapLabel}</a></p>
+  </Split>
+  <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
+</Base>

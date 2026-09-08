@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import { navItems, legalItems, href, type Locale } from '../content/nav';
+import { t } from '../content';
+import { CONTACT, telHref, waHref, mailHref } from '../content/contact';
+import logo from '../assets/brand/logo-full-light.png';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const copy = t(locale);
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="wrap ftr__grid">
+    <div class="ftr__brand">
+      <Image src={logo} alt="Wild Wessels Safaris" width="220" height="220" loading="lazy" class="ftr__logo" />
+      <p class="muted measure">{copy.footer.tagline}</p>
+    </div>
+    <div>
+      <h2 class="ftr__h">{copy.footer.navTitle}</h2>
+      <ul class="ftr__list">{navItems(locale).map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ul>
+    </div>
+    <div>
+      <h2 class="ftr__h">{copy.footer.contactTitle}</h2>
+      <ul class="ftr__list">
+        <li><a href={mailHref}>{CONTACT.email}</a></li>
+        {telHref && <li><a href={telHref}>{CONTACT.phone}</a></li>}
+        {waHref && <li><a href={waHref} target="_blank" rel="noopener">WhatsApp</a></li>}
+        <li class="muted">{CONTACT.address}<br />{CONTACT.country[locale]}</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="ftr__h">{copy.footer.legalTitle}</h2>
+      <ul class="ftr__list">{legalItems(locale).map((i) => <li><a href={i.href}>{i.label}</a></li>)}</ul>
+    </div>
+  </div>
+  <div class="wrap ftr__bottom">
+    <span class="muted small">© {year} Wild Wessels Safaris · {copy.footer.rights}</span>
+    <a class="link small" href="#main">{copy.ui.toTop}</a>
+  </div>
+</footer>
+<style>
+  .ftr { background: var(--night-deep); border-top-left-radius: var(--r-lg); border-top-right-radius: var(--r-lg); padding: clamp(3rem, 7vw, 6rem) 0 2rem; margin-top: var(--section); position: relative; z-index: 2; }
+  .ftr__grid { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
+  .ftr__logo { width: 150px; height: auto; margin-bottom: 1.25rem; }
+  .ftr__h { font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 500; }
+  .ftr__list { display: grid; gap: 0.5rem; }
+  .ftr__list a { color: var(--ink-soft); } .ftr__list a:hover { color: var(--gold); }
+  .ftr__bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  @media (min-width: 700px) { .ftr__grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } }
+</style>

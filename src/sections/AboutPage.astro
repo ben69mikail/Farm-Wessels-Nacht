@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Rows from '../components/Rows.astro';
+import Split from '../components/Split.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { t } from '../content';
+import { v2 } from '../content/v2';
+import { href, type Locale } from '../content/nav';
+import hero from '../assets/hunting/jaeger-fernglas.jpg';
+import imgStory from '../assets/hunting/paar-see.jpg';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale); const p = c.about; const x = v2[locale]; const de = locale === 'de';
+---
+<Base locale={locale} pageKey="about" title={p.title} description={p.description}>
+  <PageHero image={hero} alt={de ? 'Der Gastgeber mit Fernglas im Revier' : 'The host with binoculars in the field'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="22% 45%" />
+  <Split image={imgStory} alt={de ? 'Die Gastgeber am Stausee' : 'The hosts at the dam'} a={p.story.h2a} b={p.story.h2b} ratio="4 / 3" flip>
+    <p class="lead" data-reveal>{p.story.p1}</p>
+    <p class="muted" data-reveal>{p.story.p2}</p>
+    <p class="muted" data-reveal>{p.story.p3}</p>
+  </Split>
+  <Rows title={p.values.h2} items={p.values.items} />
+  <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
+</Base>

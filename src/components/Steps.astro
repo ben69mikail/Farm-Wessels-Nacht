@@ -1,0 +1,50 @@
+---
+/* Ablauf mit Fortschrittslinie; `sky` färbt den weichen Lichtkreis je Schritt (Tagesablauf). */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { title: string; sub?: string; image?: ImageMetadata; steps: readonly { time?: string; no?: string; title: string; text: string }[]; sky?: boolean }
+const { title, sub, image, steps, sky = false } = Astro.props;
+---
+<section class="section steps" data-day={sky ? '' : undefined}>
+  {sky && <div class="steps__sun" aria-hidden="true"></div>}
+  <div class="wrap steps__grid">
+    <div class="steps__side">
+      <h2 class="display t-3 lines"><span class="line"><span>{title}</span></span></h2>
+      {sub && <p class="lead" data-reveal>{sub}</p>}
+      {image && <div class="frame steps__img" data-parallax="8"><Image src={image} alt="" width="1000" height="667" loading="lazy" decoding="async" /></div>}
+    </div>
+    <ol class="steps__list">
+      <span class="steps__line" aria-hidden="true"><i data-day-line></i></span>
+      {steps.map((s, i) => (
+        <li class="steps__step" data-day-step data-reveal style={`--d:${i * 60}ms`}>
+          <span class="steps__time display">{s.time ?? s.no}</span>
+          <div><h3 class="t-1">{s.title}</h3><p class="muted">{s.text}</p></div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+<style>
+  .steps { --sky: oklch(0.20 0.04 262); overflow: hidden; }
+  .steps__sun { position: absolute; right: -10vw; top: 10%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; border-radius: 50%; pointer-events: none; z-index: 0;
+    background: radial-gradient(circle at 50% 50%, var(--sky) 0%, transparent 62%); opacity: 0.85; filter: blur(30px); }
+  .steps__grid { position: relative; display: grid; gap: 3rem; z-index: 1; }
+  .steps__side { display: grid; gap: 1.25rem; align-content: start; }
+  .steps__img { aspect-ratio: 4 / 3; margin-top: 1rem; }
+  .steps__list { position: relative; display: grid; gap: clamp(2rem, 5vw, 3.5rem); padding-left: 2.25rem; }
+  .steps__line { position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 1px; background: var(--line); }
+  .steps__line i { display: block; width: 100%; height: 100%; background: var(--gold); transform: scaleY(0); transform-origin: top; }
+  .steps__step { position: relative; display: grid; gap: 0.6rem; transition: opacity 0.6s; }
+  html.js [data-day] .steps__step { opacity: 0.45; }
+  html.js [data-day] .steps__step.is-active { opacity: 1; }
+  .steps__step::before { content: ''; position: absolute; left: -2.25rem; top: 0.55rem; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 1px var(--line-strong); transition: background 0.5s, box-shadow 0.5s, transform 0.5s var(--ease-out); }
+  .steps__step.is-active::before { background: var(--ember); box-shadow: 0 0 0 6px var(--ember-glow); transform: scale(1.1); }
+  .steps__time { font-size: 1.6rem; color: var(--gold); line-height: 1; }
+  .steps__step p { max-width: 48ch; }
+  @media (min-width: 900px) {
+    .steps__grid { grid-template-columns: 1fr 1.1fr; gap: 6rem; }
+    .steps__side { position: sticky; top: 7rem; align-self: start; }
+    .steps__step { grid-template-columns: 5rem 1fr; gap: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html.js [data-day] .steps__step { opacity: 1; } }
+</style>

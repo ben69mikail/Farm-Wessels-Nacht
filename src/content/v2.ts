@@ -1,0 +1,48 @@
+/* Zusätzliche Texte der v2-Gestaltung (Interaktionen, neue Sektionen). Die Seitentexte selbst liegen in de.ts / en.ts. */
+export const v2 = {
+  de: {
+    torchHint: 'Bewegen Sie das Licht.',
+    torchHintTouch: 'Berühren Sie das Bild.',
+    scroll: 'Weiterlesen',
+    statement: ['Mehr als eine Jagd.', 'Ein Stück echtes Afrika —', 'bei Nacht, bei Tag, zu Fuß.'],
+    promisesTitle: 'Drei Dinge, auf die Sie sich verlassen können',
+    film: { title: 'Das Revier atmet.', sub: 'Ein stiller Blick ins Bushveld — ohne Musik, ohne Schnittgewitter.', play: 'Film abspielen', pause: 'Film anhalten', sound: 'Ton an', mute: 'Ton aus' },
+    rail: { title: 'Wer hier zu Hause ist', hint: 'Scrollen, um die Strecke zu gehen', more: 'Alle Wildarten & Preise', drag: 'Ziehen' },
+    speciesNote: { giraffe: 'Lebend fotografiert im Revier', zebra: 'Herde am Morgen', buffalo: 'Das Aushängeschild des Reviers', nyala: 'Im dichten Dornveld zu Hause', hartebeest: 'Auf den offenen Ebenen', warthog: 'An Wasserstellen und Suhlen' },
+    day: { title: 'Ein Tag im Revier', sub: 'Vom ersten Kaffee bis zum Feuer — so vergeht ein Jagdtag bei uns.' },
+    lodge: { title: 'Nach dem Tag im Revier — ankommen.', cards: [
+      { t: 'Das Haupthaus', x: 'Sechs Zimmer und Suiten unter alten Jacaranda-Bäumen. Kingsize, Klimaanlage, eigenes Bad — und abends die Veranda.' },
+      { t: 'Vier Gästehäuser', x: 'Wildevy, Appelblaar, Kudubessie und Apiespeul: je drei Schlafzimmer, eigene Küche, Platz für sechs. Ideal für Jagdgruppen und Familien.' },
+      { t: 'Pool, Lapa & Feuer', x: 'Mittags am Pool, abends unter dem Reetdach der Lapa: Braai, Wildbret, ein Glas Rotwein und der Tag wird besprochen.' },
+      { t: 'Eine Kapelle im Bushveld', x: 'Bis zu 130 Gäste, Festsaal und Catering auf demselben Grundstück — auch für Feiern und Hochzeiten.' },
+    ] },
+    about: { title: 'Von klein auf Jäger.', title2: 'Heute Gastgeber.', cta: 'Wild Wessels kennenlernen' },
+    cta: { title: 'Erzählen Sie uns von Ihrer', em: 'Wunschjagd.', text: 'Wir melden uns persönlich, besprechen Reisezeit, Wildarten und Begleitpersonen und erstellen Ihr individuelles Angebot.', button: 'Unverbindlich anfragen', mail: 'oder schreiben Sie direkt an' },
+    trophy: { title: 'Trophäengalerie', text: 'Bilder erlegten Wildes zeigen wir bewusst nur auf Wunsch. Jedes Bild bleibt verdeckt, bis Sie es aufdecken.', reveal: 'Bild aufdecken', hide: 'Wieder verdecken', all: 'Alle aufdecken', none: 'Alle verdecken' },
+    facts: { title: 'Die Farm in Zahlen' },
+    gallery: { open: 'Bild öffnen', close: 'Schließen', prev: 'Zurück', next: 'Weiter' },
+  },
+  en: {
+    torchHint: 'Move the light.',
+    torchHintTouch: 'Touch the picture.',
+    scroll: 'Keep reading',
+    statement: ['More than a hunt.', 'A piece of real Africa —', 'by night, by day, on foot.'],
+    promisesTitle: 'Three things you can count on',
+    film: { title: 'The land breathes.', sub: 'A quiet look into the bushveld — no music, no fast cuts.', play: 'Play film', pause: 'Pause film', sound: 'Sound on', mute: 'Sound off' },
+    rail: { title: 'Who lives here', hint: 'Scroll to walk the trail', more: 'All species & rates', drag: 'Drag' },
+    speciesNote: { giraffe: 'Photographed alive on the farm', zebra: 'A herd at first light', buffalo: 'The flagship of this land', nyala: 'At home in thick thornveld', hartebeest: 'Out on the open plains', warthog: 'At waterholes and wallows' },
+    day: { title: 'A day in the field', sub: 'From the first coffee to the fire — how a hunting day passes here.' },
+    lodge: { title: 'After the day in the field — come home.', cards: [
+      { t: 'The main house', x: 'Six rooms and suites beneath old jacaranda trees. King beds, air-conditioning, en-suite bathrooms — and the veranda at dusk.' },
+      { t: 'Four cottages', x: 'Wildevy, Appelblaar, Kudubessie and Apiespeul: three bedrooms each, own kitchen, room for six. Ideal for hunting parties and families.' },
+      { t: 'Pool, lapa & fire', x: 'Midday by the pool, evenings under the thatched lapa: braai, venison, a glass of red and the day retold.' },
+      { t: 'A chapel in the bushveld', x: 'Up to 130 guests, reception hall and catering on the same property — for celebrations and weddings too.' },
+    ] },
+    about: { title: 'Hunters since childhood.', title2: 'Hosts today.', cta: 'Meet Wild Wessels' },
+    cta: { title: 'Tell us about the hunt', em: 'you have in mind.', text: 'We reply personally, talk through dates, species and companions, and put together your individual offer.', button: 'Enquire without obligation', mail: 'or write directly to' },
+    trophy: { title: 'Trophy gallery', text: 'We show images of harvested game only on request. Every picture stays covered until you reveal it.', reveal: 'Reveal picture', hide: 'Cover again', all: 'Reveal all', none: 'Cover all' },
+    facts: { title: 'The farm in numbers' },
+    gallery: { open: 'Open picture', close: 'Close', prev: 'Previous', next: 'Next' },
+  },
+} as const;
+export type V2 = typeof v2.de;

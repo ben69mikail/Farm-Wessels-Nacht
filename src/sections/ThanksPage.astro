@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { t } from '../content';
+import { href, type Locale } from '../content/nav';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale); const p = c.contact.form;
+---
+<Base locale={locale} pageKey="contact" title={`${p.successTitle} | Wild Wessels Safaris`} description={p.successText}>
+  <section class="section thanks"><div class="wrap stack" style="--flow:1.5rem">
+    <p class="brandline">{c.contact.hero.eyebrow}</p>
+    <h1 class="display t-4 lines"><span class="line"><span>{p.successTitle}</span></span></h1>
+    <p class="lead" data-reveal>{p.successText}</p>
+    <p data-reveal><a class="btn" href={href('home', locale)}>{locale === 'de' ? 'Zur Startseite' : 'Back to home'}<Icon name="arrow" class="arrow" /></a></p>
+  </div></section>
+</Base>
+<style>.thanks { padding-block: clamp(9rem, 22vh, 14rem); min-height: 80svh; }</style>

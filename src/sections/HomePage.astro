@@ -1,0 +1,263 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Torch from '../components/Torch.astro';
+import Film from '../components/Film.astro';
+import Icon from '../components/Icon.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { t } from '../content';
+import { v2 } from '../content/v2';
+import { href, type Locale } from '../content/nav';
+
+import heroImg from '../assets/hero/bushveld-see.jpg';
+import filmPoster from '../assets/video/hero-loop-poster.jpg';
+import imgGiraffe from '../assets/hero/giraffe.jpg';
+import imgZebra from '../assets/hero/zebras.jpg';
+import imgBuffalo from '../assets/hero/bushveld-see.jpg';
+import imgNyala from '../assets/lodge/felsen.jpg';
+import imgHartebeest from '../assets/hero/ebene.jpg';
+import imgWarthog from '../assets/lodge/damm.jpg';
+import imgHaupthaus from '../assets/lodge/haupthaus-jacaranda.jpg';
+import imgGaestehaus from '../assets/lodge/gaestehaus.jpg';
+import imgLapa from '../assets/lodge/lapa-braai.jpg';
+import imgKapelle from '../assets/wedding/kapelle.jpg';
+import imgAbout from '../assets/hunting/jaeger-fernglas.jpg';
+import imgPirsch from '../assets/hero/pirschgruppe.jpg';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale);
+const x = v2[locale];
+const h = c.home;
+const rows = c.species.confirmed.rows as readonly { de?: string; en?: string; latin: string; group: string }[];
+const name = (r: { de?: string; en?: string }) => (locale === 'de' ? r.de : r.en) ?? '';
+const railImgs = [imgBuffalo, imgNyala, imgGiraffe, imgHartebeest, imgWarthog, imgZebra];
+const railNotes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe, x.speciesNote.hartebeest, x.speciesNote.warthog, x.speciesNote.zebra];
+const lodgeImgs = [imgHaupthaus, imgGaestehaus, imgLapa, imgKapelle];
+const words = x.statement.map((l) => l.split(' '));
+---
+<Base locale={locale} pageKey="home" title={h.title} description={h.description} intro>
+  <Torch image={heroImg} alt={locale === 'de' ? 'Schirmakazien vor dem Stausee im Waterberg' : 'Umbrella thorn trees in front of the dam in the Waterberg'} focus="50% 55%" focusMobile="42% 50%" hint={x.torchHint} hintTouch={x.torchHintTouch} scrollLabel={x.scroll}>
+    <div class="hero">
+      <p class="brandline" data-reveal="fade">{c.brandTag}</p>
+      <h1 class="display t-4 lines">
+        <span class="line"><span>{h.hero.h1a}</span></span>
+        <span class="line"><span><em>{h.hero.h1b}</em></span></span>
+      </h1>
+      <p class="lead" data-reveal style="--d:300ms">{h.hero.lead}</p>
+      <div class="hero__cta" data-reveal style="--d:450ms">
+        <a class="btn" href={href('contact', locale)} data-magnetic>{c.ui.enquire}<Icon name="arrow" class="arrow" /></a>
+        <a class="btn btn--ghost" href={href('hunting', locale)}>{c.ui.discover}</a>
+      </div>
+    </div>
+  </Torch>
+
+  <!-- Leitsatz, der sich Wort für Wort erhellt -->
+  <section class="section statement" id="story">
+    <div class="wrap">
+      <p class="statement__text display display--light" data-words>
+        {words.map((line, li) => (
+          <span class="statement__line">{line.map((w) => <span class="w">{w} </span>)}</span>
+        ))}
+      </p>
+    </div>
+  </section>
+
+  <!-- Drei Versprechen als ruhige Liste -->
+  <section class="section section--tight">
+    <div class="wrap promises">
+      <h2 class="t-1 promises__title" data-reveal>{x.promisesTitle}</h2>
+      <ul class="promises__list">
+        {h.features.map((f, i) => (
+          <li data-reveal style={`--d:${i * 120}ms`}>
+            <h3 class="display t-2">{f.title}</h3>
+            <p class="muted">{f.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Film src="/video/hero-loop-1080.mp4" src720="/video/hero-loop-720.mp4" poster={filmPoster.src} title={x.film.title} sub={x.film.sub} play={x.film.play} pause={x.film.pause} sound={x.film.sound} mute={x.film.mute} />
+
+  <!-- Wildarten: horizontale Strecke -->
+  <section class="track" data-track>
+    <div class="track__head wrap">
+      <h2 class="display t-3 lines"><span class="line"><span>{x.rail.title}</span></span></h2>
+      <p class="muted track__hint">{x.rail.hint}</p>
+      <div class="track__progress" aria-hidden="true"><i data-rail-progress></i></div>
+    </div>
+    <div class="track__rail" data-rail>
+      {rows.map((r, i) => (
+        <article class="rail-card" data-rail-item>
+          <div class="frame frame--arch rail-card__img"><Image src={railImgs[i]} alt="" width="900" height="1200" loading="lazy" decoding="async" /></div>
+          <div class="rail-card__body">
+            <h3 class="display t-2">{name(r)}</h3>
+            <p class="rail-card__latin"><i>{r.latin}</i> · {r.group}</p>
+            <p class="muted small">{railNotes[i]}</p>
+          </div>
+        </article>
+      ))}
+      <a class="rail-card rail-card--cta" href={href('species', locale)} data-rail-item>
+        <span class="display t-2">{x.rail.more}</span>
+        <span class="btn btn--gold">{c.ui.more}<Icon name="arrow" class="arrow" /></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Zahlen -->
+  <section class="section facts">
+    <div class="wrap">
+      <p class="brandline" data-reveal="fade">{x.facts.title}</p>
+      <ul class="facts__list">
+        <li data-reveal><span class="display facts__v" data-count="36">36</span><span class="muted">{h.facts.items[1].label}</span></li>
+        <li data-reveal style="--d:100ms"><span class="display facts__v" data-count={locale === 'de' ? '5,5 km' : '5.5 km'}>{locale === 'de' ? '5,5 km' : '5.5 km'}</span><span class="muted">{h.facts.items[2].label}</span></li>
+        <li data-reveal style="--d:200ms"><span class="display facts__v" data-count="130">130</span><span class="muted">{c.lodge.facts[3].label}</span></li>
+        <li data-reveal style="--d:300ms"><span class="display facts__v facts__v--txt">{h.facts.items[3].value}</span><span class="muted">{h.facts.items[3].label}</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Ein Tag im Revier -->
+  <section class="section day" data-day>
+    <div class="day__sun" aria-hidden="true"></div>
+    <div class="wrap day__grid">
+      <div class="day__side">
+        <h2 class="display t-3 lines"><span class="line"><span>{x.day.title}</span></span></h2>
+        <p class="lead" data-reveal>{x.day.sub}</p>
+        <div class="frame day__img" data-parallax="8"><Image src={imgPirsch} alt="" width="1000" height="667" loading="lazy" decoding="async" /></div>
+      </div>
+      <ol class="day__steps">
+        <span class="day__line" aria-hidden="true"><i data-day-line></i></span>
+        {c.hunting.day.steps.map((s) => (
+          <li class="day__step" data-day-step>
+            <span class="day__time display">{s.time}</span>
+            <div><h3 class="t-1">{s.title}</h3><p class="muted">{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Lodge: gestapelte Karten -->
+  <section class="section lodge">
+    <div class="wrap">
+      <h2 class="display t-3 lines lodge__title"><span class="line"><span>{x.lodge.title}</span></span></h2>
+      <div class="stack-cards" data-stack>
+        {x.lodge.cards.map((card, i) => (
+          <article class="stack-card" data-stack-card style={`--i:${i}`}>
+            <div class="frame stack-card__img"><Image src={lodgeImgs[i]} alt="" width="1200" height="800" loading="lazy" decoding="async" /></div>
+            <div class="stack-card__body">
+              <h3 class="display t-2">{card.t}</h3>
+              <p class="muted">{card.x}</p>
+              <a class="link" href={href('lodge', locale)}>{h.lodgeTeaser.cta}<Icon name="arrow" /></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Über uns -->
+  <section class="section about">
+    <div class="wrap about__grid">
+      <div class="frame frame--arch about__img" data-parallax="10" data-reveal="scale"><Image src={imgAbout} alt={locale === 'de' ? 'Der Gastgeber mit Fernglas im Revier' : 'The host with binoculars in the field'} width="900" height="1200" loading="lazy" decoding="async" /></div>
+      <div class="about__text stack" style="--flow:1.5rem">
+        <h2 class="display t-3 lines"><span class="line"><span>{x.about.title}</span></span><span class="line"><span><em>{x.about.title2}</em></span></span></h2>
+        <p class="lead" data-reveal>{h.aboutTeaser.p1}</p>
+        <p class="muted measure" data-reveal>{h.aboutTeaser.p2}</p>
+        <a class="btn btn--ghost" href={href('about', locale)} data-reveal>{x.about.cta}<Icon name="arrow" class="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
+</Base>
+
+<style>
+  .hero { display: grid; gap: clamp(1rem, 2.5vw, 1.75rem); max-width: 52rem; padding-top: 30vh; }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .statement { padding-block: clamp(6rem, 14vw, 12rem) clamp(3rem, 8vw, 6rem); }
+  .statement__text { font-size: clamp(1.9rem, 1.2rem + 3.6vw, 4.4rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 26ch; }
+  .statement__line { display: block; }
+  .statement__line:nth-child(2) .w { color: var(--gold); }
+
+  .promises { display: grid; gap: 2rem; }
+  .promises__title { color: var(--muted); font-weight: 400; }
+  .promises__list { display: grid; }
+  .promises__list li { display: grid; gap: 0.6rem; padding: clamp(1.5rem, 3vw, 2.25rem) 0; border-top: 1px solid var(--line); position: relative; }
+  .promises__list li::before { content: ''; position: absolute; top: -1px; left: 0; height: 1px; width: 0; background: var(--ember); transition: width 1.2s var(--ease-out); }
+  .promises__list li:hover::before { width: 100%; }
+  .promises__list li p { max-width: var(--measure); }
+  @media (min-width: 900px) { .promises { grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; } .promises__list li { grid-template-columns: 1fr 1.3fr; gap: 2rem; } }
+
+  /* ---- Strecke ---- */
+  .track { position: relative; padding-block: var(--section) 0; overflow: hidden; }
+  .track__head { display: grid; gap: 0.75rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+  .track__hint { font-size: 0.9rem; }
+  .track__progress { height: 1px; background: var(--line); overflow: hidden; margin-top: 0.5rem; }
+  .track__progress i { display: block; height: 100%; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+  .track__rail { display: flex; gap: clamp(1rem, 2.5vw, 2.5rem); padding-inline: var(--gutter); padding-bottom: var(--section); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .track__rail::-webkit-scrollbar { display: none; }
+  .rail-card { flex: none; width: min(78vw, 22rem); scroll-snap-align: start; display: grid; gap: 1.25rem; align-content: start; }
+  .rail-card__img { aspect-ratio: 3 / 4; }
+  .rail-card__img img { transition: transform 1.2s var(--ease-out); }
+  .rail-card:hover .rail-card__img img { transform: scale(1.05); }
+  .rail-card__body { display: grid; gap: 0.35rem; padding-inline: 0.5rem; }
+  .rail-card__latin { color: var(--gold); font-size: 0.95rem; }
+  .rail-card--cta { align-content: center; justify-items: start; gap: 1.5rem; padding: 2rem; border-radius: var(--r-lg); background: var(--surface); min-height: 60%; align-self: stretch; }
+  .rail-card--cta .display { text-wrap: balance; }
+  @media (min-width: 900px) {
+    .track { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-block: 5.5rem 3rem; }
+    .track__head { grid-template-columns: 1fr auto; align-items: end; }
+    .track__head h2 { grid-column: 1; } .track__hint { grid-column: 2; margin-bottom: 0.4rem; } .track__progress { grid-column: 1 / -1; }
+    .track__rail { overflow: visible; padding-bottom: 0; scroll-snap-type: none; will-change: transform; }
+    .rail-card { width: 24rem; } .rail-card:nth-child(even) { margin-top: 3rem; }
+  }
+
+  /* ---- Zahlen ---- */
+  .facts__list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; margin-top: 2rem; }
+  .facts__list li { display: grid; gap: 0.35rem; padding-left: 1.25rem; border-left: 1px solid var(--line); }
+  .facts__v { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1; color: var(--gold); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .facts__v--txt { font-size: clamp(1.8rem, 3.6vw, 3rem); padding-top: 0.25em; }
+  @media (min-width: 900px) { .facts__list { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---- Tag ---- */
+  .day { --sky: oklch(0.20 0.04 262); overflow: hidden; }
+  .day__sun { position: absolute; right: -10vw; top: 10%; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; border-radius: 50%; pointer-events: none; z-index: 0;
+    background: radial-gradient(circle at 50% 50%, var(--sky) 0%, transparent 62%); opacity: 0.85; filter: blur(30px); transition: background 1.2s; }
+  .day__grid { position: relative; display: grid; gap: 3rem; z-index: 1; }
+  .day__side { display: grid; gap: 1.25rem; align-content: start; }
+  .day__img { aspect-ratio: 4 / 3; margin-top: 1rem; }
+  .day__steps { position: relative; display: grid; gap: clamp(2rem, 5vw, 3.5rem); padding-left: 2.25rem; }
+  .day__line { position: absolute; left: 0.45rem; top: 0.6rem; bottom: 0.6rem; width: 1px; background: var(--line); }
+  .day__line i { display: block; width: 100%; height: 100%; background: var(--gold); transform: scaleY(0); transform-origin: top; }
+  .day__step { position: relative; display: grid; gap: 0.6rem; transition: opacity 0.6s; opacity: 0.45; }
+  .day__step.is-active { opacity: 1; }
+  .day__step::before { content: ''; position: absolute; left: -2.25rem; top: 0.55rem; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: var(--night); box-shadow: inset 0 0 0 1px var(--line-strong); transition: background 0.5s, box-shadow 0.5s, transform 0.5s var(--ease-out); }
+  .day__step.is-active::before { background: var(--ember); box-shadow: 0 0 0 6px var(--ember-glow); transform: scale(1.1); }
+  .day__time { font-size: 1.6rem; color: var(--gold); line-height: 1; }
+  .day__step p { max-width: 48ch; }
+  @media (min-width: 900px) {
+    .day__grid { grid-template-columns: 1fr 1.1fr; gap: 6rem; }
+    .day__side { position: sticky; top: 7rem; align-self: start; }
+    .day__step { grid-template-columns: 5rem 1fr; gap: 1.5rem; }
+  }
+
+  /* ---- Lodge ---- */
+  .lodge__title { max-width: 18ch; margin-bottom: clamp(2rem, 5vw, 4rem); }
+  .stack-cards { display: grid; gap: 1.5rem; }
+  .stack-card { position: sticky; top: calc(6rem + var(--i) * 1.25rem); display: grid; gap: 1.5rem; padding: clamp(1rem, 2vw, 1.5rem); border-radius: var(--r-lg); background: var(--surface); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.06), 0 30px 60px -40px oklch(0 0 0 / 0.9); transform-origin: top center; }
+  .stack-card__img { aspect-ratio: 16 / 10; }
+  .stack-card__body { display: grid; gap: 0.75rem; align-content: center; padding: 0.5rem; }
+  .stack-card__body p { max-width: 42ch; }
+  @media (min-width: 800px) { .stack-card { grid-template-columns: 1.2fr 1fr; gap: 2.5rem; min-height: 60vh; } .stack-card__img { aspect-ratio: auto; height: 100%; min-height: 24rem; } .stack-card:nth-child(even) .stack-card__img { order: 2; } }
+  @media (prefers-reduced-motion: reduce) { .stack-card { position: relative; top: auto; } }
+
+  /* ---- Über uns ---- */
+  .about__grid { display: grid; gap: 2.5rem; }
+  .about__img { aspect-ratio: 3 / 4; max-width: 34rem; }
+  @media (min-width: 900px) { .about__grid { grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; } }
+
+</style>

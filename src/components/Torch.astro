@@ -1,0 +1,109 @@
+---
+/* Hero mit Taschenlampe: Das Bild liegt im Dunkeln, das Licht folgt Maus oder Finger. */
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import type { ImageMetadata } from 'astro';
+interface Props {
+  image: ImageMetadata; alt: string; focus?: string; focusMobile?: string;
+  hint: string; hintTouch: string; scrollLabel: string;
+}
+const { image, alt, focus = '50% 50%', focusMobile = focus, hint, hintTouch, scrollLabel } = Astro.props;
+---
+<section class="torch" data-torch style={`--focus:${focus}; --focus-m:${focusMobile}`}>
+  <div class="torch__layer torch__dim" aria-hidden="true">
+    <Image src={image} alt="" widths={[720, 1200, 1800, 2400]} sizes="100vw" loading="eager" fetchpriority="high" decoding="async" />
+  </div>
+  <div class="torch__layer torch__lit" aria-hidden="true">
+    <Image src={image} alt={alt} widths={[720, 1200, 1800, 2400]} sizes="100vw" loading="eager" decoding="async" />
+  </div>
+  <div class="torch__vignette" aria-hidden="true"></div>
+  <div class="torch__content wrap">
+    <slot />
+  </div>
+  <p class="torch__hint" data-torch-hint><span data-hint-mouse>{hint}</span><span data-hint-touch hidden>{hintTouch}</span></p>
+  <a class="torch__scroll" href="#story" aria-label={scrollLabel}><span>{scrollLabel}</span><Icon name="chevron" /></a>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  const el = document.querySelector<HTMLElement>('[data-torch]');
+  if (el) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    const hint = el.querySelector<HTMLElement>('[data-torch-hint]');
+    if (coarse) { el.querySelector('[data-hint-mouse]')?.setAttribute('hidden', ''); el.querySelector('[data-hint-touch]')?.removeAttribute('hidden'); }
+    const pos = { x: 0.5, y: 0.45, r: 1 };
+    const xTo = gsap.quickTo(pos, 'x', { duration: 0.9, ease: 'power3.out', onUpdate: paint });
+    const yTo = gsap.quickTo(pos, 'y', { duration: 0.9, ease: 'power3.out', onUpdate: paint });
+    let interacted = false, t0 = performance.now(), raf = 0, visible = true;
+    function paint() {
+      el!.style.setProperty('--tx', `${pos.x * 100}%`);
+      el!.style.setProperty('--ty', `${pos.y * 100}%`);
+      el!.style.setProperty('--tr', `${pos.r}`);
+    }
+    function drift(now: number) {
+      raf = requestAnimationFrame(drift);
+      if (!visible) return;
+      const t = (now - t0) / 1000;
+      if (!interacted) { xTo(0.5 + Math.sin(t * 0.32) * 0.22); yTo(0.45 + Math.cos(t * 0.21) * 0.14); }
+      pos.r = 1 + Math.sin(t * 1.7) * 0.035; // ruhiges Flackern
+      paint();
+    }
+    const point = (cx: number, cy: number) => {
+      const r = el!.getBoundingClientRect();
+      xTo((cx - r.left) / r.width); yTo((cy - r.top) / r.height);
+      if (!interacted) { interacted = true; hint?.classList.add('is-gone'); }
+    };
+    if (!reduce) {
+      el.addEventListener('mousemove', (e) => point(e.clientX, e.clientY), { passive: true });
+      el.addEventListener('touchstart', (e) => point(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+      el.addEventListener('touchmove', (e) => point(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+      el.addEventListener('mouseleave', () => { interacted = false; t0 = performance.now(); });
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(el);
+      raf = requestAnimationFrame(drift);
+    } else {
+      el.classList.add('is-static'); hint?.remove();
+    }
+    document.querySelector<HTMLElement>('.torch__scroll')?.addEventListener('click', () => { /* Lenis übernimmt den Anker */ });
+  }
+</script>
+
+<style>
+  .torch {
+    --tx: 50%; --ty: 45%; --tr: 1;
+    position: relative; min-height: 100svh; display: grid; align-items: end;
+    overflow: hidden; background: var(--night-deep); isolation: isolate;
+    border-bottom-left-radius: var(--r-lg); border-bottom-right-radius: var(--r-lg);
+    padding-bottom: clamp(5rem, 12vh, 8rem);
+  }
+  .torch__layer { position: absolute; inset: 0; }
+  .torch__layer img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focus-m); }
+  @media (min-width: 900px) { .torch__layer img { object-position: var(--focus); } }
+  .torch__dim img { filter: brightness(0.32) saturate(0.55) contrast(1.05); }
+  .torch__lit {
+    -webkit-mask-image: radial-gradient(circle calc(min(38vw, 36vh) * var(--tr)) at var(--tx) var(--ty), #000 0%, oklch(0 0 0 / 0.85) 35%, oklch(0 0 0 / 0.25) 70%, transparent 100%);
+            mask-image: radial-gradient(circle calc(min(38vw, 36vh) * var(--tr)) at var(--tx) var(--ty), #000 0%, oklch(0 0 0 / 0.85) 35%, oklch(0 0 0 / 0.25) 70%, transparent 100%);
+  }
+  .torch__lit img { filter: brightness(1.04) saturate(1.05); }
+  .torch.is-static .torch__lit { -webkit-mask-image: none; mask-image: none; }
+  .torch.is-static .torch__lit img { filter: brightness(0.7); }
+  .torch__vignette { position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, oklch(0.095 0.01 60 / 0.55) 0%, transparent 30%, transparent 55%, oklch(0.095 0.01 60 / 0.85) 100%); }
+  .torch__content { position: relative; z-index: 2; }
+  .torch__hint {
+    position: absolute; z-index: 2; left: 50%; top: clamp(6rem, 14vh, 9rem); translate: -50% 0;
+    font-size: 0.85rem; color: var(--gold); letter-spacing: 0.04em; opacity: 0.9;
+    padding: 0.5rem 1rem; border-radius: var(--r-pill); background: oklch(0.1 0.01 60 / 0.45); backdrop-filter: blur(8px);
+    transition: opacity 0.8s, transform 0.8s var(--ease-out); animation: hint 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .torch__hint.is-gone { opacity: 0; transform: translateY(-8px); animation: none; }
+  @keyframes hint { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+  .torch__scroll {
+    position: absolute; right: var(--gutter); bottom: clamp(1.5rem, 5vh, 3rem); z-index: 2;
+    display: none; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--ink-soft);
+  }
+  .torch__scroll :global(svg) { width: 1.2rem; height: 1.2rem; rotate: 90deg; animation: nudge 2.2s var(--ease-out) infinite; }
+  @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+  @media (min-width: 900px) { .torch__scroll { display: inline-flex; } }
+</style>

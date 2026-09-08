@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Rows from '../components/Rows.astro';
+import Steps from '../components/Steps.astro';
+import Split from '../components/Split.astro';
+import Accordion from '../components/Accordion.astro';
+import Gallery from '../components/Gallery.astro';
+import TrophyGate from '../components/TrophyGate.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { t } from '../content';
+import { v2 } from '../content/v2';
+import { href, type Locale } from '../content/nav';
+import hero from '../assets/hero/glasen.jpg';
+import imgSeason from '../assets/hunting/panorama-tal.jpg';
+import imgDay from '../assets/hero/pirschgruppe.jpg';
+import g1 from '../assets/hunting/gelaende-pickup.jpg';
+import g2 from '../assets/hunting/ansitz-tank.jpg';
+import g3 from '../assets/hunting/team-gespraech.jpg';
+import g4 from '../assets/hero/pirsch-ausblick.jpg';
+import g5 from '../assets/hunting/jagdgruppe.jpg';
+import g6 from '../assets/hunting/paar-see.jpg';
+import t1 from '../assets/hunting/trophy-bueffel-01.jpg';
+import t2 from '../assets/hunting/trophy-bueffel-02.jpg';
+import t3 from '../assets/hunting/trophy-nyala-01.jpg';
+import t4 from '../assets/hunting/trophy-nyala-02.jpg';
+import t5 from '../assets/hunting/trophy-hartebeest.jpg';
+import t6 from '../assets/hunting/trophy-warzenschwein.jpg';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const c = t(locale); const p = c.hunting; const x = v2[locale]; const de = locale === 'de';
+const gallery = [
+  { src: g4, alt: de ? 'Blick vom Hügel über den Stausee' : 'View from the hill over the dam' },
+  { src: g1, alt: de ? 'Jagdfahrzeug im Gelände' : 'Hunting vehicle in the field' },
+  { src: g2, alt: de ? 'Ansitz am Wassertank' : 'Waiting at the water tank' },
+  { src: g3, alt: de ? 'Absprache mit dem Professional Hunter' : 'Talking things over with the professional hunter' },
+  { src: g5, alt: de ? 'Jagdgruppe im Bushveld' : 'Hunting party in the bushveld' },
+  { src: g6, alt: de ? 'Gäste am Stausee' : 'Guests at the dam' },
+];
+const trophies = [
+  { src: t1, alt: de ? 'Kaffernbüffel' : 'Cape buffalo', label: de ? 'Kaffernbüffel' : 'Cape buffalo' },
+  { src: t2, alt: de ? 'Kaffernbüffel' : 'Cape buffalo', label: de ? 'Kaffernbüffel' : 'Cape buffalo' },
+  { src: t3, alt: 'Nyala', label: 'Nyala' },
+  { src: t4, alt: 'Nyala', label: 'Nyala' },
+  { src: t5, alt: de ? 'Kuhantilope' : 'Hartebeest', label: de ? 'Kuhantilope' : 'Hartebeest' },
+  { src: t6, alt: de ? 'Warzenschwein' : 'Warthog', label: de ? 'Warzenschwein' : 'Warthog' },
+];
+---
+<Base locale={locale} pageKey="hunting" title={p.title} description={p.description}>
+  <PageHero image={hero} alt={de ? 'Zwei Jäger glasen das Gelände ab' : 'Two hunters glassing the terrain'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="60% 50%" />
+  <section class="section section--tight"><div class="wrap stack" style="--flow:1.25rem">
+    <h2 class="display t-3 lines"><span class="line"><span>{p.intro.h2a}</span></span><span class="line"><span><em>{p.intro.h2b}</em></span></span></h2>
+    <p class="lead" data-reveal>{p.intro.lead}</p>
+  </div></section>
+  <Rows items={p.methods} />
+  <Steps title={p.day.h2} sub={x.day.sub} image={imgDay} steps={p.day.steps} sky />
+  <Split image={imgSeason} alt={de ? 'Weites Tal im Waterberg' : 'Wide valley in the Waterberg'} a={p.season.h2a} b={p.season.h2b} ratio="4 / 3">
+    <p class="lead" data-reveal>{p.season.p1}</p>
+    <p class="muted" data-reveal>{p.season.p2}</p>
+  </Split>
+  <Accordion title={p.equipment.h2} items={p.equipment.items} />
+  <Gallery title={p.gallery.h2} items={gallery} open={x.gallery.open} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} />
+  <TrophyGate title={x.trophy.title} text={x.trophy.text} reveal={x.trophy.reveal} hide={x.trophy.hide} all={x.trophy.all} none={x.trophy.none} items={trophies} />
+  <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
+</Base>

@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { t } from '../content';
+import { type Locale } from '../content/nav';
+interface Props { locale: Locale; kind: 'imprint' | 'privacy' }
+const { locale, kind } = Astro.props;
+const c = t(locale); const p = c.legal[kind];
+---
+<Base locale={locale} pageKey={kind} title={p.title} description={p.h1}>
+  <section class="section legal"><div class="wrap">
+    <h1 class="display t-3">{p.h1}</h1>
+    <p class="legal__todo small">{p.todo}</p>
+    <div class="legal__body">
+      {p.sections.map((s) => <section><h2 class="t-1">{s.h}</h2><p set:html={s.b.replace(/\n/g, '<br />')} /></section>)}
+    </div>
+  </div></section>
+</Base>
+<style>
+  .legal { padding-top: clamp(8rem, 18vh, 12rem); }
+  .legal h1 { margin-bottom: 1.5rem; }
+  .legal__todo { max-width: var(--measure); padding: 1rem 1.25rem; border-radius: var(--r-md); background: var(--surface); color: var(--gold); margin-bottom: 3rem; }
+  .legal__body { display: grid; gap: 2rem; max-width: var(--measure); }
+  .legal__body h2 { margin-bottom: 0.5rem; font-weight: 500; }
+  .legal__body p { color: var(--ink-soft); }
+</style>

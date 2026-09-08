@@ -1,0 +1,20 @@
+---
+interface Props { code: 'de' | 'en'; class?: string }
+const { code, class: cls = '' } = Astro.props;
+---
+{code === 'de' ? (
+  <svg class={`flag ${cls}`} viewBox="0 0 5 3" aria-hidden="true" focusable="false">
+    <rect width="5" height="3" fill="#000"/><rect width="5" height="2" y="1" fill="#D00"/><rect width="5" height="1" y="2" fill="#FFCE00"/>
+  </svg>
+) : (
+  <svg class={`flag ${cls}`} viewBox="0 0 60 36" aria-hidden="true" focusable="false">
+    <rect width="60" height="36" fill="#012169"/>
+    <path d="M0,0 60,36 M60,0 0,36" stroke="#FFF" stroke-width="7.2"/>
+    <path d="M0,0 60,36 M60,0 0,36" stroke="#C8102E" stroke-width="4.3"/>
+    <path d="M30,0 V36 M0,18 H60" stroke="#FFF" stroke-width="12"/>
+    <path d="M30,0 V36 M0,18 H60" stroke="#C8102E" stroke-width="7.2"/>
+  </svg>
+)}
+<style>
+  .flag { width: 1.05em; height: auto; display: block; border-radius: 2px; flex: none; box-shadow: 0 0 0 1px oklch(1 0 0 / 0.25); }
+</style>
