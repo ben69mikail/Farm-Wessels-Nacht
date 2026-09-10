@@ -69,7 +69,7 @@ const words = x.statement.map((l) => l.split(' '));
     <div class="wrap promises">
       <div class="promises__side">
         <h2 class="t-1 promises__title" data-reveal>{x.promisesTitle}</h2>
-        <div class="frame frame--arch promises__img" data-reveal="scale" style="--d:150ms">
+        <div class="frame promises__img" data-reveal="scale" style="--d:150ms">
           <Image src={imgPhil} alt={locale === 'de' ? 'Philipp Wessels am Abend im Revier' : 'Philipp Wessels in the field at dusk'} widths={[480, 800, 1200]} sizes="(min-width: 900px) 28vw, 70vw" loading="lazy" decoding="async" />
         </div>
       </div>
@@ -192,9 +192,10 @@ const words = x.statement.map((l) => l.split(' '));
   .promises { display: grid; gap: 2rem; }
   .promises__title { color: var(--muted); font-weight: 400; }
   .promises__side { display: grid; gap: 1.5rem; align-content: start; }
-  .promises__img { aspect-ratio: 4 / 5; max-width: 22rem; background: radial-gradient(120% 80% at 50% 30%, oklch(0.30 0.07 262), oklch(0.16 0.04 262) 70%); }
-  .promises__img :global(img) { object-fit: contain; object-position: 50% 45%; }
-  .promises__img::before { content: ''; position: absolute; inset: auto 0 0 0; height: 45%; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent, oklch(0.12 0.02 262 / 0.85) 70%, oklch(0.13 0.012 60)); }
+  .promises__img { aspect-ratio: 2009 / 1800; max-width: 22rem; border-radius: var(--r-md); background: transparent; box-shadow: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%); }
+  .promises__img::after { display: none; }
+  .promises__img :global(img) { object-fit: cover; object-position: 50% 50%; }
   @media (min-width: 900px) { .promises__side { position: sticky; top: 7rem; } }
   .promises__list { display: grid; }
   .promises__list li { display: grid; gap: 0.6rem; padding: clamp(1.5rem, 3vw, 2.25rem) 0; border-top: 1px solid var(--line); position: relative; }
