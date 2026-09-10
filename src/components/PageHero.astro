@@ -11,6 +11,7 @@ const { image, alt, kicker, a, b, lead, focus = '50% 50%', ratio = '4 / 5', arch
       <p class="brandline" data-reveal="fade">{kicker}</p>
       <h1 class="display t-4 lines"><span class="line"><span>{a}</span></span><span class="line"><span><em>{b}</em></span></span></h1>
       {lead && <p class="lead" data-reveal style="--d:250ms">{lead}</p>}
+      <slot />
     </div>
     <div class:list={["frame phero__img", { "frame--arch": arch, "phero__img--full": !arch }]} data-parallax={parallax ? "10" : undefined} data-reveal="scale" style={`--focus:${focus}; --ratio:${ratio}`}>
       <Image src={image} alt={alt} widths={[600, 900, 1400]} sizes="(min-width: 900px) 46vw, 92vw" loading="eager" fetchpriority="high" decoding="async" />
@@ -21,6 +22,7 @@ const { image, alt, kicker, a, b, lead, focus = '50% 50%', ratio = '4 / 5', arch
   .phero { padding-top: clamp(7rem, 16vh, 11rem); padding-bottom: clamp(2rem, 5vw, 4rem); }
   .phero__grid { display: grid; gap: 2.5rem; align-items: center; }
   .phero__text { display: grid; gap: clamp(1rem, 2.5vw, 1.75rem); }
+  .phero__text :global(.phero__more) { display: grid; gap: 1.25rem; margin-top: clamp(2rem, 5vw, 3.5rem); }
   .phero__img { aspect-ratio: var(--ratio); max-height: 76svh; }
   .phero__img--full { max-height: none; width: 100%; box-shadow: 0 40px 80px -40px oklch(0 0 0 / 0.8); }
   .phero__img :global(img) { object-position: var(--focus); }
