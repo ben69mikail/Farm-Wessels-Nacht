@@ -23,6 +23,7 @@ import imgLapa from '../assets/lodge/lapa-braai.jpg';
 import imgKapelle from '../assets/wedding/kapelle.jpg';
 import imgAbout from '../assets/hunting/jaeger-fernglas.jpg';
 import imgPirsch from '../assets/hero/pirschgruppe.jpg';
+import imgPhil from '../assets/hunting/phil-abend.jpg';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -66,7 +67,12 @@ const words = x.statement.map((l) => l.split(' '));
   <!-- Drei Versprechen als ruhige Liste -->
   <section class="section section--tight">
     <div class="wrap promises">
-      <h2 class="t-1 promises__title" data-reveal>{x.promisesTitle}</h2>
+      <div class="promises__side">
+        <h2 class="t-1 promises__title" data-reveal>{x.promisesTitle}</h2>
+        <div class="frame frame--arch promises__img" data-parallax="6" data-reveal="scale" style="--d:150ms">
+          <Image src={imgPhil} alt={locale === 'de' ? 'Philipp Wessels am Abend im Revier' : 'Philipp Wessels in the field at dusk'} widths={[480, 800, 1200]} sizes="(min-width: 900px) 28vw, 70vw" loading="lazy" decoding="async" />
+        </div>
+      </div>
       <ul class="promises__list">
         {h.features.map((f, i) => (
           <li data-reveal style={`--d:${i * 120}ms`}>
@@ -185,6 +191,11 @@ const words = x.statement.map((l) => l.split(' '));
 
   .promises { display: grid; gap: 2rem; }
   .promises__title { color: var(--muted); font-weight: 400; }
+  .promises__side { display: grid; gap: 1.5rem; align-content: start; }
+  .promises__img { aspect-ratio: 4 / 5; max-width: 22rem; }
+  .promises__img :global(img) { object-position: 50% 20%; }
+  .promises__img::before { content: ''; position: absolute; inset: auto 0 0 0; height: 30%; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent, oklch(0.1 0.01 60 / 0.75)); }
+  @media (min-width: 900px) { .promises__side { position: sticky; top: 7rem; } }
   .promises__list { display: grid; }
   .promises__list li { display: grid; gap: 0.6rem; padding: clamp(1.5rem, 3vw, 2.25rem) 0; border-top: 1px solid var(--line); position: relative; }
   .promises__list li::before { content: ''; position: absolute; top: -1px; left: 0; height: 1px; width: 0; background: var(--ember); transition: width 1.2s var(--ease-out); }
