@@ -161,7 +161,7 @@ const words = x.statement.map((l) => l.split(' '));
   <!-- Über uns -->
   <section class="section about">
     <div class="wrap about__grid">
-      <div class="frame frame--arch about__img" data-parallax="10" data-reveal="scale"><Image src={imgAbout} alt={locale === 'de' ? 'Der Gastgeber mit Fernglas im Revier' : 'The host with binoculars in the field'} width="900" height="1200" loading="lazy" decoding="async" /></div>
+      <div class="frame frame--arch about__img" data-parallax="6" data-reveal="scale"><Image src={imgAbout} alt={locale === 'de' ? 'Der Gastgeber mit Fernglas im Revier' : 'The host with binoculars in the field'} width="900" height="1200" loading="lazy" decoding="async" /></div>
       <div class="about__text stack" style="--flow:1.5rem">
         <h2 class="display t-3 lines"><span class="line"><span>{x.about.title}</span></span><span class="line"><span><em>{x.about.title2}</em></span></span></h2>
         <p class="lead" data-reveal>{h.aboutTeaser.p1}</p>
@@ -258,6 +258,7 @@ const words = x.statement.map((l) => l.split(' '));
   /* ---- Über uns ---- */
   .about__grid { display: grid; gap: 2.5rem; }
   .about__img { aspect-ratio: 3 / 4; max-width: 34rem; }
+  .about__img :global(img) { object-position: 32% 45%; }
   @media (min-width: 900px) { .about__grid { grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; } }
 
 </style>

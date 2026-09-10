@@ -1,42 +1,42 @@
 export const de = {
   locale: 'de',
   htmlLang: 'de-DE',
-  brandTag: 'Private Hunting Safaris · Modimolle, Südafrika',
+  brandTag: 'Private Jagdsafaris · Waterberg, Südafrika',
 
   ui: {
     menu: 'Menü', close: 'Schließen', language: 'Sprache', langName: 'Deutsch',
     call: 'Anrufen', mail: 'E-Mail', whatsapp: 'WhatsApp',
     enquire: 'Jagdreise anfragen', enquireShort: 'Anfragen',
-    discover: 'Safari entdecken', more: 'Mehr erfahren',
+    discover: 'Die Jagd erleben', more: 'Mehr erfahren',
     toTop: 'Nach oben', onRequest: 'Auf Anfrage',
     pauseVideo: 'Film anhalten', playVideo: 'Film abspielen',
     skip: 'Zum Inhalt springen',
   },
 
   home: {
-    title: 'Wild Wessels Safaris | Jagdreisen in Südafrika',
-    description: 'Deutschsprachige Jagdreisen auf einer privaten Farm im Waterberg, Limpopo. Individuell geplant, persönlich begleitet — von deutschen Gastgebern in Südafrika.',
+    title: 'Wild Wessels Safaris | Jagdreisen im Waterberg, Südafrika',
+    description: 'Die Wildnis ruft: Jagdsafaris auf einer privaten Farm im Waterberg, Limpopo — Pirsch im Morgengrauen, Feuer am Abend, deutschsprachig und persönlich begleitet.',
     hero: {
-      eyebrow: 'Authentische Jagdreisen im Waterberg',
+      eyebrow: 'Private Jagdsafaris im Waterberg',
       h1a: 'Die Wildnis', h1b: 'ruft.',
-      lead: 'Deutschsprachige Jagdreisen aus deutscher Hand — persönlich geplant auf unserer privaten Farm in Südafrika.',
+      lead: 'Der erste Kaffee, während der Bushveld noch schwarz ist. Fährten im roten Sand. Ein Abend am Feuer, an dem der Tag noch einmal gelebt wird. Deutschsprachige Jagdreisen auf unserer eigenen Farm in Südafrika.',
       side: 'Waterberg · Limpopo · Südafrika',
     },
     intro: {
       eyebrow: 'Wild Wessels Safaris',
       h2a: 'Mehr als eine Jagd.', h2b: 'Ein Stück echtes Afrika.',
-      lead: 'Jede Reise wird persönlich auf Sie abgestimmt — von den gewünschten Wildarten bis zum Aufenthalt für Begleitpersonen. Ehrlich, exklusiv und mit Gastgebern, die Deutschland und Südafrika verstehen.',
+      lead: 'Wer einmal im ersten Licht durch den Dornbusch gepirscht ist, vergisst es nicht. Wir planen diese Tage mit Ihnen — von der Wunschwildart bis zum Abend für die, die ohne Waffe mitreisen. Ehrlich, persönlich und mit Gastgebern, die beide Länder verstehen.',
     },
     features: [
-      { title: 'Individuelle Jagdreisen', text: 'Kein Paket von der Stange. Wir planen Reisedauer, Jagd und Rahmenprogramm passend zu Ihren Wünschen.' },
-      { title: 'Persönlich & deutschsprachig', text: 'Ein fester Ansprechpartner begleitet Sie von der ersten Anfrage bis zur Abreise.' },
-      { title: 'Auch für Begleitpersonen', text: 'Lodge, Safari, Ausflüge und Entspannung machen die Reise auch ohne Jagd zu einem Erlebnis.' },
+      { title: 'Ihre Jagd, nicht irgendeine', text: 'Kein Paket von der Stange. Wie viele Tage, welches Wild, wie viel Ruhe dazwischen — das legen wir gemeinsam fest, lange bevor Sie ins Flugzeug steigen.' },
+      { title: 'Ein Gesicht, eine Sprache', text: 'Vom ersten Gespräch bis zum Trophäenversand begleitet Sie derselbe Mensch — auf Deutsch, am Telefon und später am Feuer.' },
+      { title: 'Auch ohne Büchse ein Erlebnis', text: 'Sonnenaufgang auf der Veranda, Wild am Damm, Sundowner mit Blick ins Tal: Begleitpersonen erleben die Farm auf ihre eigene Weise.' },
     ],
     facts: {
       eyebrow: 'Die Farm in Zahlen',
       items: [
         { value: 'Waterberg', label: 'Limpopo, Südafrika' },
-        { value: '36', label: 'Betten in Lodge & Häusern' },
+        { value: '36', label: 'Betten in Lodge & Gästehäusern' },
         { value: '5,5 km', label: 'bis Modimolle' },
         { value: 'Malariafrei', label: 'Region Waterberg' },
       ],
@@ -44,61 +44,61 @@ export const de = {
     speciesTeaser: {
       eyebrow: 'Wildarten',
       h2a: 'Von der Antilope', h2b: 'bis zum Kaffernbüffel.',
-      text: 'Plains Game und Großwild auf einem abwechslungsreichen Revier aus Bushveld, Hügelketten und Wasserstellen. Sagen Sie uns, welche Arten Sie sich wünschen — wir stellen die passende Jagd zusammen.',
+      text: 'Plains Game und Großwild in einem Revier aus Bushveld, Hügelketten und Wasserstellen. Sagen Sie uns, welches Wild Sie träumen lässt — wir bauen die Jagd darum.',
       cta: 'Wildarten & Preise ansehen',
     },
     lodgeTeaser: {
       eyebrow: 'Lodge & Unterkunft',
       h2a: 'Nach dem Tag im Revier —', h2b: 'ankommen.',
-      text: 'Haupthaus mit sechs Zimmern und Suiten, vier freistehende Gästehäuser, Pool, Lapa mit Braai und Bar. Platz für bis zu 36 Gäste, 5,5 km außerhalb von Modimolle.',
+      text: 'Haupthaus unter alten Jacarandas, vier Gästehäuser, Pool, Lapa mit Braai und Bar. Platz für 36 Gäste, 5,5 km außerhalb von Modimolle.',
       cta: 'Lodge entdecken',
     },
     aboutTeaser: {
       eyebrow: 'Über uns',
       h2a: 'Von klein auf Jäger.', h2b: 'Heute Gastgeber.',
-      p1: 'Die Jagd wurde uns vom Großvater mitgegeben — von klein auf, in Deutschland. Später führten uns Jagdreisen in viele Länder. Gute Erfahrungen zeigten uns, was eine besondere Safari ausmacht; schlechte, worauf es wirklich ankommt.',
-      p2: 'In Südafrika fanden wir schließlich mehr als ein Reiseziel: eine zweite Heimat. Mit unserer eigenen Farm verwirklichen wir heute unseren Traum — und bieten deutschsprachige Jagdsafaris aus deutscher Hand: persönlich, ehrlich und transparent.',
+      p1: 'Die Jagd hat uns der Großvater mitgegeben — in deutschen Wäldern, an kalten Morgen, mit viel Geduld. Später führten uns Jagdreisen um die halbe Welt. Die guten zeigten uns, was eine große Safari ausmacht. Die schlechten, worauf es wirklich ankommt.',
+      p2: 'In Südafrika fanden wir mehr als ein Reiseziel: eine zweite Heimat. Auf unserer eigenen Farm im Waterberg leben wir heute diesen Traum — und teilen ihn mit Jägern, die dasselbe suchen wie wir.',
       cta: 'Wild Wessels kennenlernen',
     },
     cta: {
       eyebrow: 'Ihre Reise beginnt hier',
       h2a: 'Erzählen Sie uns von Ihrer', h2b: 'Wunschjagd.',
-      text: 'Wir melden uns persönlich, besprechen Reisezeit, Wildarten und Begleitpersonen und erstellen Ihr individuelles Angebot.',
+      text: 'Wir melden uns persönlich, sprechen über Reisezeit, Wildarten und Begleitpersonen — und schreiben Ihnen ein Angebot, hinter dem wir stehen.',
       button: 'Unverbindlich anfragen',
     },
   },
 
   hunting: {
     title: 'Die Jagd | Wild Wessels Safaris',
-    description: 'Pirsch und Ansitz im Waterberg: Ablauf einer Jagdreise, Jagdarten, Jagdzeiten, Ausrüstung und Leihwaffen — deutschsprachig begleitet.',
+    description: 'Pirsch im Morgengrauen, Ansitz am Wasser, Braai am Feuer: So erleben Sie eine Jagdreise im Waterberg — Ablauf, Jagdzeiten, Ausrüstung, Leihwaffen.',
     hero: { eyebrow: 'Die Jagd', h1a: 'Auf der Fährte,', h1b: 'nicht in Eile.' ,
-      lead: 'Wir jagen zu Fuß, führig und mit Respekt vor dem Wild. Wie viele Tage, welche Arten und in welchem Tempo — das bestimmen Sie.' },
+      lead: 'Der Tracker hebt die Hand. Alles hält den Atem an. Zwischen den Dornbüschen bewegt sich ein Schatten — und plötzlich ist es ganz still in Ihnen. Wir jagen zu Fuß, führig und mit Respekt vor dem Wild. Das Tempo bestimmen Sie.' },
     intro: {
       eyebrow: 'Unser Verständnis von Jagd',
       h2a: 'Weidgerecht,', h2b: 'ohne Show.',
-      lead: 'Wir jagen die klassische Pirsch mit erfahrenen Professional Hunters und ortskundigen Trackern. Kein Fahren von Stück zu Stück, kein Zeitdruck, keine Trophäen-Checkliste. Wer möchte, sitzt an Wasserstellen an oder verbringt einen Tag ganz ohne Waffe im Revier.',
+      lead: 'Pirsch, wie Sie sie kennen — nur unter einem größeren Himmel. Erfahrene Professional Hunters, Tracker, die im Sand lesen wie in einem Buch, und kein Blick auf die Uhr. Kein Fahren von Stück zu Stück, keine Checkliste. Wer will, sitzt an der Wasserstelle an oder geht einen Tag lang nur mit dem Fernglas.',
     },
     methods: [
-      { title: 'Pirsch zu Fuß', text: 'Die Hauptjagdart. Mit Professional Hunter und Tracker im Gelände unterwegs — anstrengend, spannend und die ehrlichste Art, dieses Revier kennenzulernen.' },
-      { title: 'Ansitz an Wasser', text: 'In der Trockenzeit führen Wasserstellen und Suhlen das Wild zusammen. Ideal für Warzenschwein, Kudu und ruhige Beobachtungsstunden.' },
-      { title: 'Fotosafari & Begleitung', text: 'Begleitpersonen fahren mit, fotografieren oder bleiben an der Lodge. Auch als reine Beobachtungstour ohne Waffe buchbar.' },
+      { title: 'Pirsch zu Fuß', text: 'Schritt für Schritt durch den Dornbusch, den Wind im Gesicht, die Fährte unter den Stiefeln. Anstrengend, spannend — und die ehrlichste Art, dieses Revier kennenzulernen.' },
+      { title: 'Ansitz am Wasser', text: 'In der Trockenzeit kommt das Wild zum Wasser. Stunden voller Stille, in denen Warzenschwein, Kudu und Nyala aus dem Busch treten — manchmal nur, um zu trinken.' },
+      { title: 'Fotosafari & Begleitung', text: 'Mitfahren, beobachten, fotografieren oder einfach die Weite genießen. Auch als reine Beobachtungstour ohne Waffe — das Erlebnis bleibt dasselbe.' },
     ],
     day: {
       eyebrow: 'Ein Tag im Revier',
       h2: 'So läuft ein Jagdtag ab',
       steps: [
-        { time: '05:30', title: 'Kaffee vor Sonnenaufgang', text: 'Leichtes Frühstück an der Lodge, Absprache mit dem Professional Hunter, Kontrollschuss falls gewünscht.' },
-        { time: '06:00', title: 'Morgenpirsch', text: 'Die besten Stunden. Fährtenarbeit im kühlen Bushveld, bis die Sonne hochsteht.' },
-        { time: '12:00', title: 'Mittag & Siesta', text: 'Zurück zur Lodge: Mittagessen, Ruhe, Pool. Das Wild steht in der Mittagshitze ohnehin.' },
-        { time: '15:30', title: 'Abendpirsch', text: 'Zweiter Ansitz oder Pirsch bis zum letzten Büchsenlicht.' },
-        { time: '19:00', title: 'Braai am Feuer', text: 'Gemeinsames Abendessen, Wildbret vom Grill, der Tag wird am Feuer besprochen.' },
+        { time: '05:30', title: 'Kaffee, bevor die Sonne kommt', text: 'Es ist kalt, der Himmel noch tiefblau. Ein Kaffee an der Lodge, ein kurzes Wort mit dem Professional Hunter, Kontrollschuss, wenn Sie möchten.' },
+        { time: '06:00', title: 'Morgenpirsch', text: 'Die besten Stunden. Frische Fährten im kühlen Sand, Frankoline rufen, der erste Blick durchs Glas — bis die Sonne hoch steht.' },
+        { time: '12:00', title: 'Mittag & Siesta', text: 'Zurück zur Lodge. Essen im Schatten, ein Sprung in den Pool, Ruhe. Das Wild steht in der Hitze ohnehin.' },
+        { time: '15:30', title: 'Abendpirsch', text: 'Das Licht wird golden, der Busch wacht wieder auf. Zweiter Ansitz oder Pirsch bis zum letzten Büchsenlicht.' },
+        { time: '19:00', title: 'Braai am Feuer', text: 'Funken steigen in den Sternenhimmel. Wildbret vom Grill, ein Glas Rotwein, und der Tag wird noch einmal erzählt — von allen, die dabei waren.' },
       ],
     },
     season: {
       eyebrow: 'Jagdzeit',
       h2a: 'April bis September —', h2b: 'die beste Zeit.',
-      p1: 'Der südafrikanische Winter ist die klassische Jagdsaison: trocken, angenehm kühl am Morgen, geringe Vegetationsdichte und dadurch gute Sicht. Tagsüber meist 20–25 °C, nachts nahe null Grad.',
-      p2: 'Jagd ist ganzjährig möglich. Die Sommermonate (Oktober bis März) sind grün, warm und feuchter — landschaftlich reizvoll, jagdlich anspruchsvoller.',
+      p1: 'Der südafrikanische Winter ist die klassische Jagdsaison: trockene, klare Luft, kühle Morgen, lichter Busch und weite Sicht. Tagsüber meist 20–25 °C, nachts nahe null Grad — Zeit für die Fleecejacke und das Feuer.',
+      p2: 'Jagd ist ganzjährig möglich. Die Sommermonate (Oktober bis März) zeigen den Busch grün und satt — landschaftlich atemberaubend, jagdlich anspruchsvoller.',
     },
     equipment: {
       eyebrow: 'Ausrüstung',
@@ -106,7 +106,7 @@ export const de = {
       items: [
         { title: 'Eigene Waffe oder Leihwaffe', text: 'Sie können Ihre eigene Büchse einführen (temporäre Einfuhrgenehmigung, Formular SAPS 520) oder vor Ort eine Leihwaffe nutzen. Wir unterstützen Sie bei den Formalitäten.' },
         { title: 'Empfohlene Kaliber', text: 'Für Plains Game .30-06, .308 Win oder .300 Win Mag. Für Kaffernbüffel ist ein Kaliber ab .375 H&H vorgeschrieben.' },
-        { title: 'Kleidung', text: 'Gedeckte Farben (Khaki, Oliv, Braun), feste eingelaufene Stiefel, Fleece für den frühen Morgen, Sonnenschutz und Fernglas.' },
+        { title: 'Kleidung', text: 'Gedeckte Farben (Khaki, Oliv, Braun), feste eingelaufene Stiefel, Fleece für den kalten Morgen, Sonnenschutz und ein gutes Fernglas.' },
       ],
     },
     gallery: { eyebrow: 'Eindrücke', h2: 'Aus dem Revier' },
@@ -131,13 +131,13 @@ export const de = {
   },
   species: {
     title: 'Wildarten & Preise | Wild Wessels Safaris',
-    description: 'Wildarten auf unserer Farm im Waterberg und Aufbau unserer Preise: Tagespauschale, Abschussgebühren und Leistungen. Preisliste auf Anfrage.',
+    description: 'Wildarten auf unserer Farm im Waterberg und wie sich unsere Preise zusammensetzen: Tagespauschale, Abschussgebühren, Leistungen. Preisliste auf Anfrage.',
     hero: { eyebrow: 'Wildarten & Preise', h1a: 'Was bei uns', h1b: 'zu Hause ist.',
-      lead: 'Ein Revier aus Bushveld, Hügeln und Wasserstellen — mit Plains Game und Großwild. Die vollständige Preisliste stellen wir Ihnen persönlich zusammen.' },
+      lead: 'Der Büffel, der im Dickicht steht wie ein Fels. Der Nyala, der im letzten Licht aus dem Dornveld tritt. Zebras, die im Morgennebel über die Ebene ziehen. Ein Revier voller Begegnungen — die Preisliste dazu stellen wir Ihnen persönlich zusammen.' },
     confirmed: {
       eyebrow: 'Bestätigte Wildarten',
       h2: 'Auf unserem Revier bejagt',
-      note: 'Weitere Wildarten sind auf Anfrage bejagbar. Die vollständige Artenliste und Preisliste für die kommende Saison bereiten wir gerade vor — sprechen Sie uns an, wir schicken sie Ihnen zu, sobald sie vorliegt.',
+      note: 'Weitere Wildarten sind auf Anfrage bejagbar. Die vollständige Arten- und Preisliste für die kommende Saison bereiten wir gerade vor — sprechen Sie uns an, wir schicken sie Ihnen, sobald sie vorliegt.',
       table: { species: 'Wildart', latin: 'Wissenschaftlich', group: 'Kategorie', price: 'Abschussgebühr' },
       rows: [
         { de: 'Kaffernbüffel', latin: 'Syncerus caffer', group: 'Großwild' },
@@ -151,7 +151,7 @@ export const de = {
     pricing: {
       eyebrow: 'Preisaufbau',
       h2a: 'Transparent —', h2b: 'ohne Überraschungen.',
-      lead: 'Eine Jagdreise setzt sich aus zwei Bausteinen zusammen. Was in der Tagespauschale enthalten ist und was nicht, sagen wir Ihnen vor der Buchung schriftlich.',
+      lead: 'Eine Jagdreise besteht bei uns aus zwei Bausteinen. Was in der Tagespauschale steckt und was nicht, bekommen Sie vor der Buchung schriftlich — damit am Feuer nur noch über die Jagd geredet wird.',
       blocks: [
         { title: 'Tagespauschale', text: 'Unterkunft, Vollpension, Getränke im üblichen Rahmen, Professional Hunter, Tracker, Jagdfahrzeug, Wildbergung und die Grundversorgung der Trophäe.' },
         { title: 'Abschussgebühr', text: 'Wird pro erlegtem Stück nach Art abgerechnet. Nur was tatsächlich erlegt wird, wird berechnet — angeschweißtes Wild gilt nach südafrikanischer Praxis als erlegt.' },
@@ -164,9 +164,9 @@ export const de = {
 
   lodge: {
     title: 'Lodge & Unterkunft | Wild Wessels Safaris',
-    description: 'Haupthaus mit sechs Zimmern und Suiten, vier freistehende Gästehäuser, Pool, Lapa mit Braai und Bar — Platz für 36 Gäste, 5,5 km außerhalb von Modimolle.',
+    description: 'Haupthaus unter Jacarandas, vier freistehende Gästehäuser, Pool, Lapa mit Braai und Bar — Platz für 36 Gäste, 5,5 km außerhalb von Modimolle.',
     hero: { eyebrow: 'Lodge & Unterkunft', h1a: 'Ankommen,', h1b: 'nicht nur übernachten.',
-      lead: 'Ein gewachsenes Farmgehöft unter alten Jacaranda-Bäumen: Haupthaus, freistehende Gästehäuser, Pool und Lapa — 5,5 km außerhalb von Modimolle.' },
+      lead: 'Staubige Stiefel vor der Tür, ein kaltes Getränk in der Hand, und über der Veranda färbt sich der Himmel orange. Ein gewachsenes Farmgehöft unter alten Jacaranda-Bäumen — 5,5 km außerhalb von Modimolle.' },
     facts: [
       { value: '6', label: 'Zimmer & Suiten im Haupthaus' },
       { value: '4', label: 'freistehende Gästehäuser' },
@@ -192,7 +192,7 @@ export const de = {
     wedding: {
       eyebrow: 'Auch für Feiern',
       h2a: 'Eine Kapelle', h2b: 'mitten im Bushveld.',
-      text: 'Neben der Jagd ist unser Gehöft ein stiller Ort für Hochzeiten: eigene Kapelle für bis zu 130 Gäste, Festsaal, Catering und Unterkunft für 36 Personen — alles auf einem Grundstück.',
+      text: 'Neben der Jagd ist unser Gehöft ein stiller Ort für Hochzeiten: eigene Kapelle für bis zu 130 Gäste, Festsaal, Catering und Unterkunft für 36 Personen — alles auf einem Grundstück, unter demselben Sternenhimmel.',
       cta: 'Anfrage für Feiern',
     },
   },
@@ -201,15 +201,15 @@ export const de = {
     title: 'Anreise & Praktisches | Wild Wessels Safaris',
     description: 'Anreise nach Modimolle im Waterberg, Transfer ab Johannesburg, Waffeneinfuhr nach Südafrika, beste Reisezeit und Malariafreiheit.',
     hero: { eyebrow: 'Anreise & Praktisches', h1a: 'Von Frankfurt', h1b: 'ins Bushveld.',
-      lead: 'Ein Nachtflug, eine Autofahrt durch die Waterberge — und Sie sind da. Alles Wichtige zu Anreise, Papieren und Reisezeit.' },
+      lead: 'Abends in Frankfurt einsteigen, morgens über den Waterbergen aufwachen. Eine Autofahrt durch rotes Land, das Fenster offen — und dann liegt die Farm vor Ihnen. Alles Wichtige zu Anreise, Papieren und Reisezeit.' },
     journey: {
       eyebrow: 'Der Weg zu uns',
       h2: 'Anreise Schritt für Schritt',
       steps: [
         { no: '01', title: 'Flug nach Johannesburg', text: 'Direktflüge ab Frankfurt und München nach O. R. Tambo International (JNB), meist als Nachtflug. Keine Zeitverschiebung im Sommer, eine Stunde im Winter.' },
         { no: '02', title: 'Waffeneinfuhr am Flughafen', text: 'Am SAPS-Schalter im Flughafen erhalten Sie die temporäre Einfuhrgenehmigung. Wir bereiten das Formular SAPS 520 mit Ihnen vor und begleiten Sie durch den Vorgang.' },
-        { no: '03', title: 'Transfer in den Waterberg', text: 'Rund zwei bis zweieinhalb Fahrstunden nach Norden über die N1. Auf Wunsch holen wir Sie am Flughafen ab.' },
-        { no: '04', title: 'Ankunft auf der Farm', text: 'Die Farm liegt 5,5 km außerhalb von Modimolle (früher Nylstroom), Waterberg, Limpopo.' },
+        { no: '03', title: 'Transfer in den Waterberg', text: 'Rund zwei bis zweieinhalb Stunden nach Norden über die N1 — die Städte werden kleiner, der Himmel größer. Auf Wunsch holen wir Sie am Flughafen ab.' },
+        { no: '04', title: 'Ankunft auf der Farm', text: 'Die Farm liegt 5,5 km außerhalb von Modimolle (früher Nylstroom), Waterberg, Limpopo. Der Kaffee steht schon bereit.' },
       ],
     },
     good: {
@@ -229,15 +229,15 @@ export const de = {
 
   about: {
     title: 'Über uns | Wild Wessels Safaris',
-    description: 'Deutsche Gastgeber in Südafrika: Wie aus einer Jagdleidenschaft eine eigene Farm im Waterberg wurde.',
+    description: 'Deutsche Gastgeber in Südafrika: Wie aus einer Jagdleidenschaft, die der Großvater weitergab, eine eigene Farm im Waterberg wurde.',
     hero: { eyebrow: 'Über uns', h1a: 'Von klein auf Jäger.', h1b: 'Heute Gastgeber.',
       lead: 'Zwei Länder, eine Leidenschaft — und eine Farm, auf der beides zusammenkommt.' },
     story: {
       eyebrow: 'Unsere Geschichte',
       h2a: 'Warum wir', h2b: 'Gastgeber wurden.',
-      p1: 'Die Jagd wurde uns vom Großvater mitgegeben — von klein auf, in Deutschland. Später führten uns Jagdreisen in viele Länder. Gute Erfahrungen zeigten uns, was eine besondere Safari ausmacht; schlechte, worauf es wirklich ankommt.',
-      p2: 'In Südafrika fanden wir schließlich mehr als ein Reiseziel: eine zweite Heimat. Mit unserer eigenen Farm im Waterberg verwirklichen wir heute unseren Traum — und bieten deutschsprachige Jagdsafaris aus deutscher Hand.',
-      p3: 'Was uns wichtig ist: dass Sie vorher wissen, was Sie erwartet. Dass Sie mit einem Menschen sprechen und nicht mit einem Buchungsportal. Und dass am Ende einer Reise nicht nur eine Trophäe steht, sondern ein Erlebnis, von dem Sie zu Hause erzählen.',
+      p1: 'Die Jagd hat uns der Großvater mitgegeben — in deutschen Wäldern, an kalten Morgen, mit viel Geduld. Später führten uns Jagdreisen um die halbe Welt. Die guten zeigten uns, was eine große Safari ausmacht. Die schlechten, worauf es wirklich ankommt.',
+      p2: 'In Südafrika fanden wir mehr als ein Reiseziel: eine zweite Heimat. Auf unserer eigenen Farm im Waterberg leben wir heute diesen Traum — und bieten deutschsprachige Jagdsafaris aus deutscher Hand.',
+      p3: 'Was uns wichtig ist: dass Sie vorher wissen, was Sie erwartet. Dass Sie mit einem Menschen sprechen und nicht mit einem Buchungsportal. Und dass am Ende nicht nur eine Trophäe an der Wand hängt, sondern ein Erlebnis bleibt, von dem Sie noch Jahre später am Stammtisch erzählen.',
     },
     values: {
       eyebrow: 'Wofür wir stehen',
@@ -254,7 +254,7 @@ export const de = {
     title: 'Kontakt & Anfrage | Wild Wessels Safaris',
     description: 'Fragen Sie Ihre Jagdreise nach Südafrika unverbindlich an. Wir melden uns persönlich und auf Deutsch.',
     hero: { eyebrow: 'Kontakt', h1a: 'Erzählen Sie uns von Ihrer', h1b: 'Wunschjagd.',
-      lead: 'Schreiben Sie uns, was Sie vorhaben — wir melden uns persönlich und erstellen Ihr individuelles Angebot.' },
+      lead: 'Welches Wild lässt Sie nicht los? Wann haben Sie Zeit, wer kommt mit? Schreiben Sie uns — wir melden uns persönlich und bauen Ihre Reise darum.' },
     form: {
       eyebrow: 'Unverbindliche Anfrage',
       h2: 'Anfrageformular',
@@ -301,7 +301,7 @@ export const de = {
   },
 
   footer: {
-    tagline: 'Deutschsprachige Jagdreisen auf unserer privaten Farm im Waterberg, Limpopo.',
+    tagline: 'Deutschsprachige Jagdsafaris auf unserer privaten Farm im Waterberg, Limpopo — Pirsch, Feuer und Weite.',
     navTitle: 'Navigation', contactTitle: 'Kontakt', legalTitle: 'Rechtliches',
     rights: 'Alle Rechte vorbehalten.',
   },
