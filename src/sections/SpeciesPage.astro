@@ -25,7 +25,7 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
 <Base locale={locale} pageKey="species" title={p.title} description={p.description}>
   <PageHero image={hero} alt={de ? 'Giraffe zwischen Akazien' : 'Giraffe between acacias'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="55% 40%" />
 
-  <section class="section species">
+  <section class="section species species--tightbottom">
     <div class="wrap">
       <h2 class="display t-3 lines species__title"><span class="line"><span>{p.confirmed.h2}</span></span></h2>
       <ul class="species__list">
@@ -48,7 +48,7 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
     </div>
   </section>
 
-  <section class="section section--tight"><div class="wrap stack" style="--flow:1.25rem">
+  <section class="section pricing-intro"><div class="wrap stack pricing-intro__inner" style="--flow:1.25rem">
     <h2 class="display t-3 lines"><span class="line"><span>{p.pricing.h2a}</span></span><span class="line"><span><em>{p.pricing.h2b}</em></span></span></h2>
     <p class="lead" data-reveal>{p.pricing.lead}</p>
   </div></section>
@@ -78,7 +78,11 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
   .sp__meta div { display: grid; gap: 0.15rem; }
   .sp__meta dt { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
   .sp__meta dd { margin: 0; font-weight: 500; }
-  .species__note { margin-top: clamp(2rem, 5vw, 3.5rem); max-width: var(--measure); padding: 1.25rem 1.5rem; border-radius: var(--r-md); background: var(--surface); }
+  .species__note { margin: clamp(2rem, 5vw, 3.5rem) auto 0; max-width: var(--measure); padding: 1.25rem 1.5rem; border-radius: var(--r-md); background: var(--surface); text-align: center; }
+  .species--tightbottom { padding-bottom: clamp(2rem, 4vw, 3rem); }
+  .pricing-intro { padding-top: clamp(2rem, 4vw, 3rem); padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .pricing-intro__inner { text-align: center; }
+  .pricing-intro__inner .lead { margin-inline: auto; }
   @media (min-width: 700px) { .species__list { grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 3rem); } .sp { grid-template-columns: 0.8fr 1.2fr; gap: 1.5rem; } .sp:nth-child(even) { transform: translateY(3rem); } }
   .blocks { display: grid; gap: 1.5rem; }
   .block { display: grid; gap: 1rem; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: var(--r-lg); background: var(--surface); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.06); position: relative; overflow: hidden; }
