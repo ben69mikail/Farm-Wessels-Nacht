@@ -2,8 +2,8 @@
 /* Unterseiten-Auftakt: Bogenfenster mit Parallax, Titel links, Text darunter. */
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-interface Props { image: ImageMetadata; alt: string; kicker: string; a: string; b: string; lead?: string; focus?: string }
-const { image, alt, kicker, a, b, lead, focus = '50% 50%' } = Astro.props;
+interface Props { image: ImageMetadata; alt: string; kicker: string; a: string; b: string; lead?: string; focus?: string; ratio?: string; arch?: boolean; parallax?: boolean }
+const { image, alt, kicker, a, b, lead, focus = '50% 50%', ratio = '4 / 5', arch = true, parallax = true } = Astro.props;
 ---
 <section class="phero">
   <div class="wrap phero__grid">
@@ -12,7 +12,7 @@ const { image, alt, kicker, a, b, lead, focus = '50% 50%' } = Astro.props;
       <h1 class="display t-4 lines"><span class="line"><span>{a}</span></span><span class="line"><span><em>{b}</em></span></span></h1>
       {lead && <p class="lead" data-reveal style="--d:250ms">{lead}</p>}
     </div>
-    <div class="frame frame--arch phero__img" data-parallax="10" data-reveal="scale" style={`--focus:${focus}`}>
+    <div class:list={["frame phero__img", { "frame--arch": arch, "phero__img--full": !arch }]} data-parallax={parallax ? "10" : undefined} data-reveal="scale" style={`--focus:${focus}; --ratio:${ratio}`}>
       <Image src={image} alt={alt} widths={[600, 900, 1400]} sizes="(min-width: 900px) 46vw, 92vw" loading="eager" fetchpriority="high" decoding="async" />
     </div>
   </div>
@@ -21,7 +21,8 @@ const { image, alt, kicker, a, b, lead, focus = '50% 50%' } = Astro.props;
   .phero { padding-top: clamp(7rem, 16vh, 11rem); padding-bottom: clamp(2rem, 5vw, 4rem); }
   .phero__grid { display: grid; gap: 2.5rem; align-items: center; }
   .phero__text { display: grid; gap: clamp(1rem, 2.5vw, 1.75rem); }
-  .phero__img { aspect-ratio: 4 / 5; max-height: 76svh; }
+  .phero__img { aspect-ratio: var(--ratio); max-height: 76svh; }
+  .phero__img--full { max-height: none; width: 100%; box-shadow: 0 40px 80px -40px oklch(0 0 0 / 0.8); }
   .phero__img :global(img) { object-position: var(--focus); }
-  @media (min-width: 900px) { .phero__grid { grid-template-columns: 1.1fr 0.9fr; gap: 5rem; } .phero__text { padding-bottom: 3rem; } }
+  @media (min-width: 900px) { .phero__grid { grid-template-columns: 1.1fr 0.9fr; gap: 5rem; } .phero__text { padding-bottom: 3rem; } .phero__grid:has(.phero__img--full) { grid-template-columns: 0.9fr 1.1fr; } }
 </style>

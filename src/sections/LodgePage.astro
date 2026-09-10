@@ -42,7 +42,7 @@ const gallery = [
 ];
 ---
 <Base locale={locale} pageKey="lodge" title={p.title} description={p.description}>
-  <PageHero image={hero} alt={de ? 'Beleuchtete Veranda der Lodge in der Abenddämmerung' : 'Lit veranda of the lodge at dusk'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} focus="55% 55%" />
+  <PageHero image={hero} alt={de ? 'Beleuchtete Veranda der Lodge in der Abenddämmerung' : 'Lit veranda of the lodge at dusk'} kicker={p.hero.eyebrow} a={p.hero.h1a} b={p.hero.h1b} lead={p.hero.lead} ratio="1080 / 518" arch={false} parallax={false} />
   <section class="section section--tight"><div class="wrap">
     <ul class="nums">
       {p.facts.map((f, i) => <li data-reveal style={`--d:${i * 90}ms`}><span class="display nums__v" data-count={f.value}>{f.value}</span><span class="muted">{f.label}</span></li>)}
