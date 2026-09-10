@@ -14,6 +14,7 @@ import imgWedding from '../assets/wedding/kapelle.jpg';
 import l1 from '../assets/lodge/luftbild-pool.jpg';
 import l2 from '../assets/lodge/haupthaus-jacaranda.jpg';
 import l3 from '../assets/rooms/executive-suite.jpg';
+import imgSuite from '../assets/rooms/suite-romantik.jpg';
 import l4 from '../assets/lodge/pool.jpg';
 import l5 from '../assets/lodge/lapa-braai.jpg';
 import l6 from '../assets/rooms/luxury-room.jpg';
@@ -48,7 +49,7 @@ const gallery = [
       {p.facts.map((f, i) => <li data-reveal style={`--d:${i * 90}ms`}><span class="display nums__v" data-count={f.value}>{f.value}</span><span class="muted">{f.label}</span></li>)}
     </ul>
   </div></section>
-  <Rows title={p.rooms.h2} items={p.rooms.items} />
+  <Rows title={p.rooms.h2} items={p.rooms.items} image={imgSuite} imageAlt={de ? 'Suite mit Himmelbett und Kronleuchter' : 'Suite with four-poster bed and chandelier'} caption={de ? 'Luxury Suite im Haupthaus' : 'Luxury suite in the main house'} />
   <section class="section section--tight"><div class="wrap amen">
     <h2 class="display t-3 lines"><span class="line"><span>{p.amenities.h2}</span></span></h2>
     <ul class="amen__list">{p.amenities.items.map((a, i) => <li data-reveal style={`--d:${(i % 5) * 60}ms`}><Icon name="arrow" />{a}</li>)}</ul>
