@@ -12,7 +12,7 @@ import { t } from '../content';
 import { v2 } from '../content/v2';
 import { href, type Locale } from '../content/nav';
 import hero from '../assets/hero/glasen-hoch.jpg';
-import imgSeason from '../assets/hunting/panorama-tal.jpg';
+import imgSeason from '../assets/hero/zebras.jpg';
 import imgDay from '../assets/hero/pirschgruppe.jpg';
 import mPirsch from '../assets/hunting/jagdgruppe.jpg';
 import mAnsitz from '../assets/hunting/ansitz-tank.jpg';
@@ -58,7 +58,7 @@ const trophies = [
   </PageHero>
   <RowsMedia items={p.methods} images={[mPirsch, mAnsitz, mFoto]} alts={de ? ['Pirsch zu Fuß im Bushveld', 'Ansitz an der Wasserstelle', 'Gespräch im Revier'] : ['Walk and stalk in the bushveld', 'Waiting at the waterhole', 'Talking things over in the field']} />
   <Steps title={p.day.h2} sub={x.day.sub} image={imgDay} steps={p.day.steps} sky />
-  <Split image={imgSeason} alt={de ? 'Weites Tal im Waterberg' : 'Wide valley in the Waterberg'} a={p.season.h2a} b={p.season.h2b} ratio="4 / 3">
+  <Split image={imgSeason} alt={de ? 'Zebraherde im lichten Busch' : 'Herd of zebra in open bush'} a={p.season.h2a} b={p.season.h2b} ratio="4 / 3">
     <p class="lead" data-reveal>{p.season.p1}</p>
     <p class="muted" data-reveal>{p.season.p2}</p>
   </Split>
