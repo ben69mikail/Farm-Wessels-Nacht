@@ -55,7 +55,7 @@ const { title, text, reveal, hide, all, none, open, zoom, close, prev, next, ite
       img.setAttribute('aria-hidden', String(!on));
       // Cursor-Text: verdeckt → „Bild öffnen“, aufgedeckt → „Bild vergrößern“; liegt die Maus gerade darauf, sofort aktualisieren
       const frame = item.querySelector<HTMLElement>('.gate__frame')!;
-      frame.dataset.cursor = on ? frame.dataset.cursorZoom : frame.dataset.cursorOpen;
+      frame.dataset.cursor = (on ? frame.dataset.cursorZoom : frame.dataset.cursorOpen) ?? '';
       if (frame.matches(':hover')) frame.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
     };
     const syncAll = () => {
