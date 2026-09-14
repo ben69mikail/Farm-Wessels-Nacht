@@ -64,6 +64,6 @@ const trophies = [
   </Split>
   <Accordion title={p.equipment.h2} items={p.equipment.items} />
   <Gallery title={p.gallery.h2} items={gallery} open={x.gallery.open} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} />
-  <TrophyGate title={x.trophy.title} text={x.trophy.text} reveal={x.trophy.reveal} hide={x.trophy.hide} all={x.trophy.all} none={x.trophy.none} items={trophies} />
+  <TrophyGate title={x.trophy.title} text={x.trophy.text} reveal={x.trophy.reveal} hide={x.trophy.hide} all={x.trophy.all} none={x.trophy.none} open={x.gallery.open} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} items={trophies} />
   <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
 </Base>

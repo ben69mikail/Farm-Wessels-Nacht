@@ -44,13 +44,22 @@ const id = `g${Math.random().toString(36).slice(2, 7)}`;
       img.src = pic.currentSrc || pic.src; img.alt = srcs[idx].alt; cap.textContent = srcs[idx].alt;
       requestAnimationFrame(() => img.classList.add('is-in'));
     };
-    btns.forEach((b, i) => b.addEventListener('click', () => { show(i); dlg.showModal(); window.dispatchEvent(new Event('ww:lock')); }));
-    dlg.querySelector('[data-lb-close]')!.addEventListener('click', () => dlg.close());
+    // Nicht-modal öffnen: showModal() legt den Dialog in die Top-Layer-Ebene, über den eigenen Cursor.
+    let opener: HTMLElement | null = null;
+    const openAt = (i: number, from: HTMLElement) => { opener = from; show(i); dlg.show(); dlg.querySelector<HTMLElement>('[data-lb-close]')!.focus(); window.dispatchEvent(new Event('ww:lock')); };
+    const close = () => { if (dlg.open) dlg.close(); };
+    btns.forEach((b, i) => b.addEventListener('click', () => openAt(i, b)));
+    dlg.querySelector('[data-lb-close]')!.addEventListener('click', close);
     dlg.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(idx - 1));
     dlg.querySelector('[data-lb-next]')!.addEventListener('click', () => show(idx + 1));
-    dlg.addEventListener('close', () => window.dispatchEvent(new Event('ww:unlock')));
-    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
-    dlg.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') show(idx + 1); if (e.key === 'ArrowLeft') show(idx - 1); });
+    dlg.addEventListener('close', () => { window.dispatchEvent(new Event('ww:unlock')); opener?.focus(); });
+    dlg.addEventListener('click', (e) => { const t = e.target as HTMLElement; if (t === dlg || t.classList.contains('lb__fig')) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (!dlg.open) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'ArrowLeft') show(idx - 1);
+    });
   });
 </script>
 <style>
@@ -67,9 +76,8 @@ const id = `g${Math.random().toString(36).slice(2, 7)}`;
     .gallery__item--lead .gallery__btn { aspect-ratio: auto; height: 100%; }
     .gallery__item:nth-child(4n+3) .gallery__btn { border-radius: var(--r-arch); }
   }
-  .lb { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; margin: 0; color: var(--ink); }
+  .lb { position: fixed; inset: 0; z-index: var(--z-lightbox); border: 0; padding: 0; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; margin: 0; color: var(--ink); background: oklch(0.07 0.01 60 / 0.94); backdrop-filter: blur(10px); }
   .lb[open] { display: block; }
-  .lb::backdrop { background: oklch(0.07 0.01 60 / 0.94); backdrop-filter: blur(10px); }
   .lb__fig { position: absolute; inset: 0; display: grid; place-items: center; gap: 1rem; padding: clamp(3.5rem, 8vh, 5rem) clamp(1rem, 6vw, 5rem); grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
   .lb__fig img { max-width: 100%; max-height: 100%; width: auto; height: auto; min-height: 0; object-fit: contain; border-radius: var(--r-md); opacity: 0; transform: scale(0.97); transition: opacity 0.5s var(--ease-out), transform 0.7s var(--ease-out); }
   .lb__fig img.is-in { opacity: 1; transform: none; }

@@ -141,7 +141,13 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
   .plist__rows li:last-child { border-bottom: 1px solid var(--line); }
   .plist__rows li i { flex: 1; border-bottom: 1px dotted var(--line-strong); translate: 0 -0.3em; }
   .plist__rows li b { font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  @media (min-width: 900px) { .plist__groups { grid-template-columns: 1fr 1fr; } .plist__group:first-child { grid-column: 1 / -1; } .plist__group:first-child .plist__rows { columns: 2; column-gap: 3rem; } .plist__group:first-child .plist__rows li { break-inside: avoid; } }
+  /* Zweier-Grid: links Großwild und darunter Raubwild & Kleinwild, rechts Antilopen & Plains Game über beide Zeilen */
+  @media (min-width: 900px) {
+    .plist__groups { grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; column-gap: clamp(2.5rem, 5vw, 4.5rem); align-items: start; }
+    .plist__group:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .plist__group:nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
+    .plist__group:nth-child(3) { grid-column: 1; grid-row: 2; }
+  }
 
   /* ---- Tagespreise ---- */
   .rates__grid { display: grid; gap: 3rem; }
