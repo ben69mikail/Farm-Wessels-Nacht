@@ -17,9 +17,9 @@ export const v2 = {
     ] },
     about: { title: 'Von klein auf Jäger.', title2: 'Heute Gastgeber.', cta: 'Wild Wessels kennenlernen' },
     cta: { title: 'Erzählen Sie uns von Ihrer', em: 'Wunschjagd.', text: 'Wir melden uns persönlich, sprechen über Reisezeit, Wildarten und Begleitpersonen — und schreiben Ihnen ein Angebot, hinter dem wir stehen.', button: 'Unverbindlich anfragen', mail: 'oder schreiben Sie direkt an' },
-    trophy: { title: 'Trophäengalerie', text: 'Bilder erlegten Wildes zeigen wir bewusst nur auf Wunsch. Jedes Bild bleibt verdeckt, bis Sie es aufdecken.', reveal: 'Bild aufdecken', hide: 'Wieder verdecken', all: 'Alle aufdecken', none: 'Alle verdecken' },
+    trophy: { title: 'Trophäengalerie', text: 'Bilder erlegten Wildes zeigen wir bewusst nur auf Wunsch. Jedes Bild bleibt verdeckt, bis Sie es aufdecken.', reveal: 'Bild aufdecken', hide: 'Wieder verdecken', all: 'Alle aufdecken', none: 'Alle verdecken', open: 'Bild öffnen', zoom: 'Bild vergrößern' },
     facts: { title: 'Die Farm in Zahlen' },
-    gallery: { open: 'Bild öffnen', close: 'Schließen', prev: 'Zurück', next: 'Weiter' },
+    gallery: { open: 'Vergrößern', close: 'Schließen', prev: 'Zurück', next: 'Weiter' },
   },
   en: {
     torchHint: 'Move the light.',
@@ -38,9 +38,9 @@ export const v2 = {
     ] },
     about: { title: 'Hunters since childhood.', title2: 'Hosts today.', cta: 'Meet Wild Wessels' },
     cta: { title: 'Tell us about the hunt', em: 'you have in mind.', text: 'We reply personally, talk through dates, species and companions — and send you an offer we stand behind.', button: 'Enquire without obligation', mail: 'or write directly to' },
-    trophy: { title: 'Trophy gallery', text: 'We show images of harvested game only on request. Every picture stays covered until you reveal it.', reveal: 'Reveal picture', hide: 'Cover again', all: 'Reveal all', none: 'Cover all' },
+    trophy: { title: 'Trophy gallery', text: 'We show images of harvested game only on request. Every picture stays covered until you reveal it.', reveal: 'Reveal picture', hide: 'Cover again', all: 'Reveal all', none: 'Cover all', open: 'Open picture', zoom: 'Enlarge picture' },
     facts: { title: 'The farm in numbers' },
-    gallery: { open: 'Open picture', close: 'Close', prev: 'Previous', next: 'Next' },
+    gallery: { open: 'Enlarge', close: 'Close', prev: 'Previous', next: 'Next' },
   },
 } as const;
 export type V2 = typeof v2.de;

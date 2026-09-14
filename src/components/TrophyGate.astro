@@ -3,8 +3,8 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Icon from './Icon.astro';
-interface Props { title: string; text: string; reveal: string; hide: string; all: string; none: string; open: string; close: string; prev: string; next: string; items: readonly { src: ImageMetadata; alt: string; label: string }[] }
-const { title, text, reveal, hide, all, none, open, close, prev, next, items } = Astro.props;
+interface Props { title: string; text: string; reveal: string; hide: string; all: string; none: string; open: string; zoom: string; close: string; prev: string; next: string; items: readonly { src: ImageMetadata; alt: string; label: string }[] }
+const { title, text, reveal, hide, all, none, open, zoom, close, prev, next, items } = Astro.props;
 ---
 <section class="section gate" data-gate>
   <div class="wrap">
@@ -18,7 +18,7 @@ const { title, text, reveal, hide, all, none, open, close, prev, next, items } =
     <ul class="gate__grid">
       {items.map((it, i) => (
         <li class="gate__item" data-gate-item data-reveal style={`--d:${(i % 3) * 90}ms`}>
-          <div class="frame gate__frame" data-cursor={open}>
+          <div class="frame gate__frame" data-cursor={open} data-cursor-open={open} data-cursor-zoom={zoom}>
             <Image src={it.src} alt={it.alt} widths={[500, 900]} sizes="(min-width: 900px) 30vw, 92vw" loading="lazy" decoding="async" />
             <div class="gate__veil" aria-hidden="true"></div>
           </div>
@@ -53,6 +53,10 @@ const { title, text, reveal, hide, all, none, open, close, prev, next, items } =
       b.querySelector('span')!.textContent = on ? b.dataset.hideText! : b.dataset.revealText!;
       const img = item.querySelector('img')!;
       img.setAttribute('aria-hidden', String(!on));
+      // Cursor-Text: verdeckt → „Bild öffnen“, aufgedeckt → „Bild vergrößern“; liegt die Maus gerade darauf, sofort aktualisieren
+      const frame = item.querySelector<HTMLElement>('.gate__frame')!;
+      frame.dataset.cursor = on ? frame.dataset.cursorZoom : frame.dataset.cursorOpen;
+      if (frame.matches(':hover')) frame.dispatchEvent(new MouseEvent('mouseover', { bubbles: true }));
     };
     const syncAll = () => {
       const allOpen = items.every((i) => i.classList.contains('is-open'));
