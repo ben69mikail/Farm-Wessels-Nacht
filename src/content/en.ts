@@ -15,7 +15,7 @@ export const en = {
 
   home: {
     title: 'Wild Wessels Safaris | Hunting Safaris in the Waterberg, South Africa',
-    description: 'The wild is calling: hunting safaris on a private farm in the Waterberg, Limpopo — stalking at first light, fire at night, personally hosted in German and English.',
+    description: 'The wild is calling: hunting safaris on a private farm in the Waterberg, Limpopo — stalking at first light, open country to the horizon, personally hosted in German and English.',
     hero: {
       eyebrow: 'Private hunting safaris in the Waterberg',
       h1a: 'The wild', h1b: 'is calling.',
@@ -29,7 +29,7 @@ export const en = {
     },
     features: [
       { title: 'Your hunt, not just any hunt', text: 'No package off the shelf. How many days, which game, how much quiet in between — we settle it together, long before you board the plane.' },
-      { title: 'One face, one voice', text: 'From the first conversation to the trophy shipment, the same person looks after you — on the phone, and later at the fire.' },
+      { title: 'One face, one voice', text: 'From the first conversation to the trophy shipment, the same person looks after you — on the phone, and later on the veranda.' },
       { title: 'An experience without a rifle, too', text: 'Sunrise on the veranda, game at the dam, sundowners over the valley: companions experience the farm in their own way.' },
     ],
     facts: {
@@ -70,13 +70,13 @@ export const en = {
 
   hunting: {
     title: 'The Hunt | Wild Wessels Safaris',
-    description: 'Stalking at dawn, waiting at the water, braai by the fire: how a hunting safari in the Waterberg unfolds — daily rhythm, seasons, equipment, rental rifles.',
+    description: 'Stalking at dawn, waiting at the water, braai in the evening: how a hunting safari in the Waterberg unfolds — daily rhythm, seasons, equipment, rental rifles.',
     hero: { eyebrow: 'The hunt', h1a: 'On the track,', h1b: 'never in a rush.',
       lead: 'The tracker raises a hand. Everyone holds their breath. Between the thorn trees a shadow moves — and suddenly everything inside you goes quiet. We hunt on foot, fair and with respect for the game. You set the pace.' },
     intro: {
       eyebrow: 'How we understand hunting',
       h2a: 'Fair chase,', h2b: 'no show.',
-      lead: 'Stalking as you know it — under a much bigger sky. Experienced professional hunters, trackers who read the sand like a book, and nobody looking at a watch. No driving from animal to animal, no checklist. Those who wish sit at a waterhole, or spend a whole day out with nothing but binoculars.',
+      lead: 'Stalking as you know it — under a much bigger sky. Experienced professional hunters, trackers who read the sand like a book, and nobody looking at a watch. No driving from animal to animal, no checklist. Those who wish sit at a waterhole, or stalk the whole day with nothing but binoculars.',
     },
     methods: [
       { title: 'Walk and stalk', text: 'Step by step through the thornveld, wind in your face, the track under your boots. Demanding, thrilling — and the most honest way to get to know this land.' },
@@ -89,6 +89,7 @@ export const en = {
       steps: [
         { time: '05:30', title: 'Coffee before the sun', text: 'It is cold, the sky still deep blue. Coffee at the lodge, a quiet word with your professional hunter, a check shot if you wish.' },
         { time: '06:00', title: 'Morning stalk', text: 'The best hours. Fresh tracks in cool sand, francolin calling, the first look through the glass — until the sun stands high.' },
+        { time: '09:30', title: 'Breakfast', text: 'Back at the lodge or out in the bush: a proper breakfast, coffee, and a look at the map for the rest of the day.' },
         { time: '12:00', title: 'Lunch & siesta', text: 'Back to the lodge. Lunch in the shade, a dip in the pool, rest. The game is bedded down in the heat anyway.' },
         { time: '15:30', title: 'Evening stalk', text: 'The light turns gold and the bush wakes again. A second sit or stalk until the last shooting light.' },
         { time: '19:00', title: 'Braai by the fire', text: 'Sparks rise into a sky full of stars. Venison from the grill, a glass of red, and the day is told once more — by everyone who was there.' },
@@ -97,7 +98,7 @@ export const en = {
     season: {
       eyebrow: 'Season',
       h2a: 'April to September —', h2b: 'the best time.',
-      p1: 'The South African winter is the classic hunting season: dry, clear air, cool mornings, thin bush and long views. Usually 20–25 °C by day, close to freezing at night — time for the fleece and the fire.',
+      p1: 'The South African winter is the classic hunting season: dry, clear air, cool mornings, thin bush and long views. Usually 20–25 °C by day, close to freezing at night — time for the fleece.',
       p2: 'Hunting is possible year-round. The summer months (October to March) show the bush green and lush — breathtaking to look at, more demanding to hunt.',
     },
     equipment: {
@@ -137,26 +138,77 @@ export const en = {
     confirmed: {
       eyebrow: 'Confirmed species',
       h2: 'Hunted on our land',
-      note: 'Further species are available on request. We are preparing the complete species and price list for the coming season — get in touch and we will send it as soon as it is ready.',
+      note: 'All trophy fees apply to the 2027 season, per animal taken, in euros. Further species on request.',
       table: { species: 'Species', latin: 'Scientific', group: 'Category', price: 'Trophy fee' },
       rows: [
-        { en: 'Cape buffalo', latin: 'Syncerus caffer', group: 'Big game' },
-        { en: 'Nyala', latin: 'Tragelaphus angasii', group: 'Plains game' },
-        { en: 'Giraffe', latin: 'Giraffa camelopardalis', group: 'Big game' },
-        { en: 'Hartebeest', latin: 'Alcelaphus buselaphus', group: 'Plains game' },
-        { en: 'Warthog', latin: 'Phacochoerus africanus', group: 'Plains game' },
-        { en: 'Burchell’s zebra', latin: 'Equus quagga', group: 'Plains game' },
+        { en: 'Cape buffalo', latin: 'Syncerus caffer', group: 'Big game', price: 'from €8,500' },
+        { en: 'Nyala', latin: 'Tragelaphus angasii', group: 'Plains game', price: '€2,000' },
+        { en: 'Giraffe', latin: 'Giraffa camelopardalis', group: 'Big game', price: '€2,500' },
+        { en: 'Hartebeest', latin: 'Alcelaphus buselaphus', group: 'Plains game', price: '€1,500' },
+        { en: 'Warthog', latin: 'Phacochoerus africanus', group: 'Plains game', price: '€400' },
+        { en: 'Burchell’s zebra', latin: 'Equus quagga', group: 'Plains game', price: '€800' },
       ],
+    },
+    list: {
+      h2: 'Price list 2027',
+      lead: 'From Cape buffalo to duiker — every species with its trophy fee. What you do not take, you do not pay for.',
+      groups: [
+        { title: 'Big game', rows: [
+          { name: 'Cape buffalo up to 38"', price: '€8,500' }, { name: 'Cape buffalo up to 40"', price: '€9,900' }, { name: 'Cape buffalo 42" and up', price: '€12,000' },
+          { name: 'Sable, non-trophy', price: '€3,900' }, { name: 'Giraffe', price: '€2,500' }, { name: 'Hippo', price: '€12,000' }, { name: 'Crocodile up to 4 m', price: '€5,000' },
+        ] },
+        { title: 'Antelope & plains game', rows: [
+          { name: 'Kudu, non-trophy', price: '€2,800' }, { name: 'Eland', price: '€3,000' }, { name: 'Waterbuck', price: '€2,500' }, { name: 'Nyala', price: '€2,000' },
+          { name: 'Golden wildebeest', price: '€2,700' }, { name: 'Oryx (gemsbok)', price: '€1,900' }, { name: 'Red hartebeest', price: '€1,500' }, { name: 'Bushbuck', price: '€1,400' },
+          { name: 'Common reedbuck', price: '€1,400' }, { name: 'Klipspringer', price: '€1,200' }, { name: 'Blue wildebeest', price: '€950' }, { name: 'Burchell’s zebra', price: '€800' },
+          { name: 'Bushpig', price: '€500' }, { name: 'Duiker', price: '€450' }, { name: 'Blesbok', price: '€450' }, { name: 'Impala', price: '€450' }, { name: 'Warthog', price: '€400' },
+        ] },
+        { title: 'Predators & small game', rows: [
+          { name: 'Brown hyena', price: '€2,200' }, { name: 'Civet', price: '€1,250' }, { name: 'Honey badger', price: '€1,000' }, { name: 'Genet', price: '€900' },
+          { name: 'Vervet monkey', price: '€250' }, { name: 'Baboon', price: '€400' }, { name: 'Jackal', price: '€100' }, { name: 'Rhebok', price: '€4,600' },
+        ] },
+      ],
+    },
+    rates: {
+      h2a: 'Daily rates —', h2b: 'from five days.',
+      lead: 'Minimum stay five hunting days. The daily rate covers everything you need on the farm — accommodation, full board, professional hunter, tracker, vehicle, recovery of game.',
+      items: [
+        { label: 'Daily rate per hunter, 1 : 1 (one professional hunter per hunter)', value: '€300' },
+        { label: 'Daily rate per hunter, 2 : 1 (two hunters share a professional hunter)', value: '€250' },
+        { label: 'Companion per day', value: '€160' },
+        { label: 'Children up to 12', value: 'free' },
+        { label: 'Rental rifle incl. ammunition, per day', value: '€60' },
+        { label: 'Airport transfer Johannesburg, return', value: '€390' },
+      ],
+      examples: {
+        h3: 'Two worked examples',
+        note: 'Six days each, excluding trophy fees.',
+        items: [
+          { title: 'One hunter with companion', lines: ['6 × €300 daily rate = €1,800', '6 × €160 companion = €960', '6 × €60 rental rifle = €360', '1 × €390 transfer'], total: '€3,510' },
+          { title: 'One hunter alone', lines: ['6 × €300 daily rate = €1,800', '6 × €60 rental rifle = €360', '1 × €390 transfer'], total: '€2,550' },
+        ],
+      },
+    },
+    packages: {
+      h2a: 'Packages —', h2b: 'for a quick decision.',
+      lead: 'Three fixed offers, the same ones we show at the fairs: game plus six nights, full board, all drinks and airport transfer. All inclusive, nothing on top.',
+      incl: 'Included: 6 nights · 3 meals a day · all drinks · airport transfer · professional hunter & tracker',
+      items: [
+        { title: 'Starter', species: ['Blesbok', 'Impala', 'Warthog'], price: '€3,700' },
+        { title: 'Classic', species: ['Kudu', 'Eland', 'Burchell’s zebra', 'Impala'], price: '€9,000' },
+        { title: 'Six in one go', species: ['Nyala', 'Blue wildebeest', 'Impala', 'Blesbok', 'Warthog', 'Burchell’s zebra'], price: '€6,000' },
+      ],
+      cta: 'Enquire about a package',
     },
     pricing: {
       eyebrow: 'How rates work',
       h2a: 'Transparent —', h2b: 'no surprises.',
-      lead: 'A hunting safari with us has two building blocks. What the daily rate covers and what it does not, you receive in writing before booking — so that by the fire, the only talk is about the hunt.',
+      lead: 'A hunting safari with us has two building blocks. What the daily rate covers and what it does not, you receive in writing before booking — so that once you are here, the only talk is about the hunt.',
       blocks: [
         { title: 'Daily rate', text: 'Accommodation, full board, drinks within reason, professional hunter, tracker, hunting vehicle, recovery of game and field preparation of the trophy.' },
         { title: 'Trophy fee', text: 'Charged per animal taken, by species. Only what is actually taken is billed — wounded game counts as taken, in line with South African practice.' },
       ],
-      included: { title: 'Usually included', items: ['Accommodation and full board', 'Professional hunter and tracker', 'Hunting vehicle on the farm', 'Recovery and field preparation of trophies', 'Laundry service', 'Wi-Fi'] },
+      included: { title: 'Always included', items: ['Accommodation and full board', 'Professional hunter and tracker', 'Hunting vehicle on the farm', 'Recovery and field preparation of trophies', 'Laundry service', 'Wi-Fi'] },
       excluded: { title: 'Not included', items: ['International flights', 'Airport transfers', 'Hunting licence and rifle import', 'Taxidermy, dip & pack and shipping', 'Travel and hunting liability insurance', 'Gratuities'] },
     },
     cta: { eyebrow: 'Price list', h2a: 'Your price list —', h2b: 'put together personally.', text: 'Tell us your dates, group size and the species you are after. You will receive a written offer with every item listed.', button: 'Request the price list' },
@@ -164,29 +216,28 @@ export const en = {
 
   lodge: {
     title: 'Lodge & Accommodation | Wild Wessels Safaris',
-    description: 'Main house beneath jacarandas, four free-standing cottages, pool, lapa with braai and bar — room for 36 guests, 5.5 km outside Modimolle.',
+    description: 'Six luxury rooms with private balconies, one suite in its own building, three rustic houses in the Hunter’s Camp, pool, lapa with braai and bar — 5.5 km outside Modimolle.',
     hero: { eyebrow: 'Lodge & accommodation', h1a: 'Somewhere to come home to,', h1b: 'not just sleep.',
       lead: 'Dusty boots outside the door, a cold drink in hand, and above the veranda the sky turns orange. A farmstead grown over generations beneath old jacaranda trees — 5.5 km outside Modimolle.' },
     facts: [
-      { value: '6', label: 'rooms & suites in the main house' },
-      { value: '4', label: 'free-standing cottages' },
-      { value: '36', label: 'guests maximum' },
-      { value: '130', label: 'seats in the chapel' },
+      { value: '6', label: 'luxury rooms with private balcony' },
+      { value: '1', label: 'suite in its own building' },
+      { value: '3', label: 'houses in the Hunter’s Camp' },
+      { value: '5.5 km', label: 'from Modimolle' },
     ],
     rooms: {
       eyebrow: 'Rooms & cottages',
       h2: 'Where you sleep',
       items: [
-        { title: 'Luxury Suites 1–4', text: 'Queen bed, en-suite shower room, TV, air-conditioning and Wi-Fi. Two guests each.' },
-        { title: 'Luxury Room 5', text: 'King bed, en-suite shower room, TV, air-conditioning and Wi-Fi. For two guests.' },
-        { title: 'Executive Suite', text: 'The largest unit in the main house: king bed, en-suite bathroom with tub and shower, private sitting area.' },
-        { title: 'Cottages Wildevy, Appelblaar, Kudubessie & Apiespeul', text: 'Four free-standing cottages with three bedrooms each (one double, four singles), bathroom with tub and shower, open-plan living area and own kitchen. Up to six guests each — ideal for hunting parties and families.' },
+        { title: 'Six luxury rooms', text: 'Each with its own balcony, en-suite shower room, TV, air-conditioning and Wi-Fi. Two guests each.' },
+        { title: 'The suite', text: 'In its own building, with balcony: king bed, bathroom with tub and shower, private sitting area — for those who want quiet after the day in the field.' },
+        { title: 'Hunter’s Camp — three houses', text: 'Rustic, honest, close to the bush: three free-standing houses with their own living area and kitchen. Ideal for hunting parties who want the evening to themselves.' },
       ],
     },
     amenities: {
       eyebrow: 'Facilities',
       h2: 'What awaits you on the farm',
-      items: ['Pool with sun terrace', 'Lapa with braai and fireplace', 'Bar and lounge with billiard table', 'Free Wi-Fi across the farmstead', 'Air-conditioning in all rooms', 'Full board and laundry service', 'Conference and function room', 'Secure parking on the property', 'Children’s playground', 'Dam with birdwatching'],
+      items: ['Pool with sun terrace', 'Lapa with braai and fireplace', 'Bar and lounge with billiard table', 'Free Wi-Fi across the farmstead', 'Air-conditioning in all rooms', 'Full board and laundry service', 'Private balcony on every room', 'Secure parking on the property', 'Children’s playground', 'Dam with birdwatching'],
     },
     gallery: { eyebrow: 'Gallery', h2: 'The lodge in pictures' },
     wedding: {
@@ -208,7 +259,7 @@ export const en = {
       steps: [
         { no: '01', title: 'Fly to Johannesburg', text: 'Direct flights from major European hubs to O. R. Tambo International (JNB), usually overnight. No time difference from Central Europe in summer, one hour in winter.' },
         { no: '02', title: 'Rifle import at the airport', text: 'At the SAPS office in the airport you receive the temporary import permit. We prepare form SAPS 520 with you and guide you through the process.' },
-        { no: '03', title: 'Transfer into the Waterberg', text: 'Around two to two and a half hours north on the N1 — the towns get smaller, the sky bigger. We collect you at the airport on request.' },
+        { no: '03', title: 'Transfer into the Waterberg', text: 'Around two hours by car north on the N1 — the towns get smaller, the sky bigger. We collect you at the airport on request (return transfer €390).' },
         { no: '04', title: 'Arrival at the farm', text: 'The farm lies 5.5 km outside Modimolle (formerly Nylstroom), Waterberg, Limpopo. The coffee is already on.' },
       ],
     },
@@ -301,7 +352,7 @@ export const en = {
   },
 
   footer: {
-    tagline: 'Personally hosted hunting safaris on our private farm in the Waterberg, Limpopo — stalking, fire and open country.',
+    tagline: 'Personally hosted hunting safaris on our private farm in the Waterberg, Limpopo — stalking, game and open country.',
     navTitle: 'Navigation', contactTitle: 'Contact', legalTitle: 'Legal',
     rights: 'All rights reserved.',
   },

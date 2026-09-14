@@ -18,7 +18,7 @@ import imgWarthog from '../assets/lodge/damm.jpg';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = t(locale); const p = c.species; const x = v2[locale]; const de = locale === 'de';
-const rows = p.confirmed.rows as readonly { de?: string; en?: string; latin: string; group: string }[];
+const rows = p.confirmed.rows as readonly { de?: string; en?: string; latin: string; group: string; price?: string }[];
 const imgs = [imgBuffalo, imgNyala, imgGiraffe, imgHartebeest, imgWarthog, imgZebra];
 const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe, x.speciesNote.hartebeest, x.speciesNote.warthog, x.speciesNote.zebra];
 ---
@@ -38,13 +38,78 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
               <p class="muted">{notes[i]}</p>
               <dl class="sp__meta">
                 <div><dt>{p.confirmed.table.group}</dt><dd>{r.group}</dd></div>
-                <div><dt>{p.confirmed.table.price}</dt><dd>{c.ui.onRequest}</dd></div>
+                <div><dt>{p.confirmed.table.price}</dt><dd>{r.price ?? c.ui.onRequest}</dd></div>
               </dl>
             </div>
           </li>
         ))}
       </ul>
       <p class="species__note muted" data-reveal>{p.confirmed.note}</p>
+    </div>
+  </section>
+
+  <!-- Vollständige Preisliste -->
+  <section class="section plist">
+    <div class="wrap">
+      <div class="plist__head">
+        <h2 class="display t-3 lines"><span class="line"><span>{p.list.h2}</span></span></h2>
+        <p class="lead" data-reveal>{p.list.lead}</p>
+      </div>
+      <div class="plist__groups">
+        {p.list.groups.map((g, gi) => (
+          <section class="plist__group" data-reveal style={`--d:${gi * 120}ms`}>
+            <h3 class="display t-2 plist__gtitle">{g.title}</h3>
+            <ul class="plist__rows">
+              {g.rows.map((r) => <li><span>{r.name}</span><i aria-hidden="true"></i><b>{r.price}</b></li>)}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tagespreise -->
+  <section class="section rates">
+    <div class="wrap rates__grid">
+      <div class="stack" style="--flow:1.25rem">
+        <h2 class="display t-3 lines"><span class="line"><span>{p.rates.h2a}</span></span><span class="line"><span><em>{p.rates.h2b}</em></span></span></h2>
+        <p class="lead" data-reveal>{p.rates.lead}</p>
+        <ul class="rates__list" data-reveal>
+          {p.rates.items.map((it) => <li><span>{it.label}</span><b>{it.value}</b></li>)}
+        </ul>
+      </div>
+      <div class="rates__ex" data-reveal style="--d:150ms">
+        <h3 class="t-1 rates__exh">{p.rates.examples.h3}</h3>
+        <p class="small muted">{p.rates.examples.note}</p>
+        {p.rates.examples.items.map((ex) => (
+          <article class="rates__card">
+            <h4 class="display t-2">{ex.title}</h4>
+            <ul>{ex.lines.map((l) => <li class="muted">{l}</li>)}</ul>
+            <p class="rates__total"><span>{locale === 'de' ? 'Gesamt' : 'Total'}</span><b class="display">{ex.total}</b></p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pakete -->
+  <section class="section packs">
+    <div class="wrap">
+      <div class="packs__head">
+        <h2 class="display t-3 lines"><span class="line"><span>{p.packages.h2a}</span></span><span class="line"><span><em>{p.packages.h2b}</em></span></span></h2>
+        <p class="lead" data-reveal>{p.packages.lead}</p>
+      </div>
+      <ul class="packs__grid">
+        {p.packages.items.map((pk, i) => (
+          <li class="pack" data-reveal style={`--d:${i * 120}ms`}>
+            <h3 class="display t-2">{pk.title}</h3>
+            <ul class="pack__species">{pk.species.map((sp) => <li>{sp}</li>)}</ul>
+            <p class="pack__price display">{pk.price}</p>
+            <a class="btn btn--ghost" href={href('contact', locale)}>{p.packages.cta}<Icon name="arrow" class="arrow" /></a>
+          </li>
+        ))}
+      </ul>
+      <p class="packs__incl muted" data-reveal>{p.packages.incl}</p>
     </div>
   </section>
 
@@ -67,6 +132,42 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
   <CtaBand a={p.cta.h2a} b={p.cta.h2b} text={p.cta.text} button={p.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
 </Base>
 <style>
+  /* ---- Preisliste ---- */
+  .plist__head { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+  .plist__groups { display: grid; gap: clamp(2rem, 4vw, 3rem); }
+  .plist__gtitle { color: var(--gold); margin-bottom: 1rem; }
+  .plist__rows { display: grid; }
+  .plist__rows li { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.75rem 0; border-top: 1px solid var(--line); }
+  .plist__rows li:last-child { border-bottom: 1px solid var(--line); }
+  .plist__rows li i { flex: 1; border-bottom: 1px dotted var(--line-strong); translate: 0 -0.3em; }
+  .plist__rows li b { font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  @media (min-width: 900px) { .plist__groups { grid-template-columns: 1fr 1fr; } .plist__group:first-child { grid-column: 1 / -1; } .plist__group:first-child .plist__rows { columns: 2; column-gap: 3rem; } .plist__group:first-child .plist__rows li { break-inside: avoid; } }
+
+  /* ---- Tagespreise ---- */
+  .rates__grid { display: grid; gap: 3rem; }
+  .rates__list { display: grid; }
+  .rates__list li { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
+  .rates__list li:last-child { border-bottom: 1px solid var(--line); }
+  .rates__list b { font-weight: 500; white-space: nowrap; color: var(--gold); font-size: 1.15em; }
+  .rates__ex { display: grid; gap: 1rem; align-content: start; }
+  .rates__exh { font-weight: 500; }
+  .rates__card { padding: clamp(1.25rem, 2.5vw, 2rem); border-radius: var(--r-lg); background: var(--surface); display: grid; gap: 0.75rem; }
+  .rates__card ul { display: grid; gap: 0.25rem; }
+  .rates__total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 0.75rem; border-top: 1px solid var(--line-strong); }
+  .rates__total b { font-size: var(--fs-2); color: var(--gold); font-weight: 500; }
+  @media (min-width: 900px) { .rates__grid { grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; } }
+
+  /* ---- Pakete ---- */
+  .packs__head { display: grid; gap: 1rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+  .packs__grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .pack { display: grid; gap: 1rem; padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: var(--r-lg); background: var(--surface); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.06); align-content: start; transition: transform 0.6s var(--ease-out), box-shadow 0.6s; }
+  .pack:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px var(--gold-soft), 0 30px 60px -40px oklch(0 0 0 / 0.9); }
+  .pack__species { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .pack__species li { padding: 0.3rem 0.75rem; border-radius: var(--r-pill); box-shadow: inset 0 0 0 1px var(--line-strong); font-size: 0.9rem; }
+  .pack__price { font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--gold); line-height: 1; margin-top: 0.5rem; }
+  .pack .btn { justify-self: start; }
+  .packs__incl { margin-top: 1.5rem; max-width: var(--measure); }
+
   .species__title { margin-bottom: clamp(2rem, 5vw, 4rem); }
   .species__list { display: grid; gap: clamp(2rem, 4vw, 3rem); }
   .sp { display: grid; gap: 1.25rem; align-items: center; }

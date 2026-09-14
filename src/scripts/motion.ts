@@ -147,7 +147,7 @@ if (!reduce) {
   document.querySelectorAll<HTMLElement>('[data-day]').forEach((section) => {
     const line = section.querySelector<HTMLElement>('[data-day-line]');
     const steps = section.querySelectorAll<HTMLElement>('[data-day-step]');
-    const skies = ['oklch(0.20 0.04 262)', 'oklch(0.42 0.12 50)', 'oklch(0.52 0.10 78)', 'oklch(0.38 0.14 32)', 'oklch(0.16 0.03 40)'];
+    const skies = ['oklch(0.20 0.04 262)', 'oklch(0.42 0.12 50)', 'oklch(0.55 0.10 85)', 'oklch(0.52 0.10 78)', 'oklch(0.38 0.14 32)', 'oklch(0.16 0.03 40)'];
     if (line) gsap.fromTo(line, { scaleY: 0 }, { scaleY: 1, ease: 'none', transformOrigin: 'top', scrollTrigger: { trigger: section, start: 'top 60%', end: 'bottom 70%', scrub: true } });
     steps.forEach((step, i) => {
       ScrollTrigger.create({

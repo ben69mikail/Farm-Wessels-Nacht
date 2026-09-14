@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Rows from '../components/Rows.astro';
-import Split from '../components/Split.astro';
 import Gallery from '../components/Gallery.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Icon from '../components/Icon.astro';
@@ -10,7 +9,6 @@ import { t } from '../content';
 import { v2 } from '../content/v2';
 import { href, type Locale } from '../content/nav';
 import hero from '../assets/lodge/lodge-abenddaemmerung.jpg';
-import imgWedding from '../assets/wedding/kapelle.jpg';
 import l1 from '../assets/lodge/luftbild-pool.jpg';
 import l2 from '../assets/lodge/haupthaus-jacaranda.jpg';
 import l3 from '../assets/rooms/executive-suite.jpg';
@@ -23,7 +21,6 @@ import l8 from '../assets/lodge/essbereich.jpg';
 import l9 from '../assets/lodge/gaestehaus.jpg';
 import l10 from '../assets/rooms/bad-wanne.jpg';
 import l11 from '../assets/lodge/damm.jpg';
-import l12 from '../assets/wedding/festsaal.jpg';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = t(locale); const p = c.lodge; const x = v2[locale]; const de = locale === 'de';
@@ -39,7 +36,6 @@ const gallery = [
   { src: l9, alt: de ? 'Freistehendes Gästehaus' : 'Free-standing cottage' },
   { src: l10, alt: de ? 'Bad mit Wanne und Dusche' : 'Bathroom with tub and shower' },
   { src: l11, alt: de ? 'Damm mit Vogelbeobachtung' : 'Dam with birdwatching' },
-  { src: l12, alt: de ? 'Festsaal mit langer Tafel' : 'Reception hall with long table' },
 ];
 ---
 <Base locale={locale} pageKey="lodge" title={p.title} description={p.description}>
@@ -55,10 +51,6 @@ const gallery = [
     <ul class="amen__list">{p.amenities.items.map((a, i) => <li data-reveal style={`--d:${(i % 5) * 60}ms`}><Icon name="arrow" />{a}</li>)}</ul>
   </div></section>
   <Gallery title={p.gallery.h2} items={gallery} open={x.gallery.open} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} />
-  <Split image={imgWedding} alt={de ? 'Kapelle mit Holzbänken und rotem Läufer' : 'Chapel with wooden pews and red carpet'} a={p.wedding.h2a} b={p.wedding.h2b} arch flip>
-    <p class="lead" data-reveal>{p.wedding.text}</p>
-    <p data-reveal><a class="btn btn--ghost" href={href('contact', locale)}>{p.wedding.cta}<Icon name="arrow" class="arrow" /></a></p>
-  </Split>
   <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />
 </Base>
 <style>

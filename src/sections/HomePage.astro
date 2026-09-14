@@ -20,7 +20,6 @@ import imgWarthog from '../assets/lodge/damm.jpg';
 import imgHaupthaus from '../assets/lodge/haupthaus-jacaranda.jpg';
 import imgGaestehaus from '../assets/lodge/gaestehaus.jpg';
 import imgLapa from '../assets/lodge/lapa-braai.jpg';
-import imgKapelle from '../assets/wedding/kapelle.jpg';
 import imgAbout from '../assets/hunting/jaeger-fernglas-hoch.jpg';
 import imgPirsch from '../assets/hero/pirschgruppe.jpg';
 import imgPhil from '../assets/hunting/phil-abend.jpg';
@@ -34,7 +33,7 @@ const rows = c.species.confirmed.rows as readonly { de?: string; en?: string; la
 const name = (r: { de?: string; en?: string }) => (locale === 'de' ? r.de : r.en) ?? '';
 const railImgs = [imgBuffalo, imgNyala, imgGiraffe, imgHartebeest, imgWarthog, imgZebra];
 const railNotes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe, x.speciesNote.hartebeest, x.speciesNote.warthog, x.speciesNote.zebra];
-const lodgeImgs = [imgHaupthaus, imgGaestehaus, imgLapa, imgKapelle];
+const lodgeImgs = [imgHaupthaus, imgGaestehaus, imgLapa];
 const words = x.statement.map((l) => l.split(' '));
 ---
 <Base locale={locale} pageKey="home" title={h.title} description={h.description} intro>
@@ -116,9 +115,9 @@ const words = x.statement.map((l) => l.split(' '));
     <div class="wrap">
       <p class="brandline" data-reveal="fade">{x.facts.title}</p>
       <ul class="facts__list">
-        <li data-reveal><span class="display facts__v" data-count="36">36</span><span class="muted">{h.facts.items[1].label}</span></li>
+        <li data-reveal><span class="display facts__v" data-count="32">32</span><span class="muted">{locale === 'de' ? 'Wildarten auf der Preisliste' : 'species on the price list'}</span></li>
         <li data-reveal style="--d:100ms"><span class="display facts__v" data-count={locale === 'de' ? '5,5 km' : '5.5 km'}>{locale === 'de' ? '5,5 km' : '5.5 km'}</span><span class="muted">{h.facts.items[2].label}</span></li>
-        <li data-reveal style="--d:200ms"><span class="display facts__v" data-count="130">130</span><span class="muted">{c.lodge.facts[3].label}</span></li>
+        <li data-reveal style="--d:200ms"><span class="display facts__v" data-count="7">7</span><span class="muted">{locale === 'de' ? 'Zimmer mit eigenem Balkon' : 'rooms with private balcony'}</span></li>
         <li data-reveal style="--d:300ms"><span class="display facts__v facts__v--txt">{h.facts.items[3].value}</span><span class="muted">{h.facts.items[3].label}</span></li>
       </ul>
     </div>

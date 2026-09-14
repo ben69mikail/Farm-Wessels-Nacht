@@ -15,7 +15,7 @@ export const de = {
 
   home: {
     title: 'Wild Wessels Safaris | Jagdreisen im Waterberg, Südafrika',
-    description: 'Die Wildnis ruft: Jagdsafaris auf einer privaten Farm im Waterberg, Limpopo — Pirsch im Morgengrauen, Feuer am Abend, deutschsprachig und persönlich begleitet.',
+    description: 'Die Wildnis ruft: Jagdsafaris auf einer privaten Farm im Waterberg, Limpopo — Pirsch im Morgengrauen, Weite bis zum Horizont, deutschsprachig und persönlich begleitet.',
     hero: {
       eyebrow: 'Private Jagdsafaris im Waterberg',
       h1a: 'Die Wildnis', h1b: 'ruft.',
@@ -29,7 +29,7 @@ export const de = {
     },
     features: [
       { title: 'Ihre Jagd, nicht irgendeine', text: 'Kein Paket von der Stange. Wie viele Tage, welches Wild, wie viel Ruhe dazwischen — das legen wir gemeinsam fest, lange bevor Sie ins Flugzeug steigen.' },
-      { title: 'Ein Gesicht, eine Sprache', text: 'Vom ersten Gespräch bis zum Trophäenversand begleitet Sie derselbe Mensch — auf Deutsch, am Telefon und später am Feuer.' },
+      { title: 'Ein Gesicht, eine Sprache', text: 'Vom ersten Gespräch bis zum Trophäenversand begleitet Sie derselbe Mensch — auf Deutsch, am Telefon und später auf der Veranda.' },
       { title: 'Auch ohne Büchse ein Erlebnis', text: 'Sonnenaufgang auf der Veranda, Wild am Damm, Sundowner mit Blick ins Tal: Begleitpersonen erleben die Farm auf ihre eigene Weise.' },
     ],
     facts: {
@@ -70,13 +70,13 @@ export const de = {
 
   hunting: {
     title: 'Die Jagd | Wild Wessels Safaris',
-    description: 'Pirsch im Morgengrauen, Ansitz am Wasser, Braai am Feuer: So erleben Sie eine Jagdreise im Waterberg — Ablauf, Jagdzeiten, Ausrüstung, Leihwaffen.',
+    description: 'Pirsch im Morgengrauen, Ansitz am Wasser, Braai am Abend: So erleben Sie eine Jagdreise im Waterberg — Ablauf, Jagdzeiten, Ausrüstung, Leihwaffen.',
     hero: { eyebrow: 'Die Jagd', h1a: 'Auf der Fährte,', h1b: 'nicht in Eile.' ,
       lead: 'Der Tracker hebt die Hand. Alles hält den Atem an. Zwischen den Dornbüschen bewegt sich ein Schatten — und plötzlich ist es ganz still in Ihnen. Wir jagen zu Fuß, führig und mit Respekt vor dem Wild. Das Tempo bestimmen Sie.' },
     intro: {
       eyebrow: 'Unser Verständnis von Jagd',
       h2a: 'Weidgerecht,', h2b: 'ohne Show.',
-      lead: 'Pirsch, wie Sie sie kennen — nur unter einem größeren Himmel. Erfahrene Professional Hunters, Tracker, die im Sand lesen wie in einem Buch, und kein Blick auf die Uhr. Kein Fahren von Stück zu Stück, keine Checkliste. Wer will, sitzt an der Wasserstelle an oder geht einen Tag lang nur mit dem Fernglas.',
+      lead: 'Pirsch, wie Sie sie kennen — nur unter einem größeren Himmel. Erfahrene Professional Hunters, Tracker, die im Sand lesen wie in einem Buch, und kein Blick auf die Uhr. Kein Fahren von Stück zu Stück, keine Checkliste. Wer will, sitzt an der Wasserstelle an oder pirscht den ganzen Tag nur mit dem Fernglas.',
     },
     methods: [
       { title: 'Pirsch zu Fuß', text: 'Schritt für Schritt durch den Dornbusch, den Wind im Gesicht, die Fährte unter den Stiefeln. Anstrengend, spannend — und die ehrlichste Art, dieses Revier kennenzulernen.' },
@@ -89,6 +89,7 @@ export const de = {
       steps: [
         { time: '05:30', title: 'Kaffee, bevor die Sonne kommt', text: 'Es ist kalt, der Himmel noch tiefblau. Ein Kaffee an der Lodge, ein kurzes Wort mit dem Professional Hunter, Kontrollschuss, wenn Sie möchten.' },
         { time: '06:00', title: 'Morgenpirsch', text: 'Die besten Stunden. Frische Fährten im kühlen Sand, Frankoline rufen, der erste Blick durchs Glas — bis die Sonne hoch steht.' },
+        { time: '09:30', title: 'Frühstück', text: 'Zurück an der Lodge oder draußen im Busch: kräftiges Frühstück, Kaffee, ein Blick auf die Karte für den Rest des Tages.' },
         { time: '12:00', title: 'Mittag & Siesta', text: 'Zurück zur Lodge. Essen im Schatten, ein Sprung in den Pool, Ruhe. Das Wild steht in der Hitze ohnehin.' },
         { time: '15:30', title: 'Abendpirsch', text: 'Das Licht wird golden, der Busch wacht wieder auf. Zweiter Ansitz oder Pirsch bis zum letzten Büchsenlicht.' },
         { time: '19:00', title: 'Braai am Feuer', text: 'Funken steigen in den Sternenhimmel. Wildbret vom Grill, ein Glas Rotwein, und der Tag wird noch einmal erzählt — von allen, die dabei waren.' },
@@ -97,7 +98,7 @@ export const de = {
     season: {
       eyebrow: 'Jagdzeit',
       h2a: 'April bis September —', h2b: 'die beste Zeit.',
-      p1: 'Der südafrikanische Winter ist die klassische Jagdsaison: trockene, klare Luft, kühle Morgen, lichter Busch und weite Sicht. Tagsüber meist 20–25 °C, nachts nahe null Grad — Zeit für die Fleecejacke und das Feuer.',
+      p1: 'Der südafrikanische Winter ist die klassische Jagdsaison: trockene, klare Luft, kühle Morgen, lichter Busch und weite Sicht. Tagsüber meist 20–25 °C, nachts nahe null Grad — Zeit für die Fleecejacke.',
       p2: 'Jagd ist ganzjährig möglich. Die Sommermonate (Oktober bis März) zeigen den Busch grün und satt — landschaftlich atemberaubend, jagdlich anspruchsvoller.',
     },
     equipment: {
@@ -137,26 +138,77 @@ export const de = {
     confirmed: {
       eyebrow: 'Bestätigte Wildarten',
       h2: 'Auf unserem Revier bejagt',
-      note: 'Weitere Wildarten sind auf Anfrage bejagbar. Die vollständige Arten- und Preisliste für die kommende Saison bereiten wir gerade vor — sprechen Sie uns an, wir schicken sie Ihnen, sobald sie vorliegt.',
+      note: 'Alle Abschussgebühren gelten für die Saison 2027 und verstehen sich pro erlegtem Stück in Euro. Weitere Wildarten auf Anfrage.',
       table: { species: 'Wildart', latin: 'Wissenschaftlich', group: 'Kategorie', price: 'Abschussgebühr' },
       rows: [
-        { de: 'Kaffernbüffel', latin: 'Syncerus caffer', group: 'Großwild' },
-        { de: 'Nyala', latin: 'Tragelaphus angasii', group: 'Plains Game' },
-        { de: 'Giraffe', latin: 'Giraffa camelopardalis', group: 'Großwild' },
-        { de: 'Kuhantilope (Hartebeest)', latin: 'Alcelaphus buselaphus', group: 'Plains Game' },
-        { de: 'Warzenschwein', latin: 'Phacochoerus africanus', group: 'Plains Game' },
-        { de: 'Steppenzebra', latin: 'Equus quagga', group: 'Plains Game' },
+        { de: 'Kaffernbüffel', latin: 'Syncerus caffer', group: 'Großwild', price: 'ab 8.500 €' },
+        { de: 'Nyala', latin: 'Tragelaphus angasii', group: 'Plains Game', price: '2.000 €' },
+        { de: 'Giraffe', latin: 'Giraffa camelopardalis', group: 'Großwild', price: '2.500 €' },
+        { de: 'Kuhantilope (Hartebeest)', latin: 'Alcelaphus buselaphus', group: 'Plains Game', price: '1.500 €' },
+        { de: 'Warzenschwein', latin: 'Phacochoerus africanus', group: 'Plains Game', price: '400 €' },
+        { de: 'Steppenzebra', latin: 'Equus quagga', group: 'Plains Game', price: '800 €' },
       ],
+    },
+    list: {
+      h2: 'Preisliste 2027',
+      lead: 'Vom Kaffernbüffel bis zum Duiker — jede Art mit ihrer Abschussgebühr. Was Sie nicht erlegen, zahlen Sie nicht.',
+      groups: [
+        { title: 'Großwild', rows: [
+          { name: 'Kaffernbüffel bis 38"', price: '8.500 €' }, { name: 'Kaffernbüffel bis 40"', price: '9.900 €' }, { name: 'Kaffernbüffel ab 42"', price: '12.000 €' },
+          { name: 'Rappenantilope (Sable), non trophy', price: '3.900 €' }, { name: 'Giraffe', price: '2.500 €' }, { name: 'Flusspferd', price: '12.000 €' }, { name: 'Krokodil bis 4 m', price: '5.000 €' },
+        ] },
+        { title: 'Antilopen & Plains Game', rows: [
+          { name: 'Kudu, non trophy', price: '2.800 €' }, { name: 'Elenantilope (Eland)', price: '3.000 €' }, { name: 'Wasserbock', price: '2.500 €' }, { name: 'Nyala', price: '2.000 €' },
+          { name: 'Gold-Gnu', price: '2.700 €' }, { name: 'Oryx', price: '1.900 €' }, { name: 'Rote Kuhantilope (Red Hartebeest)', price: '1.500 €' }, { name: 'Buschbock', price: '1.400 €' },
+          { name: 'Großriedbock (Common Reedbuck)', price: '1.400 €' }, { name: 'Klippspringer', price: '1.200 €' }, { name: 'Streifengnu (Blue Wildebeest)', price: '950 €' }, { name: 'Steppenzebra', price: '800 €' },
+          { name: 'Buschschwein (Bushpig)', price: '500 €' }, { name: 'Duiker', price: '450 €' }, { name: 'Blessbock', price: '450 €' }, { name: 'Impala', price: '450 €' }, { name: 'Warzenschwein', price: '400 €' },
+        ] },
+        { title: 'Raubwild & Kleinwild', rows: [
+          { name: 'Braune Hyäne', price: '2.200 €' }, { name: 'Zibetkatze', price: '1.250 €' }, { name: 'Honigdachs', price: '1.000 €' }, { name: 'Ginsterkatze (Genet)', price: '900 €' },
+          { name: 'Grüne Meerkatze (Vervet)', price: '250 €' }, { name: 'Pavian', price: '400 €' }, { name: 'Schakal', price: '100 €' }, { name: 'Rhebok', price: '4.600 €' },
+        ] },
+      ],
+    },
+    rates: {
+      h2a: 'Tagespreise —', h2b: 'ab fünf Tagen.',
+      lead: 'Mindestaufenthalt fünf Jagdtage. Der Tagessatz deckt alles ab, was Sie vor Ort brauchen — Unterkunft, Vollpension, Professional Hunter, Tracker, Fahrzeug, Wildbergung.',
+      items: [
+        { label: 'Tagessatz pro Jäger, 1 : 1 (ein Professional Hunter pro Jäger)', value: '300 €' },
+        { label: 'Tagessatz pro Jäger, 2 : 1 (zwei Jäger teilen sich einen Professional Hunter)', value: '250 €' },
+        { label: 'Begleitperson pro Tag', value: '160 €' },
+        { label: 'Kinder bis 12 Jahre', value: 'frei' },
+        { label: 'Leihwaffe inkl. Munition, pro Tag', value: '60 €' },
+        { label: 'Flughafentransfer Johannesburg, hin und zurück', value: '390 €' },
+      ],
+      examples: {
+        h3: 'Zwei Rechenbeispiele',
+        note: 'Jeweils sechs Tage, ohne Abschussgebühren.',
+        items: [
+          { title: 'Ein Jäger mit Begleitung', lines: ['6 × 300 € Tagessatz = 1.800 €', '6 × 160 € Begleitperson = 960 €', '6 × 60 € Leihwaffe = 360 €', '1 × 390 € Transfer'], total: '3.510 €' },
+          { title: 'Ein Jäger allein', lines: ['6 × 300 € Tagessatz = 1.800 €', '6 × 60 € Leihwaffe = 360 €', '1 × 390 € Transfer'], total: '2.550 €' },
+        ],
+      },
+    },
+    packages: {
+      h2a: 'Pakete —', h2b: 'für den schnellen Entschluss.',
+      lead: 'Drei feste Angebote, wie wir sie auch auf der Messe zeigen: Wild plus sechs Nächte, Vollpension, alle Getränke und Flughafentransfer. Alles inklusive, nichts obendrauf.',
+      incl: 'Enthalten: 6 Nächte · 3 Mahlzeiten täglich · alle Getränke · Flughafentransfer · Professional Hunter & Tracker',
+      items: [
+        { title: 'Einsteiger', species: ['Blessbock', 'Impala', 'Warzenschwein'], price: '3.700 €' },
+        { title: 'Klassiker', species: ['Kudu', 'Elenantilope', 'Steppenzebra', 'Impala'], price: '9.000 €' },
+        { title: 'Sechs auf einen Streich', species: ['Nyala', 'Streifengnu', 'Impala', 'Blessbock', 'Warzenschwein', 'Steppenzebra'], price: '6.000 €' },
+      ],
+      cta: 'Paket anfragen',
     },
     pricing: {
       eyebrow: 'Preisaufbau',
       h2a: 'Transparent —', h2b: 'ohne Überraschungen.',
-      lead: 'Eine Jagdreise besteht bei uns aus zwei Bausteinen. Was in der Tagespauschale steckt und was nicht, bekommen Sie vor der Buchung schriftlich — damit am Feuer nur noch über die Jagd geredet wird.',
+      lead: 'Eine Jagdreise besteht bei uns aus zwei Bausteinen. Was in der Tagespauschale steckt und was nicht, bekommen Sie vor der Buchung schriftlich — damit vor Ort nur noch über die Jagd geredet wird.',
       blocks: [
         { title: 'Tagespauschale', text: 'Unterkunft, Vollpension, Getränke im üblichen Rahmen, Professional Hunter, Tracker, Jagdfahrzeug, Wildbergung und die Grundversorgung der Trophäe.' },
         { title: 'Abschussgebühr', text: 'Wird pro erlegtem Stück nach Art abgerechnet. Nur was tatsächlich erlegt wird, wird berechnet — angeschweißtes Wild gilt nach südafrikanischer Praxis als erlegt.' },
       ],
-      included: { title: 'In der Regel enthalten', items: ['Unterkunft und Vollpension', 'Professional Hunter und Tracker', 'Jagdfahrzeug im Revier', 'Wildbergung und Trophäen-Vorbereitung', 'Wäscheservice', 'WLAN'] },
+      included: { title: 'Immer enthalten', items: ['Unterkunft und Vollpension', 'Professional Hunter und Tracker', 'Jagdfahrzeug im Revier', 'Wildbergung und Trophäen-Vorbereitung', 'Wäscheservice', 'WLAN'] },
       excluded: { title: 'Nicht enthalten', items: ['Internationale Flüge', 'Transfer ab/bis Flughafen', 'Jagdlizenz und Waffeneinfuhr', 'Trophäen-Präparation, Dip & Pack und Versand', 'Reise- und Jagdhaftpflichtversicherung', 'Trinkgelder'] },
     },
     cta: { eyebrow: 'Preisliste', h2a: 'Ihre Preisliste —', h2b: 'persönlich zusammengestellt.', text: 'Sagen Sie uns Reisezeitraum, Personenzahl und Wunscharten. Sie erhalten ein schriftliches Angebot mit allen Positionen.', button: 'Preisliste anfordern' },
@@ -164,29 +216,28 @@ export const de = {
 
   lodge: {
     title: 'Lodge & Unterkunft | Wild Wessels Safaris',
-    description: 'Haupthaus unter Jacarandas, vier freistehende Gästehäuser, Pool, Lapa mit Braai und Bar — Platz für 36 Gäste, 5,5 km außerhalb von Modimolle.',
+    description: 'Sechs Luxuszimmer mit eigenem Balkon, eine Suite im eigenen Gebäude, drei rustikale Häuser im Hunter’s Camp, Pool, Lapa mit Braai und Bar — 5,5 km außerhalb von Modimolle.',
     hero: { eyebrow: 'Lodge & Unterkunft', h1a: 'Ankommen,', h1b: 'nicht nur übernachten.',
       lead: 'Staubige Stiefel vor der Tür, ein kaltes Getränk in der Hand, und über der Veranda färbt sich der Himmel orange. Ein gewachsenes Farmgehöft unter alten Jacaranda-Bäumen — 5,5 km außerhalb von Modimolle.' },
     facts: [
-      { value: '6', label: 'Zimmer & Suiten im Haupthaus' },
-      { value: '4', label: 'freistehende Gästehäuser' },
-      { value: '36', label: 'Gäste maximal' },
-      { value: '130', label: 'Plätze in der Kapelle' },
+      { value: '6', label: 'Luxuszimmer mit eigenem Balkon' },
+      { value: '1', label: 'Suite im eigenen Gebäude' },
+      { value: '3', label: 'Häuser im Hunter’s Camp' },
+      { value: '5,5 km', label: 'bis Modimolle' },
     ],
     rooms: {
       eyebrow: 'Zimmer & Häuser',
       h2: 'Wo Sie schlafen',
       items: [
-        { title: 'Luxury Suites 1–4', text: 'Queensize-Bett, eigenes Bad mit Dusche, TV, Klimaanlage und WLAN. Jeweils für zwei Personen.' },
-        { title: 'Luxury Room 5', text: 'Kingsize-Bett, eigenes Bad mit Dusche, TV, Klimaanlage und WLAN. Für zwei Personen.' },
-        { title: 'Executive Suite', text: 'Die größte Einheit im Haupthaus: Kingsize-Bett, eigenes Bad mit Badewanne und Dusche, eigener Sitzbereich.' },
-        { title: 'Gästehäuser Wildevy, Appelblaar, Kudubessie & Apiespeul', text: 'Vier freistehende Häuser mit je drei Schlafzimmern (ein Doppelbett, vier Einzelbetten), Bad mit Wanne und Dusche, offenem Wohnbereich und eigener Küche. Je bis zu sechs Personen — ideal für Jagdgruppen und Familien.' },
+        { title: 'Sechs Luxuszimmer', text: 'Jedes mit eigenem Balkon, eigenem Bad mit Dusche, TV, Klimaanlage und WLAN. Jeweils für zwei Personen.' },
+        { title: 'Die Suite', text: 'In einem eigenen Gebäude, mit Balkon: Kingsize-Bett, Bad mit Badewanne und Dusche, eigener Sitzbereich — für alle, die nach dem Tag im Revier ihre Ruhe wollen.' },
+        { title: 'Hunter’s Camp — drei Häuser', text: 'Rustikal, ehrlich, nah am Busch: drei freistehende Häuser mit eigenem Wohnbereich und Küche. Ideal für Jagdgruppen, die abends unter sich sein wollen.' },
       ],
     },
     amenities: {
       eyebrow: 'Ausstattung',
       h2: 'Was auf der Farm auf Sie wartet',
-      items: ['Pool mit Sonnenterrasse', 'Lapa mit Braai und Kamin', 'Bar und Lounge mit Billardtisch', 'Kostenloses WLAN im gesamten Gehöft', 'Klimaanlage in allen Zimmern', 'Vollpension und Wäscheservice', 'Konferenz- und Veranstaltungsraum', 'Sichere Parkplätze auf dem Gelände', 'Kinderspielplatz', 'Damm mit Vogelbeobachtung'],
+      items: ['Pool mit Sonnenterrasse', 'Lapa mit Braai und Kamin', 'Bar und Lounge mit Billardtisch', 'Kostenloses WLAN im gesamten Gehöft', 'Klimaanlage in allen Zimmern', 'Vollpension und Wäscheservice', 'Eigener Balkon an jedem Zimmer', 'Sichere Parkplätze auf dem Gelände', 'Kinderspielplatz', 'Damm mit Vogelbeobachtung'],
     },
     gallery: { eyebrow: 'Galerie', h2: 'Die Lodge in Bildern' },
     wedding: {
@@ -208,7 +259,7 @@ export const de = {
       steps: [
         { no: '01', title: 'Flug nach Johannesburg', text: 'Direktflüge ab Frankfurt und München nach O. R. Tambo International (JNB), meist als Nachtflug. Keine Zeitverschiebung im Sommer, eine Stunde im Winter.' },
         { no: '02', title: 'Waffeneinfuhr am Flughafen', text: 'Am SAPS-Schalter im Flughafen erhalten Sie die temporäre Einfuhrgenehmigung. Wir bereiten das Formular SAPS 520 mit Ihnen vor und begleiten Sie durch den Vorgang.' },
-        { no: '03', title: 'Transfer in den Waterberg', text: 'Rund zwei bis zweieinhalb Stunden nach Norden über die N1 — die Städte werden kleiner, der Himmel größer. Auf Wunsch holen wir Sie am Flughafen ab.' },
+        { no: '03', title: 'Transfer in den Waterberg', text: 'Rund zwei Stunden mit dem Auto nach Norden über die N1 — die Städte werden kleiner, der Himmel größer. Auf Wunsch holen wir Sie am Flughafen ab (Transfer hin und zurück 390 €).' },
         { no: '04', title: 'Ankunft auf der Farm', text: 'Die Farm liegt 5,5 km außerhalb von Modimolle (früher Nylstroom), Waterberg, Limpopo. Der Kaffee steht schon bereit.' },
       ],
     },
@@ -301,7 +352,7 @@ export const de = {
   },
 
   footer: {
-    tagline: 'Deutschsprachige Jagdsafaris auf unserer privaten Farm im Waterberg, Limpopo — Pirsch, Feuer und Weite.',
+    tagline: 'Deutschsprachige Jagdsafaris auf unserer privaten Farm im Waterberg, Limpopo — Pirsch, Wild und Weite.',
     navTitle: 'Navigation', contactTitle: 'Kontakt', legalTitle: 'Rechtliches',
     rights: 'Alle Rechte vorbehalten.',
   },
