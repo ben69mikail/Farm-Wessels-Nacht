@@ -11,10 +11,10 @@ import { href, type Locale } from '../content/nav';
 import hero from '../assets/hero/giraffe.jpg';
 import imgGiraffe from '../assets/hero/giraffe.jpg';
 import imgZebra from '../assets/hero/zebras.jpg';
-import imgBuffalo from '../assets/hero/bushveld-see.jpg';
-import imgNyala from '../assets/lodge/felsen.jpg';
-import imgHartebeest from '../assets/hero/ebene.jpg';
-import imgWarthog from '../assets/lodge/damm.jpg';
+import imgBuffalo from '../assets/wild/kaffernbueffel.jpg';
+import imgNyala from '../assets/wild/nyala.jpg';
+import imgHartebeest from '../assets/wild/kuhantilope.jpg';
+import imgWarthog from '../assets/wild/warzenschwein.jpg';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const c = t(locale); const p = c.species; const x = v2[locale]; const de = locale === 'de';
@@ -31,7 +31,7 @@ const notes = [x.speciesNote.buffalo, x.speciesNote.nyala, x.speciesNote.giraffe
       <ul class="species__list">
         {rows.map((r, i) => (
           <li class="sp" data-reveal style={`--d:${(i % 2) * 100}ms`}>
-            <div class="frame frame--arch sp__img"><Image src={imgs[i]} alt="" width="800" height="1000" loading="lazy" decoding="async" /></div>
+            <div class="frame frame--arch sp__img"><Image src={imgs[i]} alt={(de ? r.de : r.en) ?? ''} width="800" height="1000" loading="lazy" decoding="async" /></div>
             <div class="sp__body">
               <h3 class="display t-2">{de ? r.de : r.en}</h3>
               <p class="sp__latin"><i>{r.latin}</i></p>

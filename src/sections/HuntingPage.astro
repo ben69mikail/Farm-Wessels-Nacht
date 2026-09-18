@@ -5,6 +5,7 @@ import RowsMedia from '../components/RowsMedia.astro';
 import Steps from '../components/Steps.astro';
 import Split from '../components/Split.astro';
 import Accordion from '../components/Accordion.astro';
+import Films from '../components/Films.astro';
 import Gallery from '../components/Gallery.astro';
 import TrophyGate from '../components/TrophyGate.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -23,6 +24,9 @@ import g3 from '../assets/hunting/team-gespraech.jpg';
 import g4 from '../assets/hero/pirsch-ausblick.jpg';
 import g5 from '../assets/hunting/jagdgruppe.jpg';
 import g6 from '../assets/hunting/paar-see.jpg';
+import posterAnpirschen from '../assets/video/film-anpirschen-poster.jpg';
+import posterPirsch from '../assets/video/film-pirsch-poster.jpg';
+import posterDornveld from '../assets/video/film-dornveld-poster.jpg';
 import t1 from '../assets/hunting/trophy-bueffel-01.jpg';
 import t2 from '../assets/hunting/trophy-bueffel-02.jpg';
 import t3 from '../assets/hunting/trophy-nyala-01.jpg';
@@ -39,6 +43,14 @@ const gallery = [
   { src: g2, alt: de ? 'Ansitz am Wassertank' : 'Waiting at the water tank' },
   { src: g3, alt: de ? 'Absprache mit dem Professional Hunter' : 'Talking things over with the professional hunter' },
   { src: g6, alt: de ? 'Gäste am Stausee' : 'Guests at the dam' },
+];
+const films = [
+  { ...x.films.items[0], src: '/video/film-anpirschen.mp4', poster: posterAnpirschen,
+    alt: de ? 'Jagdgruppe geht vom Fahrzeug ins Gelände' : 'Hunting party walking from the vehicle into the veld' },
+  { ...x.films.items[1], src: '/video/film-pirsch.mp4', poster: posterPirsch,
+    alt: de ? 'Gruppe auf Fährte im hohen goldenen Gras' : 'Party following tracks through tall golden grass' },
+  { ...x.films.items[2], src: '/video/film-dornveld.mp4', poster: posterDornveld,
+    alt: de ? 'Morgennebel über dem Dornveld' : 'Morning mist over the thornveld' },
 ];
 const trophies = [
   { src: t1, alt: de ? 'Kaffernbüffel' : 'Cape buffalo', label: de ? 'Kaffernbüffel' : 'Cape buffalo' },
@@ -63,6 +75,7 @@ const trophies = [
     <p class="muted" data-reveal>{p.season.p2}</p>
   </Split>
   <Accordion title={p.equipment.h2} items={p.equipment.items} />
+  <Films title={x.films.title} sub={x.films.sub} note={x.films.note} play={x.films.play} items={films} />
   <Gallery title={p.gallery.h2} items={gallery} open={x.gallery.open} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} />
   <TrophyGate title={x.trophy.title} text={x.trophy.text} reveal={x.trophy.reveal} hide={x.trophy.hide} all={x.trophy.all} none={x.trophy.none} open={x.trophy.open} zoom={x.trophy.zoom} close={x.gallery.close} prev={x.gallery.prev} next={x.gallery.next} items={trophies} />
   <CtaBand a={x.cta.title} b={x.cta.em} text={x.cta.text} button={x.cta.button} href={href('contact', locale)} mailLabel={x.cta.mail} />

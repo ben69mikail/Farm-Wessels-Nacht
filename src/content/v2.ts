@@ -9,6 +9,17 @@ export const v2 = {
     film: { title: 'Das Revier atmet.', sub: 'Wind im Gras, Staub im Gegenlicht, ein Schritt nach dem anderen. Ein stiller Blick ins Bushveld — ohne Musik, ohne Schnittgewitter.', play: 'Film abspielen', pause: 'Film anhalten', sound: 'Ton an', mute: 'Ton aus' },
     rail: { title: 'Wer hier zu Hause ist', hint: 'Scrollen — und die Fährte aufnehmen', more: 'Alle 32 Wildarten mit Preisen', drag: 'Ziehen' },
     speciesNote: { giraffe: 'Steht plötzlich über den Akazien — lautlos, riesig', zebra: 'Zieht im Morgennebel über die Ebene', buffalo: 'Der schwarze Fels im Dickicht. Herzschlag inklusive', nyala: 'Tritt im letzten Licht aus dem Dornveld', hartebeest: 'Der Läufer der offenen Ebenen', warthog: 'Kommt zur Suhle, wenn die Hitze steht' },
+    films: {
+      title: 'Sehen Sie selbst, wie das Revier atmet.',
+      sub: 'Drei kurze Aufnahmen aus dem Revier — Pirsch, Dornveld und die Weite dazwischen. Ohne Musik, ohne Schnittgewitter.',
+      note: 'Mit Originalton. Die Filme starten erst auf Klick.',
+      play: 'Film abspielen',
+      items: [
+        { title: 'Anpirschen', meta: '36 Sekunden · Bushveld', text: 'Vom Fahrzeug ins Gelände: der Weg zum Ansitz, Schritt für Schritt, mit Professional Hunter und Tracker.' },
+        { title: 'Auf der Pirsch', meta: '30 Sekunden · Goldenes Grasland', text: 'Später Nachmittag im hohen Gras, die Gruppe geht auf Fährte.' },
+        { title: 'Im Dornveld', meta: '28 Sekunden · Morgennebel', text: 'Nebel über der Ebene, kurz bevor die Sonne durchkommt.' },
+      ],
+    },
     day: { title: 'Ein Tag im Revier', sub: 'Vom ersten Kaffee im Dunkeln bis zum letzten Büchsenlicht — so vergeht ein Jagdtag bei uns.' },
     lodge: { title: 'Nach dem Tag im Revier — ankommen.', cards: [
       { t: 'Das Haupthaus', x: 'Sechs Luxuszimmer, jedes mit eigenem Balkon, dazu eine Suite im eigenen Gebäude. Klimaanlage, eigenes Bad — und abends der Blick vom Balkon, wenn der Himmel orange wird.' },
@@ -30,6 +41,17 @@ export const v2 = {
     film: { title: 'The land breathes.', sub: 'Wind in the grass, dust against the light, one step after another. A quiet look into the bushveld — no music, no fast cuts.', play: 'Play film', pause: 'Pause film', sound: 'Sound on', mute: 'Sound off' },
     rail: { title: 'Who lives here', hint: 'Scroll — and pick up the track', more: 'All 32 species with prices', drag: 'Drag' },
     speciesNote: { giraffe: 'Suddenly there above the acacias — silent, enormous', zebra: 'Drifts across the plain in morning mist', buffalo: 'The black rock in the thicket. Heartbeat included', nyala: 'Steps out of the thornveld in the last light', hartebeest: 'The runner of the open plains', warthog: 'Comes to the wallow when the heat stands still' },
+    films: {
+      title: 'See for yourself how the veld breathes.',
+      sub: 'Three short takes from the concession — the stalk, the thornveld and the wide country in between. No music, no cutting frenzy.',
+      note: 'With original sound. The films only start when you click.',
+      play: 'Play film',
+      items: [
+        { title: 'Moving in', meta: '36 seconds · Bushveld', text: 'From the vehicle into the field: the walk to the stand, step by step, with professional hunter and tracker.' },
+        { title: 'On the stalk', meta: '30 seconds · Golden grassland', text: 'Late afternoon in tall grass, the party following tracks.' },
+        { title: 'In the thornveld', meta: '28 seconds · Morning mist', text: 'Mist over the plain, just before the sun breaks through.' },
+      ],
+    },
     day: { title: 'A day in the field', sub: 'From the first coffee in the dark to the last shooting light — how a hunting day passes here.' },
     lodge: { title: 'After the day in the field — come home.', cards: [
       { t: 'The main house', x: 'Six luxury rooms, each with its own balcony, plus a suite in its own building. Air-conditioning, en-suite bathrooms — and the view from the balcony at dusk.' },
