@@ -12,11 +12,11 @@ import { href, type Locale } from '../content/nav';
 import heroImg from '../assets/hero/bushveld-see.jpg';
 import filmPoster from '../assets/video/hero-loop-poster.jpg';
 import imgGiraffe from '../assets/hero/giraffe.jpg';
-import imgZebra from '../assets/hero/zebras.jpg';
-import imgBuffalo from '../assets/hero/bushveld-see.jpg';
-import imgNyala from '../assets/lodge/felsen.jpg';
-import imgHartebeest from '../assets/hero/ebene.jpg';
-import imgWarthog from '../assets/lodge/damm.jpg';
+import imgZebra from '../assets/wild/steppenzebra.jpg';
+import imgBuffalo from '../assets/wild/kaffernbueffel.jpg';
+import imgNyala from '../assets/wild/nyala.jpg';
+import imgHartebeest from '../assets/wild/kuhantilope.jpg';
+import imgWarthog from '../assets/wild/warzenschwein.jpg';
 import imgHaupthaus from '../assets/lodge/haupthaus-jacaranda.jpg';
 import imgGaestehaus from '../assets/lodge/gaestehaus.jpg';
 import imgLapa from '../assets/lodge/lapa-braai.jpg';
@@ -95,7 +95,7 @@ const words = x.statement.map((l) => l.split(' '));
     <div class="track__rail" data-rail>
       {rows.map((r, i) => (
         <article class="rail-card" data-rail-item>
-          <div class="frame frame--arch rail-card__img"><Image src={railImgs[i]} alt="" width="900" height="1200" loading="lazy" decoding="async" /></div>
+          <div class="frame frame--arch rail-card__img"><Image src={railImgs[i]} alt={r.de ?? r.en ?? ''} width="900" height="1200" loading="lazy" decoding="async" /></div>
           <div class="rail-card__body">
             <h3 class="display t-2">{name(r)}</h3>
             <p class="rail-card__latin"><i>{r.latin}</i> · {r.group}</p>

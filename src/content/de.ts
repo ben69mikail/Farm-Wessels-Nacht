@@ -333,6 +333,7 @@ export const de = {
         { h: 'Kontakt', b: 'E-Mail: info@wildwessels.com\nTelefon: [noch zu ergänzen]' },
         { h: 'Registereintrag & Umsatzsteuer', b: '[Registergericht, Registernummer]\n[USt-IdNr. gemäß § 27 a UStG]' },
         { h: 'Verantwortlich für den Inhalt', b: '[Name, Anschrift]' },
+        { h: 'Bildnachweis', b: 'Alle Fotos ohne gesonderten Hinweis: © Wild Wessels Safaris.\nDie folgenden Tierfotos stammen von Wikimedia Commons und sind auf das Seitenformat zugeschnitten; die Ausschnitte stehen unter derselben Lizenz wie das Original:\nKaffernbüffel — Bernard Gagnon, CC BY-SA 4.0\nNyala — Bernard Dupont, CC BY-SA 2.0\nKuhantilope (Hartebeest) — Bernard Dupont, CC BY-SA 2.0\nWarzenschwein — Charles J. Sharp, CC BY-SA 4.0\nSteppenzebra — Diego Delso, CC BY-SA 4.0' },
         { h: 'EU-Streitschlichtung', b: 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit: https://ec.europa.eu/consumers/odr. Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.' },
       ],
     },

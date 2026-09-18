@@ -333,6 +333,7 @@ export const en = {
         { h: 'Contact', b: 'E-mail: info@wildwessels.com\nPhone: [to be added]' },
         { h: 'Register entry & VAT', b: '[Register court, register number]\n[VAT identification number]' },
         { h: 'Responsible for content', b: '[Name, address]' },
+        { h: 'Image credits', b: 'All photographs without a separate note: © Wild Wessels Safaris.\nThe following wildlife photographs are from Wikimedia Commons and have been cropped to the page format; the crops are published under the same licence as the originals:\nCape buffalo — Bernard Gagnon, CC BY-SA 4.0\nNyala — Bernard Dupont, CC BY-SA 2.0\nRed hartebeest — Bernard Dupont, CC BY-SA 2.0\nWarthog — Charles J. Sharp, CC BY-SA 4.0\nPlains zebra — Diego Delso, CC BY-SA 4.0' },
         { h: 'EU dispute resolution', b: 'The European Commission provides a platform for online dispute resolution: https://ec.europa.eu/consumers/odr. We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration body.' },
       ],
     },
