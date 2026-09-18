@@ -6,7 +6,7 @@ export const v2 = {
     scroll: 'Weiterlesen',
     statement: ['Mehr als eine Jagd.', 'Ein Stück echtes Afrika —', 'im ersten Licht, zu Fuß, mit Geduld.'],
     promisesTitle: 'Drei Dinge, auf die Sie sich verlassen können',
-    film: { title: 'Das Revier atmet.', sub: 'Wind im Gras, Staub im Gegenlicht, ein Schritt nach dem anderen. Ein stiller Blick ins Bushveld — ohne Musik, ohne Schnittgewitter.', play: 'Film abspielen', pause: 'Film anhalten', sound: 'Ton an', mute: 'Ton aus' },
+    film: { title: 'Die letzten hundert Meter.', sub: 'Hier hört das Reden auf. Der Stock steht, die Büchse liegt an — und für ein paar Sekunden ist nichts anderes mehr wichtig.', play: 'Film abspielen', pause: 'Film anhalten', sound: 'Ton an', mute: 'Ton aus' },
     rail: { title: 'Wer hier zu Hause ist', hint: 'Scrollen — und die Fährte aufnehmen', more: 'Alle 32 Wildarten mit Preisen', drag: 'Ziehen' },
     speciesNote: { giraffe: 'Steht plötzlich über den Akazien — lautlos, riesig', zebra: 'Zieht im Morgennebel über die Ebene', buffalo: 'Der schwarze Fels im Dickicht. Herzschlag inklusive', nyala: 'Tritt im letzten Licht aus dem Dornveld', hartebeest: 'Der Läufer der offenen Ebenen', warthog: 'Kommt zur Suhle, wenn die Hitze steht' },
     films: {
@@ -38,7 +38,7 @@ export const v2 = {
     scroll: 'Keep reading',
     statement: ['More than a hunt.', 'A piece of real Africa —', 'at first light, on foot, with patience.'],
     promisesTitle: 'Three things you can count on',
-    film: { title: 'The land breathes.', sub: 'Wind in the grass, dust against the light, one step after another. A quiet look into the bushveld — no music, no fast cuts.', play: 'Play film', pause: 'Pause film', sound: 'Sound on', mute: 'Sound off' },
+    film: { title: 'The last hundred metres.', sub: 'This is where the talking stops. The sticks go up, the rifle settles — and for a few seconds nothing else matters.', play: 'Play film', pause: 'Pause film', sound: 'Sound on', mute: 'Sound off' },
     rail: { title: 'Who lives here', hint: 'Scroll — and pick up the track', more: 'All 32 species with prices', drag: 'Drag' },
     speciesNote: { giraffe: 'Suddenly there above the acacias — silent, enormous', zebra: 'Drifts across the plain in morning mist', buffalo: 'The black rock in the thicket. Heartbeat included', nyala: 'Steps out of the thornveld in the last light', hartebeest: 'The runner of the open plains', warthog: 'Comes to the wallow when the heat stands still' },
     films: {

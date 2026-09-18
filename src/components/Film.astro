@@ -1,8 +1,8 @@
 ---
 /* Vollbild-Film: wächst beim Scrollen aus einem abgerundeten Fenster, spielt stumm, Ton auf Wunsch. */
 import Icon from './Icon.astro';
-interface Props { src: string; src720?: string; poster: string; title: string; sub: string; play: string; pause: string; sound: string; mute: string }
-const { src, src720, poster, title, sub, play, pause, sound, mute } = Astro.props;
+interface Props { src: string; src720?: string; poster: string; title: string; sub: string; play: string; pause: string; sound: string; mute: string; hasSound?: boolean }
+const { src, src720, poster, title, sub, play, pause, sound, mute, hasSound = true } = Astro.props;
 ---
 <section class="film">
   <div class="film__window" data-scrub-scale data-film>
@@ -17,7 +17,7 @@ const { src, src720, poster, title, sub, play, pause, sound, mute } = Astro.prop
     </div>
     <div class="film__ctl">
       <button type="button" data-film-play aria-label={pause} data-play={play} data-pause={pause}><Icon name="pause" class="i-pause" /><Icon name="play" class="i-play" /></button>
-      <button type="button" data-film-mute aria-label={sound} aria-pressed="false" data-sound={sound} data-mute={mute}><Icon name="mute" class="i-mute" /><Icon name="sound" class="i-sound" /></button>
+      {hasSound && <button type="button" data-film-mute aria-label={sound} aria-pressed="false" data-sound={sound} data-mute={mute}><Icon name="mute" class="i-mute" /><Icon name="sound" class="i-sound" /></button>}
     </div>
   </div>
 </section>
@@ -27,7 +27,7 @@ const { src, src720, poster, title, sub, play, pause, sound, mute } = Astro.prop
   if (box && v) {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const playBtn = box.querySelector<HTMLButtonElement>('[data-film-play]')!;
-    const muteBtn = box.querySelector<HTMLButtonElement>('[data-film-mute]')!;
+    const muteBtn = box.querySelector<HTMLButtonElement>('[data-film-mute]');
     const setPlaying = (on: boolean) => { box.classList.toggle('is-paused', !on); playBtn.setAttribute('aria-label', on ? playBtn.dataset.pause! : playBtn.dataset.play!); };
     new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !reduce && !box.classList.contains('user-paused')) v.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
@@ -38,7 +38,7 @@ const { src, src720, poster, title, sub, play, pause, sound, mute } = Astro.prop
       if (v.paused) { box.classList.remove('user-paused'); v.play(); setPlaying(true); }
       else { box.classList.add('user-paused'); v.pause(); setPlaying(false); }
     });
-    muteBtn.addEventListener('click', () => {
+    muteBtn?.addEventListener('click', () => {
       v.muted = !v.muted; muteBtn.setAttribute('aria-pressed', String(!v.muted));
       muteBtn.setAttribute('aria-label', v.muted ? muteBtn.dataset.sound! : muteBtn.dataset.mute!);
       box.classList.toggle('has-sound', !v.muted);
